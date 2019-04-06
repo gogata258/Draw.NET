@@ -28,27 +28,27 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.logTextBox = new System.Windows.Forms.RichTextBox();
-			this.SuspendLayout();
-			// 
-			// logTextBox
-			// 
-			this.logTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.logTextBox.Location = new System.Drawing.Point(0, 0);
-			this.logTextBox.Name = "logTextBox";
-			this.logTextBox.Size = new System.Drawing.Size(800, 450);
-			this.logTextBox.TabIndex = 0;
-			this.logTextBox.Text = "";
-			// 
-			// Log
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(800, 450);
-			this.Controls.Add(this.logTextBox);
-			this.Name = "Log";
-			this.Text = "LOg";
-			this.ResumeLayout(false);
+            this.logTextBox = new System.Windows.Forms.RichTextBox();
+            this.SuspendLayout();
+            // 
+            // logTextBox
+            // 
+            this.logTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.logTextBox.Location = new System.Drawing.Point(0, 0);
+            this.logTextBox.Name = "logTextBox";
+            this.logTextBox.Size = new System.Drawing.Size(800, 450);
+            this.logTextBox.TabIndex = 0;
+            this.logTextBox.Text = "";
+            // 
+            // Log
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.logTextBox);
+            this.Name = "Log";
+            this.Text = "Log";
+            this.ResumeLayout(false);
 
 		}
 
