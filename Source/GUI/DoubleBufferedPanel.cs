@@ -1,17 +1,16 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace Draw
 {
-	/// <summary>
-	/// Потребителски контрол, в който ще се визуализира модела.
-	/// Използва се за визуализация с двойно буфериране.
-	/// </summary>
 	public partial class DoubleBufferedPanel : UserControl
 	{
-		//
-		// The InitializeComponent() call is required for Windows Forms designer support.
-		// TODO: Add constructor code after the InitializeComponent() call.
-		//
-		public DoubleBufferedPanel() => InitializeComponent();
+		public DoubleBufferedPanel( ) => InitializeComponent( );
+
+		public void Invalidate( Action updateUIControls )
+		{
+			Invalidate( );
+			updateUIControls.Invoke( );
+		}
 	}
 }

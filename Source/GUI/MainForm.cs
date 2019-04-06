@@ -1,29 +1,28 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace Draw.GUI
 {
-	using Draw.Primitives;
+	using Primitives;
 	using Processors;
-	using System.Collections.Generic;
-	using System.Linq;
-	using System.Reflection;
 
 	public partial class MainForm : Form
 	{
 		private DialogProcessor dialogProcessor;
 		private List<ToolStripButton> manipulationTools;
 		private Dictionary<TextBox, string> propertyDict;
-		private Log log;
+		private System.Timers.Timer timer;
 		private bool isUpdatingUI;
 
-		public MainForm()
+		public MainForm( )
 		{
-			InitializeComponent();
-			log = new Log { Visible = true };
+			InitializeComponent( );
 
 			ShapeBase tempShape = new Empty("temp");
-			propertyDict = new Dictionary<TextBox, string>()
+			propertyDict = new Dictionary<TextBox, string>( )
 			{
 				{ heightTextBox, nameof(tempShape.ObjectHeight) },
 				{ widthTextBox,nameof(tempShape.ObjectWidth) },
@@ -40,90 +39,98 @@ namespace Draw.GUI
 				{ fillColorBTextbox, nameof(tempShape.FillColor_B) },
 			};
 
-			dialogProcessor = new DialogProcessor(UpdateUIControls);
-			manipulationTools = new List<ToolStripButton>();
-			UpdateUIControls();
-			SetManipulationTools();
+			timer = new System.Timers.Timer( 17 )
+			{
+				AutoReset = false
+			};
+
+			dialogProcessor = new DialogProcessor( );
+			manipulationTools = new List<ToolStripButton>( );
+			OnUIUpdate( );
+			SetManipulationTools( );
 		}
 
-		private void SetManipulationTools()
+		private void SetManipulationTools( )
 		{
-			manipulationTools.Add(quickAction_Tools_Move);
-			manipulationTools.Add(quickAction_Tools_Select);
+			manipulationTools.Add( quickAction_Tools_Move );
+			manipulationTools.Add( quickAction_Tools_Select );
 		}
 
-		private void UpdateUIControls()
+		private void OnUIUpdate( )
 		{
-			isUpdatingUI = true;
+			if (!timer.Enabled)
+			{
+				isUpdatingUI = true;
 
-			UpdateHierarchyItems();
-			SetHierarchySelection();
-			UpdateTextboxValues();
+				UpdateHierarchyItems( );
+				SetHierarchySelection( );
+				UpdateTextboxValues( );
 
-			isUpdatingUI = false;
+				isUpdatingUI = false;
+
+				timer.Start( );
+			}
 		}
 
-		private void UpdateHierarchyItems()
+		private void UpdateHierarchyItems( )
 		{
-			hierarchyListbox.Items.Clear();
-			dialogProcessor.DisplayProcessor.Shapes.ForEach(s => AddShapeToListbox(s, 0));
+			hierarchyListbox.Items.Clear( );
+			dialogProcessor.DisplayProcessor.Shapes.ForEach( s => AddShapeToListbox( s, 0 ) );
 			hierarchyListbox.DisplayMember = "Name";
 			hierarchyListbox.ValueMember = "Id";
 		}
 
-		private void UpdateTextboxValues()
+		private void UpdateTextboxValues( )
 		{
 			ShapeBase shape = dialogProcessor.MultiSelection.FirstOrDefault();
 
 			if (shape is null)
-				propertyDict.ToList().ForEach(tb => tb.Key.Text = string.Empty);
+				propertyDict.ToList( ).ForEach( tb => tb.Key.Text = string.Empty );
 			else
-				foreach (PropertyInfo prop in shape.GetType().GetProperties())
-					if (propertyDict.Any(p => p.Value == prop.Name))
+				foreach (PropertyInfo prop in shape.GetType( ).GetProperties( ))
+					if (propertyDict.Any( p => p.Value == prop.Name ))
 					{
 						KeyValuePair<TextBox, string> dictItem = propertyDict.FirstOrDefault(p => p.Value == prop.Name);
-						dictItem.Key.Text = prop.GetValue(shape).ToString();
-						log.WriteToLog($"{prop.Name}: {prop.GetValue(shape).ToString()}");
+						dictItem.Key.Text = prop.GetValue( shape ).ToString( );
 					}
 
 		}
 
-		private void SetHierarchySelection()
+		private void SetHierarchySelection( )
 		{
 			List<ShapeBase> selectedItems = dialogProcessor.MultiSelection;
 			for (int i = 0; i < hierarchyListbox.Items.Count; i++)
 			{
 				object item = hierarchyListbox.Items[i];
-				if (selectedItems.Any(s => s.Id.ToString() == GetIdFromListboxItem(item)))
-					hierarchyListbox.SetSelected(i, true);
-				else hierarchyListbox.SetSelected(i, false);
+				if (selectedItems.Any( s => s.Id.ToString( ) == GetIdFromListboxItem( item ) ))
+					hierarchyListbox.SetSelected( i, true );
+				else hierarchyListbox.SetSelected( i, false );
 			}
 		}
 
-		private void AddShapeToListbox(ShapeBase shape, int tabs)
+		private void AddShapeToListbox( ShapeBase shape, int tabs )
 		{
 			if (shape is Group g)
 			{
-				hierarchyListbox.Items.Add(GetListBoxItem(g, tabs));
-				g.Shapes.ToList().ForEach(s => AddShapeToListbox(s, tabs + 1));
+				hierarchyListbox.Items.Add( GetListBoxItem( g, tabs ) );
+				g.Shapes.ToList( ).ForEach( s => AddShapeToListbox( s, tabs + 1 ) );
 			}
-			else hierarchyListbox.Items.Add(GetListBoxItem(shape, tabs));
+			else hierarchyListbox.Items.Add( GetListBoxItem( shape, tabs ) );
 		}
 
-		private static object GetListBoxItem(ShapeBase s, int tabs) => new { Name = $"{new string('\t', tabs)}{s.Name}", Id = s.Id.ToString() };
-		private static string GetIdFromListboxItem(object item) => (string)item.GetType().GetProperty("Id").GetValue(item);
-		private void DeleteSelection()
+		private static object GetListBoxItem( ShapeBase s, int tabs ) => new { Name = $"{new string( '\t', tabs )}{s.Name}", Id = s.Id.ToString( ) };
+		private static string GetIdFromListboxItem( object item ) => (string) item.GetType( ).GetProperty( "Id" ).GetValue( item );
+		private void DeleteSelection( )
 		{
-			dialogProcessor.MultiSelection.ForEach(s => dialogProcessor.DeleteShape(dialogProcessor.DisplayProcessor.Shapes, s));
-			viewPort.Invalidate();
-			UpdateUIControls();
+			dialogProcessor.MultiSelection.ForEach( s => dialogProcessor.DeleteShape( dialogProcessor.DisplayProcessor.Shapes, s ) );
+			viewPort.Invalidate( OnUIUpdate );
 		}
 
 
 		#region Other Control Handlers
-		private void TextBox_TextChanged(object sender, EventArgs e)
+		private void TextBox_TextChanged( object sender, EventArgs e )
 		{
-			if (dialogProcessor.MultiSelection.Any() && sender is TextBox tb && !isUpdatingUI)
+			if (dialogProcessor.MultiSelection.Any( ) && sender is TextBox tb && !isUpdatingUI)
 			{
 				KeyValuePair<TextBox, string> kvp = propertyDict.FirstOrDefault(x => x.Key.Name == tb.Name);
 				string propName = kvp.Value;
@@ -134,19 +141,19 @@ namespace Draw.GUI
 					object value = null;
 					try
 					{
-						value = Convert.ChangeType(tb.Text, prop.PropertyType);
+						value = Convert.ChangeType( tb.Text, prop.PropertyType );
 					}
 					catch (Exception)
 					{
 						value = 0;
 					}
-					prop.SetValue(shape, value);
+					prop.SetValue( shape, value );
 				}
-				viewPort.Invalidate();
+				viewPort.Invalidate( OnUIUpdate );
 			}
 		}
 
-		private void HierarchySelectionChanged(object sender, EventArgs e)
+		private void HierarchySelectionChanged( object sender, EventArgs e )
 		{
 			if (sender is ListBox lb && !isUpdatingUI)
 			{
@@ -154,145 +161,155 @@ namespace Draw.GUI
 				for (int i = 0; i < lb.SelectedItems.Count; i++)
 				{
 					object item = lb.SelectedItems[i];
-					ids.Add(GetIdFromListboxItem(item));
+					ids.Add( GetIdFromListboxItem( item ) );
 				}
-				if (!ids.All(i => dialogProcessor.MultiSelection.Any(s => s.Id.ToString() == i)))
-					dialogProcessor.SetSelectionFromHierarchy(ids);
+				if (!ids.All( i => dialogProcessor.MultiSelection.Any( s => s.Id.ToString( ) == i ) ))
+				{
+					dialogProcessor.SetSelectionFromHierarchy( ids );
+					viewPort.Invalidate( OnUIUpdate );
+				}
 			}
 		}
 
 		#endregion
 
 		#region ToolStrip Menu Handlers
-		private void ExitToolStripMenuItemClick(object sender, EventArgs e) => Close();
+		private void ExitToolStripMenuItemClick( object sender, EventArgs e ) => Close( );
 		#endregion
 
 		#region SpeedButton Handlers
-		private void DrawShape_Finalize(string shapeType)
+		private void DrawShape_Finalize( string shapeType )
 		{
 			statusBar.Items[0].Text = $"Последно действие: Рисуване на {shapeType}";
-			viewPort.Invalidate();
-			UpdateUIControls();
-
+			viewPort.Invalidate( OnUIUpdate );
 		}
 
-		private void SpeedButton_Draw_Rectangle_Click(object sender, EventArgs e)
+		private void SpeedButton_Draw_Rectangle_Click( object sender, EventArgs e )
 		{
-			dialogProcessor.AddShape<Rectangle>(GetViewportWidth(), GetViewportHeight());
-			DrawShape_Finalize("правоъгълник");
+			dialogProcessor.AddShape<Rectangle>( GetViewportWidth( ), GetViewportHeight( ) );
+			DrawShape_Finalize( "правоъгълник" );
 		}
 
 
-		private void SpeedButton_Draw_Triangle_Click(object sender, EventArgs e)
+		private void SpeedButton_Draw_Triangle_Click( object sender, EventArgs e )
 		{
-			dialogProcessor.AddShape<Triangle>(GetViewportWidth(), GetViewportHeight());
-			DrawShape_Finalize("триъгълник");
+			dialogProcessor.AddShape<Triangle>( GetViewportWidth( ), GetViewportHeight( ) );
+			DrawShape_Finalize( "триъгълник" );
 		}
 
-		private void SpeedButton_Draw_Elipse_Click(object sender, EventArgs e)
+		private void SpeedButton_Draw_Elipse_Click( object sender, EventArgs e )
 		{
-			dialogProcessor.AddShape<Elipse>(GetViewportWidth(), GetViewportHeight());
-			DrawShape_Finalize("елипса");
+			dialogProcessor.AddShape<Elipse>( GetViewportWidth( ), GetViewportHeight( ) );
+			DrawShape_Finalize( "елипса" );
 		}
 
-		private void SpeedButton_Group_Click(object sender, EventArgs e)
+		private void SpeedButton_Group_Click( object sender, EventArgs e )
 		{
 			if (dialogProcessor.MultiSelection.Count > 0)
 			{
-				dialogProcessor.GroupObjects();
-				DrawShape_Finalize("група");
+				dialogProcessor.GroupObjects( );
+				DrawShape_Finalize( "група" );
+				viewPort.Invalidate( OnUIUpdate );
 			}
 		}
 
-		private void SpeedButton_UnGroup_Click(object sender, EventArgs e)
+		private void SpeedButton_UnGroup_Click( object sender, EventArgs e )
 		{
 			if (dialogProcessor.MultiSelection.Count > 0)
 			{
-				dialogProcessor.UngroupObjects();
-				viewPort.Invalidate();
+				dialogProcessor.UngroupObjects( );
+				viewPort.Invalidate( OnUIUpdate );
 			}
 		}
 
-		private void Tools_Clicked(object sender, EventArgs e)
+		private void Tools_Clicked( object sender, EventArgs e )
 		{
 			if (sender is ToolStripButton btn)
 			{
-				manipulationTools.ForEach(t => t.Checked = false);
-				manipulationTools.Find(t => t == btn).Checked = true;
+				manipulationTools.ForEach( t => t.Checked = false );
+				manipulationTools.Find( t => t == btn ).Checked = true;
 			}
 		}
 
-		private void Tools_Move_CheckChanged(object sender, EventArgs e)
+		private void Tools_Move_CheckChanged( object sender, EventArgs e )
 		{
 			if (sender is ToolStripButton btn)
 				dialogProcessor.IsMoving = btn.Checked;
 		}
 
-		private void Tools_Select_CheckChanged(object sender, EventArgs e)
+		private void Tools_Select_CheckChanged( object sender, EventArgs e )
 		{
 			if (sender is ToolStripButton btn)
 				dialogProcessor.IsSelecting = btn.Checked;
 		}
 
-		private void Tools_Delete_Clicked(object sender, EventArgs e)
+		private void Tools_Delete_Clicked( object sender, EventArgs e )
 		{
 			if (sender is ToolStripButton btn)
-				DeleteSelection();
+				DeleteSelection( );
 		}
 		#endregion
 
 		#region Viewport Handlers
-		private void ViewPort_Paint(object sender, PaintEventArgs e) => dialogProcessor.DisplayProcessor.ReDraw(sender, e);
+		private void ViewPort_Paint( object sender, PaintEventArgs e ) => dialogProcessor.DisplayProcessor.ReDraw( sender, e );
 
-		private void ViewPort_MouseDown(object sender, MouseEventArgs e)
+		private void ViewPort_MouseDown( object sender, MouseEventArgs e )
 		{
 			if (dialogProcessor.IsMoving)
 			{
 				dialogProcessor.IsDragging = true;
 				dialogProcessor.LastLocation = e.Location;
-				viewPort.Invalidate();
-				UpdateUIControls();
-				log.WriteToLog("mouseDown");
+				viewPort.Invalidate( OnUIUpdate );
+
 			}
-			else if (dialogProcessor.IsSelecting)
+		}
+
+		private void ViewPort_MouseClick( object sender, MouseEventArgs e )
+		{
+			if (dialogProcessor.IsSelecting)
 			{
 				ShapeBase item = dialogProcessor.ContainsPoint(e.Location);
 				if (item != null)
 				{
-					dialogProcessor.SetSelectionFromViewport(item);
+					dialogProcessor.SetSelectionFromViewport( item );
 					statusBar.Items[0].Text = $"Последно действие: Селекция на примитив {item.Name}";
-					log.WriteToLog(dialogProcessor.MultiSelection.Count.ToString());
+					viewPort.Invalidate( OnUIUpdate );
 				}
 			}
 		}
 
-		private void ViewPort_MouseMove(object sender, MouseEventArgs e)
+		private void ViewPort_MouseEnter( object sender, EventArgs e ) => viewPort.Focus( );
+
+		private void ViewPort_MouseMove( object sender, MouseEventArgs e )
 		{
-			if (dialogProcessor.IsMoving && dialogProcessor.IsDragging && dialogProcessor.MultiSelection.Any())
+			if (dialogProcessor.IsMoving && dialogProcessor.IsDragging && dialogProcessor.MultiSelection.Any( ))
 			{
 				statusBar.Items[0].Text = "Последно действие: Влачене";
-				dialogProcessor.TranslateTo(e.Location);
-				viewPort.Invalidate();
-				UpdateUIControls();
-				log.WriteToLog("mouseMoving");
+				dialogProcessor.TranslateTo( e.Location );
+				viewPort.Invalidate( OnUIUpdate );
+
 			}
 		}
 
-		private void ViewPort_MouseUp(object sender, MouseEventArgs e) => dialogProcessor.IsDragging = false;
+		private void ViewPort_MouseUp( object sender, MouseEventArgs e ) => dialogProcessor.IsDragging = false;
 
-		private void ViewPort_KeyDown(object sender, KeyEventArgs e)
+		private void ViewPort_KeyDown( object sender, KeyEventArgs e )
 		{
 			if (e.KeyCode == Keys.ShiftKey) dialogProcessor.IsMultiSelecting = true;
 		}
 
-		private void ViewPort_KeyUp(object sender, KeyEventArgs e)
+		private void ViewPort_KeyUp( object sender, KeyEventArgs e )
 		{
 			if (e.KeyCode == Keys.ShiftKey) dialogProcessor.IsMultiSelecting = false;
-			else if (e.KeyCode == Keys.Delete) DeleteSelection();
+			else if (e.KeyCode == Keys.Delete) DeleteSelection( );
 		}
 		#endregion
 
-		private int GetViewportWidth() => viewPort.Width;
-		private int GetViewportHeight() => viewPort.Height;
+		private int GetViewportWidth( ) => viewPort.Width;
+		private int GetViewportHeight( ) => viewPort.Height;
+
+
+
+
 	}
 }

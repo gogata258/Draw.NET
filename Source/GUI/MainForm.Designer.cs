@@ -50,6 +50,9 @@
 			this.quickAction_Tools_Group = new System.Windows.Forms.ToolStripButton();
 			this.quickAction_Tools_UnGroup = new System.Windows.Forms.ToolStripButton();
 			this.propertiesSideWindow = new System.Windows.Forms.FlowLayoutPanel();
+			this.nameLayout = new System.Windows.Forms.FlowLayoutPanel();
+			this.nameLabel = new System.Windows.Forms.Label();
+			this.nameTextbox = new System.Windows.Forms.TextBox();
 			this.sizeLayout = new System.Windows.Forms.FlowLayoutPanel();
 			this.sizeLabel = new System.Windows.Forms.Label();
 			this.widthLayout = new System.Windows.Forms.FlowLayoutPanel();
@@ -66,6 +69,9 @@
 			this.locYLayout = new System.Windows.Forms.FlowLayoutPanel();
 			this.locYLabel = new System.Windows.Forms.Label();
 			this.LocYTextbox = new System.Windows.Forms.TextBox();
+			this.rotationLayout = new System.Windows.Forms.FlowLayoutPanel();
+			this.rotationLabel = new System.Windows.Forms.Label();
+			this.rotationTextbox = new System.Windows.Forms.TextBox();
 			this.fillColorLayout = new System.Windows.Forms.FlowLayoutPanel();
 			this.fillColorLabel = new System.Windows.Forms.Label();
 			this.fillColorRLayout = new System.Windows.Forms.FlowLayoutPanel();
@@ -101,22 +107,18 @@
 			this.rootContainer = new System.Windows.Forms.SplitContainer();
 			this.ControlsContainer = new System.Windows.Forms.SplitContainer();
 			this.viewPort = new Draw.DoubleBufferedPanel();
-			this.rotationLayout = new System.Windows.Forms.FlowLayoutPanel();
-			this.rotationLabel = new System.Windows.Forms.Label();
-			this.rotationTextbox = new System.Windows.Forms.TextBox();
-			this.nameLayout = new System.Windows.Forms.FlowLayoutPanel();
-			this.nameLabel = new System.Windows.Forms.Label();
-			this.nameTextbox = new System.Windows.Forms.TextBox();
 			this.mainMenu.SuspendLayout();
 			this.statusBar.SuspendLayout();
 			this.quickActionsMenu.SuspendLayout();
 			this.propertiesSideWindow.SuspendLayout();
+			this.nameLayout.SuspendLayout();
 			this.sizeLayout.SuspendLayout();
 			this.widthLayout.SuspendLayout();
 			this.heightLayout.SuspendLayout();
 			this.locationLayout.SuspendLayout();
 			this.locXLayout.SuspendLayout();
 			this.locYLayout.SuspendLayout();
+			this.rotationLayout.SuspendLayout();
 			this.fillColorLayout.SuspendLayout();
 			this.fillColorRLayout.SuspendLayout();
 			this.fillColorGLayout.SuspendLayout();
@@ -136,8 +138,6 @@
 			this.ControlsContainer.Panel1.SuspendLayout();
 			this.ControlsContainer.Panel2.SuspendLayout();
 			this.ControlsContainer.SuspendLayout();
-			this.rotationLayout.SuspendLayout();
-			this.nameLayout.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// mainMenu
@@ -341,6 +341,38 @@
 			this.propertiesSideWindow.TabIndex = 5;
 			this.propertiesSideWindow.WrapContents = false;
 			// 
+			// nameLayout
+			// 
+			this.nameLayout.AutoSize = true;
+			this.nameLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.nameLayout.Controls.Add(this.nameLabel);
+			this.nameLayout.Controls.Add(this.nameTextbox);
+			this.nameLayout.Dock = System.Windows.Forms.DockStyle.Left;
+			this.nameLayout.Location = new System.Drawing.Point(3, 3);
+			this.nameLayout.Name = "nameLayout";
+			this.nameLayout.Size = new System.Drawing.Size(138, 26);
+			this.nameLayout.TabIndex = 11;
+			// 
+			// nameLabel
+			// 
+			this.nameLabel.AutoSize = true;
+			this.nameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.nameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.nameLabel.Location = new System.Drawing.Point(0, 0);
+			this.nameLabel.Margin = new System.Windows.Forms.Padding(0);
+			this.nameLabel.Name = "nameLabel";
+			this.nameLabel.Size = new System.Drawing.Size(52, 26);
+			this.nameLabel.TabIndex = 1;
+			this.nameLabel.Text = "Name:";
+			this.nameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
+			// nameTextbox
+			// 
+			this.nameTextbox.Location = new System.Drawing.Point(55, 3);
+			this.nameTextbox.Name = "nameTextbox";
+			this.nameTextbox.Size = new System.Drawing.Size(80, 20);
+			this.nameTextbox.TabIndex = 0;
+			// 
 			// sizeLayout
 			// 
 			this.sizeLayout.AutoSize = true;
@@ -524,6 +556,38 @@
 			this.LocYTextbox.Size = new System.Drawing.Size(80, 20);
 			this.LocYTextbox.TabIndex = 0;
 			this.LocYTextbox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
+			// 
+			// rotationLayout
+			// 
+			this.rotationLayout.AutoSize = true;
+			this.rotationLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.rotationLayout.Controls.Add(this.rotationLabel);
+			this.rotationLayout.Controls.Add(this.rotationTextbox);
+			this.rotationLayout.Dock = System.Windows.Forms.DockStyle.Left;
+			this.rotationLayout.Location = new System.Drawing.Point(3, 111);
+			this.rotationLayout.Name = "rotationLayout";
+			this.rotationLayout.Size = new System.Drawing.Size(194, 26);
+			this.rotationLayout.TabIndex = 10;
+			// 
+			// rotationLabel
+			// 
+			this.rotationLabel.AutoSize = true;
+			this.rotationLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.rotationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.rotationLabel.Location = new System.Drawing.Point(0, 0);
+			this.rotationLabel.Margin = new System.Windows.Forms.Padding(0);
+			this.rotationLabel.Name = "rotationLabel";
+			this.rotationLabel.Size = new System.Drawing.Size(108, 26);
+			this.rotationLabel.TabIndex = 1;
+			this.rotationLabel.Text = "Rotation Angle:";
+			this.rotationLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
+			// rotationTextbox
+			// 
+			this.rotationTextbox.Location = new System.Drawing.Point(111, 3);
+			this.rotationTextbox.Name = "rotationTextbox";
+			this.rotationTextbox.Size = new System.Drawing.Size(80, 20);
+			this.rotationTextbox.TabIndex = 0;
 			// 
 			// fillColorLayout
 			// 
@@ -942,76 +1006,14 @@
 			this.viewPort.Padding = new System.Windows.Forms.Padding(10);
 			this.viewPort.Size = new System.Drawing.Size(914, 604);
 			this.viewPort.TabIndex = 0;
+			this.viewPort.MouseClick += new System.Windows.Forms.MouseEventHandler( this.ViewPort_MouseClick );
 			this.viewPort.Paint += new System.Windows.Forms.PaintEventHandler(this.ViewPort_Paint);
 			this.viewPort.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ViewPort_KeyDown);
 			this.viewPort.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ViewPort_KeyUp);
 			this.viewPort.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ViewPort_MouseDown);
+			this.viewPort.MouseEnter += new System.EventHandler(this.ViewPort_MouseEnter);
 			this.viewPort.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ViewPort_MouseMove);
 			this.viewPort.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ViewPort_MouseUp);
-			// 
-			// rotationLayout
-			// 
-			this.rotationLayout.AutoSize = true;
-			this.rotationLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.rotationLayout.Controls.Add(this.rotationLabel);
-			this.rotationLayout.Controls.Add(this.rotationTextbox);
-			this.rotationLayout.Dock = System.Windows.Forms.DockStyle.Left;
-			this.rotationLayout.Location = new System.Drawing.Point(3, 111);
-			this.rotationLayout.Name = "rotationLayout";
-			this.rotationLayout.Size = new System.Drawing.Size(194, 26);
-			this.rotationLayout.TabIndex = 10;
-			// 
-			// rotationLabel
-			// 
-			this.rotationLabel.AutoSize = true;
-			this.rotationLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.rotationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.rotationLabel.Location = new System.Drawing.Point(0, 0);
-			this.rotationLabel.Margin = new System.Windows.Forms.Padding(0);
-			this.rotationLabel.Name = "rotationLabel";
-			this.rotationLabel.Size = new System.Drawing.Size(108, 26);
-			this.rotationLabel.TabIndex = 1;
-			this.rotationLabel.Text = "Rotation Angle:";
-			this.rotationLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// rotationTextbox
-			// 
-			this.rotationTextbox.Location = new System.Drawing.Point(111, 3);
-			this.rotationTextbox.Name = "rotationTextbox";
-			this.rotationTextbox.Size = new System.Drawing.Size(80, 20);
-			this.rotationTextbox.TabIndex = 0;
-			// 
-			// nameLayout
-			// 
-			this.nameLayout.AutoSize = true;
-			this.nameLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.nameLayout.Controls.Add(this.nameLabel);
-			this.nameLayout.Controls.Add(this.nameTextbox);
-			this.nameLayout.Dock = System.Windows.Forms.DockStyle.Left;
-			this.nameLayout.Location = new System.Drawing.Point(3, 3);
-			this.nameLayout.Name = "nameLayout";
-			this.nameLayout.Size = new System.Drawing.Size(138, 26);
-			this.nameLayout.TabIndex = 11;
-			// 
-			// nameLabel
-			// 
-			this.nameLabel.AutoSize = true;
-			this.nameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.nameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.nameLabel.Location = new System.Drawing.Point(0, 0);
-			this.nameLabel.Margin = new System.Windows.Forms.Padding(0);
-			this.nameLabel.Name = "nameLabel";
-			this.nameLabel.Size = new System.Drawing.Size(52, 26);
-			this.nameLabel.TabIndex = 1;
-			this.nameLabel.Text = "Name:";
-			this.nameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// nameTextbox
-			// 
-			this.nameTextbox.Location = new System.Drawing.Point(55, 3);
-			this.nameTextbox.Name = "nameTextbox";
-			this.nameTextbox.Size = new System.Drawing.Size(80, 20);
-			this.nameTextbox.TabIndex = 0;
 			// 
 			// MainForm
 			// 
@@ -1034,6 +1036,8 @@
 			this.quickActionsMenu.PerformLayout();
 			this.propertiesSideWindow.ResumeLayout(false);
 			this.propertiesSideWindow.PerformLayout();
+			this.nameLayout.ResumeLayout(false);
+			this.nameLayout.PerformLayout();
 			this.sizeLayout.ResumeLayout(false);
 			this.sizeLayout.PerformLayout();
 			this.widthLayout.ResumeLayout(false);
@@ -1046,6 +1050,8 @@
 			this.locXLayout.PerformLayout();
 			this.locYLayout.ResumeLayout(false);
 			this.locYLayout.PerformLayout();
+			this.rotationLayout.ResumeLayout(false);
+			this.rotationLayout.PerformLayout();
 			this.fillColorLayout.ResumeLayout(false);
 			this.fillColorLayout.PerformLayout();
 			this.fillColorRLayout.ResumeLayout(false);
@@ -1078,10 +1084,6 @@
 			this.ControlsContainer.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.ControlsContainer)).EndInit();
 			this.ControlsContainer.ResumeLayout(false);
-			this.rotationLayout.ResumeLayout(false);
-			this.rotationLayout.PerformLayout();
-			this.nameLayout.ResumeLayout(false);
-			this.nameLayout.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
