@@ -108,9 +108,10 @@
 			this.hierarchyListbox = new System.Windows.Forms.ListBox();
 			this.rootContainer = new System.Windows.Forms.SplitContainer();
 			this.ControlsContainer = new System.Windows.Forms.SplitContainer();
-			this.dialogSave = new System.Windows.Forms.SaveFileDialog();
 			this.viewPort = new Draw.DoubleBufferedPanel();
+			this.dialogSave = new System.Windows.Forms.SaveFileDialog();
 			this.dialogOpen = new System.Windows.Forms.OpenFileDialog();
+			this.dialogExport = new System.Windows.Forms.SaveFileDialog();
 			this.mainMenu.SuspendLayout();
 			this.statusBar.SuspendLayout();
 			this.quickActionsMenu.SuspendLayout();
@@ -198,8 +199,9 @@
 			// exportToolStripMenuItem1
 			// 
 			this.exportToolStripMenuItem1.Name = "exportToolStripMenuItem1";
-			this.exportToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
+			this.exportToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
 			this.exportToolStripMenuItem1.Text = "Export";
+			this.exportToolStripMenuItem1.Click += new System.EventHandler(this.ExportToolStrpMenuItemClick);
 			// 
 			// toolStrip_Help
 			// 
@@ -1015,11 +1017,6 @@
 			this.ControlsContainer.SplitterDistance = 280;
 			this.ControlsContainer.TabIndex = 1;
 			// 
-			// dialog_save
-			// 
-			this.dialogSave.DefaultExt = "json";
-			this.dialogSave.Filter = "Json file|*.json";
-			// 
 			// viewPort
 			// 
 			this.viewPort.AutoSize = true;
@@ -1041,10 +1038,20 @@
 			this.viewPort.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ViewPort_MouseMove);
 			this.viewPort.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ViewPort_MouseUp);
 			// 
-			// dialog_open
+			// dialogSave
+			// 
+			this.dialogSave.DefaultExt = "json";
+			this.dialogSave.Filter = "Json file|*.json";
+			// 
+			// dialogOpen
 			// 
 			this.dialogOpen.DefaultExt = "json";
 			this.dialogOpen.Filter = "Json file|*.json";
+			// 
+			// dialogExport
+			// 
+			this.dialogExport.DefaultExt = "png";
+			this.dialogExport.Filter = "PNG|*.png";
 			// 
 			// MainForm
 			// 
@@ -1201,5 +1208,6 @@
 		private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem1;
 		private System.Windows.Forms.SaveFileDialog dialogSave;
 		private System.Windows.Forms.OpenFileDialog dialogOpen;
+		private System.Windows.Forms.SaveFileDialog dialogExport;
 	}
 }

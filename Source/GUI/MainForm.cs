@@ -11,11 +11,15 @@ namespace Draw.GUI
 {
 	using Primitives;
 	using Processors;
+	using System.Drawing;
+	using System.Drawing.Imaging;
 	using Utilities;
 
 	public partial class MainForm : Form
 	{
 		private const string FILE_EXTENSION_JSON = ".json";
+		private const string FILE_EXTENSION_PNG = ".png";
+
 		private DialogProcessor dialogProcessor;
 		private List<ToolStripButton> manipulationTools;
 		private Dictionary<TextBox, string> propertyDict;
@@ -214,6 +218,26 @@ namespace Draw.GUI
 					MessageBox.Show( "invalid filename", "Error", MessageBoxButtons.OK );
 			}
 		}
+
+		private void ExportToolStrpMenuItemClick( object sernder, EventArgs e )
+		{
+			DialogResult resut = dialogExport.ShowDialog( );
+			if (resut == DialogResult.OK)
+			{
+				string fixedFilePath = dialogExport.FileName.Split( new [] {'.'}, StringSplitOptions.RemoveEmptyEntries ).FirstOrDefault();
+				if (!string.IsNullOrWhiteSpace( fixedFilePath ))
+				{
+					fixedFilePath += FILE_EXTENSION_PNG;
+					using (var bitmap = new Bitmap( GetViewportWidth(), GetViewportHeight() ))
+					{
+						viewPort.DrawToBitmap( bitmap, viewPort.Bounds );
+						bitmap.Save( fixedFilePath, ImageFormat.Png );
+					}
+				}
+				else
+					MessageBox.Show( "invalid filename", "Error", MessageBoxButtons.OK );
+			}
+		}
 		#endregion
 
 		#region SpeedButton Handlers
@@ -225,7 +249,7 @@ namespace Draw.GUI
 
 		private void SpeedButton_Draw_Rectangle_Click( object sender, EventArgs e )
 		{
-			dialogProcessor.AddShape<Rectangle>( GetViewportWidth( ), GetViewportHeight( ) );
+			dialogProcessor.AddShape<Primitives.Rectangle>( GetViewportWidth( ), GetViewportHeight( ) );
 			DrawShape_Finalize( "правоъгълник" );
 		}
 
