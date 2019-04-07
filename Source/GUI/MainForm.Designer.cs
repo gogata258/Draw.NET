@@ -1055,6 +1055,7 @@
 			this.quickAction_Tool_Delete.Size = new System.Drawing.Size(23, 22);
 			this.quickAction_Tool_Delete.Text = "Group Selected";
 			this.quickAction_Tool_Delete.ToolTipText = "Delete selected Items";
+			this.quickAction_Tool_Delete.Click += new System.EventHandler(this.SpeedButton_Delete_Clicked);
 			// 
 			// quickAction_Tool_Rotate
 			// 
@@ -1066,6 +1067,8 @@
 			this.quickAction_Tool_Rotate.Size = new System.Drawing.Size(23, 22);
 			this.quickAction_Tool_Rotate.Text = "SelectTool";
 			this.quickAction_Tool_Rotate.ToolTipText = "Rotate selected Items";
+			this.quickAction_Tool_Rotate.CheckedChanged += new System.EventHandler(this.Tools_Rotate_CheckChanged);
+			this.quickAction_Tool_Rotate.Click += new System.EventHandler(this.Tools_Clicked);
 			// 
 			// quickAction_Tool_Scale
 			// 
@@ -1077,6 +1080,8 @@
 			this.quickAction_Tool_Scale.Size = new System.Drawing.Size(23, 22);
 			this.quickAction_Tool_Scale.Text = "SelectTool";
 			this.quickAction_Tool_Scale.ToolTipText = "Scale selected Items";
+			this.quickAction_Tool_Scale.CheckedChanged += new System.EventHandler(this.Tools_Scale_CheckChanged);
+			this.quickAction_Tool_Scale.Click += new System.EventHandler(this.Tools_Clicked);
 			// 
 			// MainForm
 			// 

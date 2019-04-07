@@ -19,11 +19,11 @@ namespace Draw.Processors
 		public bool IsDragging { get; set; }
 		public bool IsSelecting { get; set; }
 		public bool IsMoving { get; set; }
-		public bool IsRotating { get; internal set; }
-		public bool IsScaling { get; internal set; }
 		public bool IsMultiSelecting { get; set; }
 		public PointF LastLocation { get; set; }
 		public List<ShapeBase> MultiSelection { get; private set; }
+		public bool IsRotating { get; internal set; }
+		public bool IsScaling { get; internal set; }
 
 		public void AddShape<T>( int width, int height ) where T : ShapeBase
 		{
