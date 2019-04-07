@@ -36,6 +36,7 @@ This project is made for an assignmnt at the Plovdiv University as part of my en
 ##### Export & Import
 
 * JSON (fully supported)
+* Support Saving as PNG
 
 ## Work in progress
 
@@ -48,7 +49,6 @@ This project is made for an assignmnt at the Plovdiv University as part of my en
 
 ##### Menues
 
-* Support Saving as PNG
 * Support Exporting and Importing as XML
 
 ##### Editor features
