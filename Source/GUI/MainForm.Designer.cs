@@ -112,11 +112,11 @@
 			this.hierarchyListbox = new System.Windows.Forms.ListBox();
 			this.rootContainer = new System.Windows.Forms.SplitContainer();
 			this.ControlsContainer = new System.Windows.Forms.SplitContainer();
-			this.viewPort = new Draw.DoubleBufferedPanel();
 			this.dialogSave = new System.Windows.Forms.SaveFileDialog();
 			this.dialogOpen = new System.Windows.Forms.OpenFileDialog();
 			this.dialogExport = new System.Windows.Forms.SaveFileDialog();
 			this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+			this.viewPort = new Draw.DoubleBufferedPanel();
 			this.mainMenu.SuspendLayout();
 			this.quickActionsMenu.SuspendLayout();
 			this.propertiesSideWindow.SuspendLayout();
@@ -430,6 +430,7 @@
 			this.nameTextbox.Name = "nameTextbox";
 			this.nameTextbox.Size = new System.Drawing.Size(80, 20);
 			this.nameTextbox.TabIndex = 0;
+			this.nameTextbox.TextChanged += new System.EventHandler(this.PropertyTextBox_TextChanged);
 			// 
 			// sizeLayout
 			// 
@@ -488,7 +489,7 @@
 			this.widthTextBox.Name = "widthTextBox";
 			this.widthTextBox.Size = new System.Drawing.Size(70, 20);
 			this.widthTextBox.TabIndex = 0;
-			this.widthTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
+			this.widthTextBox.TextChanged += new System.EventHandler(this.PropertyTextBox_TextChanged);
 			// 
 			// heightLayout
 			// 
@@ -521,7 +522,7 @@
 			this.heightTextBox.Name = "heightTextBox";
 			this.heightTextBox.Size = new System.Drawing.Size(70, 20);
 			this.heightTextBox.TabIndex = 0;
-			this.heightTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
+			this.heightTextBox.TextChanged += new System.EventHandler(this.PropertyTextBox_TextChanged);
 			// 
 			// locationLayout
 			// 
@@ -580,7 +581,7 @@
 			this.LocXTextbox.Name = "LocXTextbox";
 			this.LocXTextbox.Size = new System.Drawing.Size(80, 20);
 			this.LocXTextbox.TabIndex = 0;
-			this.LocXTextbox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
+			this.LocXTextbox.TextChanged += new System.EventHandler(this.PropertyTextBox_TextChanged);
 			// 
 			// locYLayout
 			// 
@@ -613,7 +614,7 @@
 			this.LocYTextbox.Name = "LocYTextbox";
 			this.LocYTextbox.Size = new System.Drawing.Size(80, 20);
 			this.LocYTextbox.TabIndex = 0;
-			this.LocYTextbox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
+			this.LocYTextbox.TextChanged += new System.EventHandler(this.PropertyTextBox_TextChanged);
 			// 
 			// rotationLayout
 			// 
@@ -646,6 +647,7 @@
 			this.rotationTextbox.Name = "rotationTextbox";
 			this.rotationTextbox.Size = new System.Drawing.Size(80, 20);
 			this.rotationTextbox.TabIndex = 0;
+			this.rotationTextbox.TextChanged += new System.EventHandler(this.PropertyTextBox_TextChanged);
 			// 
 			// fillColorLayout
 			// 
@@ -707,7 +709,7 @@
 			this.fillColorRTextbox.Name = "fillColorRTextbox";
 			this.fillColorRTextbox.Size = new System.Drawing.Size(30, 20);
 			this.fillColorRTextbox.TabIndex = 0;
-			this.fillColorRTextbox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
+			this.fillColorRTextbox.TextChanged += new System.EventHandler(this.PropertyTextBox_TextChanged);
 			// 
 			// fillColorGLayout
 			// 
@@ -740,7 +742,7 @@
 			this.fillColorGTextbox.Name = "fillColorGTextbox";
 			this.fillColorGTextbox.Size = new System.Drawing.Size(30, 20);
 			this.fillColorGTextbox.TabIndex = 0;
-			this.fillColorGTextbox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
+			this.fillColorGTextbox.TextChanged += new System.EventHandler(this.PropertyTextBox_TextChanged);
 			// 
 			// fillColorBLayout
 			// 
@@ -773,7 +775,7 @@
 			this.fillColorBTextbox.Name = "fillColorBTextbox";
 			this.fillColorBTextbox.Size = new System.Drawing.Size(30, 20);
 			this.fillColorBTextbox.TabIndex = 0;
-			this.fillColorBTextbox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
+			this.fillColorBTextbox.TextChanged += new System.EventHandler(this.PropertyTextBox_TextChanged);
 			// 
 			// fillColorALayout
 			// 
@@ -806,7 +808,7 @@
 			this.fillColorATextbox.Name = "fillColorATextbox";
 			this.fillColorATextbox.Size = new System.Drawing.Size(30, 20);
 			this.fillColorATextbox.TabIndex = 0;
-			this.fillColorATextbox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
+			this.fillColorATextbox.TextChanged += new System.EventHandler(this.PropertyTextBox_TextChanged);
 			// 
 			// borderColorLayout
 			// 
@@ -868,7 +870,7 @@
 			this.borderColorRTextbox.Name = "borderColorRTextbox";
 			this.borderColorRTextbox.Size = new System.Drawing.Size(30, 20);
 			this.borderColorRTextbox.TabIndex = 0;
-			this.borderColorRTextbox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
+			this.borderColorRTextbox.TextChanged += new System.EventHandler(this.PropertyTextBox_TextChanged);
 			// 
 			// borderColorGLayout
 			// 
@@ -901,7 +903,7 @@
 			this.borderColorGTextbox.Name = "borderColorGTextbox";
 			this.borderColorGTextbox.Size = new System.Drawing.Size(30, 20);
 			this.borderColorGTextbox.TabIndex = 0;
-			this.borderColorGTextbox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
+			this.borderColorGTextbox.TextChanged += new System.EventHandler(this.PropertyTextBox_TextChanged);
 			// 
 			// borderColorBLayout
 			// 
@@ -934,7 +936,7 @@
 			this.borderColorBTextbox.Name = "borderColorBTextbox";
 			this.borderColorBTextbox.Size = new System.Drawing.Size(30, 20);
 			this.borderColorBTextbox.TabIndex = 0;
-			this.borderColorBTextbox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
+			this.borderColorBTextbox.TextChanged += new System.EventHandler(this.PropertyTextBox_TextChanged);
 			// 
 			// borderColorALayout
 			// 
@@ -967,7 +969,7 @@
 			this.borderColorATextbox.Name = "borderColorATextbox";
 			this.borderColorATextbox.Size = new System.Drawing.Size(30, 20);
 			this.borderColorATextbox.TabIndex = 0;
-			this.borderColorATextbox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
+			this.borderColorATextbox.TextChanged += new System.EventHandler(this.PropertyTextBox_TextChanged);
 			// 
 			// borderThicknessLayout
 			// 
@@ -1000,7 +1002,7 @@
 			this.borderThicknessTextbox.Name = "borderThicknessTextbox";
 			this.borderThicknessTextbox.Size = new System.Drawing.Size(100, 20);
 			this.borderThicknessTextbox.TabIndex = 0;
-			this.borderThicknessTextbox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
+			this.borderThicknessTextbox.TextChanged += new System.EventHandler(this.PropertyTextBox_TextChanged);
 			// 
 			// hierarchyListbox
 			// 
@@ -1052,27 +1054,6 @@
 			this.ControlsContainer.SplitterDistance = 290;
 			this.ControlsContainer.TabIndex = 1;
 			// 
-			// viewPort
-			// 
-			this.viewPort.AutoSize = true;
-			this.viewPort.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.viewPort.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.viewPort.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.viewPort.Location = new System.Drawing.Point(3, 3);
-			this.viewPort.Margin = new System.Windows.Forms.Padding(0);
-			this.viewPort.Name = "viewPort";
-			this.viewPort.Padding = new System.Windows.Forms.Padding(10);
-			this.viewPort.Size = new System.Drawing.Size(914, 626);
-			this.viewPort.TabIndex = 0;
-			this.viewPort.Paint += new System.Windows.Forms.PaintEventHandler(this.ViewPort_Paint);
-			this.viewPort.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ViewPort_KeyDown);
-			this.viewPort.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ViewPort_KeyUp);
-			this.viewPort.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ViewPort_MouseClick);
-			this.viewPort.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ViewPort_MouseDown);
-			this.viewPort.MouseEnter += new System.EventHandler(this.ViewPort_MouseEnter);
-			this.viewPort.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ViewPort_MouseMove);
-			this.viewPort.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ViewPort_MouseUp);
-			// 
 			// dialogSave
 			// 
 			this.dialogSave.DefaultExt = "json";
@@ -1096,6 +1077,27 @@
 			this.toolStripButton1.Name = "toolStripButton1";
 			this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
 			this.toolStripButton1.Text = "toolStripButton1";
+			// 
+			// viewPort
+			// 
+			this.viewPort.AutoSize = true;
+			this.viewPort.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.viewPort.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.viewPort.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.viewPort.Location = new System.Drawing.Point(3, 3);
+			this.viewPort.Margin = new System.Windows.Forms.Padding(0);
+			this.viewPort.Name = "viewPort";
+			this.viewPort.Padding = new System.Windows.Forms.Padding(10);
+			this.viewPort.Size = new System.Drawing.Size(914, 626);
+			this.viewPort.TabIndex = 0;
+			this.viewPort.Paint += new System.Windows.Forms.PaintEventHandler(this.ViewPort_Paint);
+			this.viewPort.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ViewPort_KeyDown);
+			this.viewPort.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ViewPort_KeyUp);
+			this.viewPort.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ViewPort_MouseClick);
+			this.viewPort.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ViewPort_MouseDown);
+			this.viewPort.MouseEnter += new System.EventHandler(this.ViewPort_MouseEnter);
+			this.viewPort.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ViewPort_MouseMove);
+			this.viewPort.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ViewPort_MouseUp);
 			// 
 			// MainForm
 			// 

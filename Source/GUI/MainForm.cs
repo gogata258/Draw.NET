@@ -144,7 +144,7 @@ namespace Draw.GUI
 
 
 		#region Other Control Handlers
-		private void TextBox_TextChanged( object sender, EventArgs e )
+		private void PropertyTextBox_TextChanged( object sender, EventArgs e )
 		{
 			if (dialogProcessor.MultiSelection.Any( ) && sender is TextBox tb && !isUpdatingUI)
 			{
