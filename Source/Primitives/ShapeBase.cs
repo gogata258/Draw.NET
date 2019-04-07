@@ -1,23 +1,23 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Drawing;
 
 namespace Draw.Primitives
 {
 	public abstract class ShapeBase
 	{
-		internal const int BORDER_OBJEC_OVERLAP_DISTANCE = 1;
+		[JsonIgnore] internal const int BORDER_OBJEC_OVERLAP_DISTANCE = 1;
 
 		#region Constructors
-
-		internal ShapeBase( string name )
+		internal ShapeBase( ) { }
+		internal ShapeBase( string name , string type)
 		{
 			Id = Guid.NewGuid( );
 			Name = name;
+			ShapeType = type;
 		}
-		public ShapeBase( float X, float Y, float width, float height, string name )
+		public ShapeBase( float X, float Y, float width, float height, string name, string type) : this(name, type)
 		{
-			Id = Guid.NewGuid( );
-			Name = name;
 			ObjectLocX = X;
 			ObjectLocY = Y;
 			ObjectWidth = width;
@@ -27,7 +27,7 @@ namespace Draw.Primitives
 			SetBorderColor( Color.Indigo );
 			BorderThickness = 0;
 		}
-		public ShapeBase( ShapeBase shape, string name ) : this( shape.ObjectLocation.X, shape.ObjectLocation.Y, shape.ObjectWidth, shape.ObjectHeight, name )
+		public ShapeBase( ShapeBase shape, string name, string type ) : this( shape.ObjectLocation.X, shape.ObjectLocation.Y, shape.ObjectWidth, shape.ObjectHeight, name, type )
 		{
 			BorderThickness = shape.BorderThickness;
 			SetFillColor( shape.FillColor );
@@ -66,19 +66,21 @@ namespace Draw.Primitives
 
 		#region Properties
 
-		internal float BorderWidth => ObjectWidth + BorderThickness - ( 2 * BORDER_OBJEC_OVERLAP_DISTANCE );
-		internal float BorderHeigt => ObjectHeight + BorderThickness - ( 2 * BORDER_OBJEC_OVERLAP_DISTANCE );
-		internal float BorderLocX => ObjectLocX - ( BorderThickness / 2 ) + BORDER_OBJEC_OVERLAP_DISTANCE;
-		internal float BorderLocY => ObjectLocY - ( BorderThickness / 2 ) + BORDER_OBJEC_OVERLAP_DISTANCE;
+		[JsonIgnore] internal float BorderWidth => ObjectWidth + BorderThickness - ( 2 * BORDER_OBJEC_OVERLAP_DISTANCE );
+		[JsonIgnore] internal float BorderHeigt => ObjectHeight + BorderThickness - ( 2 * BORDER_OBJEC_OVERLAP_DISTANCE );
+		[JsonIgnore] internal float BorderLocX => ObjectLocX - ( BorderThickness / 2 ) + BORDER_OBJEC_OVERLAP_DISTANCE;
+		[JsonIgnore] internal float BorderLocY => ObjectLocY - ( BorderThickness / 2 ) + BORDER_OBJEC_OVERLAP_DISTANCE;
 
-		public Color BorderColor => Color.FromArgb( BorderColor_A, BorderColor_R, BorderColor_G, BorderColor_B );
-		public Color FillColor => Color.FromArgb( FillColor_A, FillColor_R, FillColor_G, FillColor_B );
-		public RectangleF ObjectBoundingBox => new RectangleF( ObjectLocation, new SizeF( ObjectWidth, ObjectHeight ) );
-		public RectangleF BorderBoundingBox => new RectangleF( BorderLocation, new SizeF( BorderWidth, BorderHeigt ) );
-		public PointF ObjectLocation => new PointF( ObjectLocX, ObjectLocY );
-		public PointF BorderLocation => new PointF( BorderLocX, BorderLocY );
+
+		[JsonIgnore] public Color BorderColor => Color.FromArgb( BorderColor_A, BorderColor_R, BorderColor_G, BorderColor_B );
+		[JsonIgnore] public Color FillColor => Color.FromArgb( FillColor_A, FillColor_R, FillColor_G, FillColor_B );
+		[JsonIgnore] public RectangleF ObjectBoundingBox => new RectangleF( ObjectLocation, new SizeF( ObjectWidth, ObjectHeight ) );
+		[JsonIgnore] public RectangleF BorderBoundingBox => new RectangleF( BorderLocation, new SizeF( BorderWidth, BorderHeigt ) );
+		[JsonIgnore] public PointF ObjectLocation => new PointF( ObjectLocX, ObjectLocY );
+		[JsonIgnore] public PointF BorderLocation => new PointF( BorderLocX, BorderLocY );
 
 		public Guid Id { get; set; }
+		public string ShapeType { get; set; }
 
 		public string Name
 		{
@@ -95,11 +97,7 @@ namespace Draw.Primitives
 		public float ObjectWidth
 		{
 			get => width;
-			set
-			{
-				if (value >= 0)
-					width = value;
-			}
+			set => width = value >= 0 ? value : 0;
 		}
 		public float ObjectHeight
 		{
@@ -115,50 +113,22 @@ namespace Draw.Primitives
 		public int FillColor_R
 		{
 			get => fillColor_R;
-			set
-			{
-				if (value >= 0 && value <= 255)
-				{
-					fillColor_R = value;
-
-				}
-			}
+			set => fillColor_R = value < 0 ? 0 : value > 255 ? 255 : value;
 		}
 		public int FillColor_G
 		{
 			get => fillColor_G;
-			set
-			{
-				if (value >= 0 && value <= 255)
-				{
-					fillColor_G = value;
-
-				}
-			}
+			set => fillColor_G = value < 0 ? 0 : value > 255 ? 255 : value;
 		}
 		public int FillColor_B
 		{
 			get => fillColor_B;
-			set
-			{
-				if (value >= 0 && value <= 255)
-				{
-					fillColor_B = value;
-
-				}
-			}
+			set => fillColor_B = value < 0 ? 0 : value > 255 ? 255 : value;
 		}
 		public int FillColor_A
 		{
 			get => fillColor_A;
-			set
-			{
-				if (value >= 0 && value <= 255)
-				{
-					fillColor_A = value;
-
-				}
-			}
+			set => fillColor_A = value < 0 ? 0 : value > 255 ? 255 : value;
 		}
 		#endregion
 
@@ -166,47 +136,22 @@ namespace Draw.Primitives
 		public int BorderColor_R
 		{
 			get => borderColor_R;
-			set
-			{
-				if (value >= 0 && value <= 255)
-				{
-					borderColor_R = value;
-
-				}
-			}
+			set => borderColor_R = value < 0 ? 0 : value > 255 ? 255 : value;
 		}
 		public int BorderColor_G
 		{
 			get => borderColor_G;
-			set
-			{
-				if (value >= 0 && value <= 255)
-				{
-					borderColor_G = value;
-				}
-			}
+			set => borderColor_G = value < 0 ? 0 : value > 255 ? 255 : value;
 		}
 		public int BorderColor_B
 		{
 			get => borderColor_B;
-			set
-			{
-				if (value >= 0 && value <= 255)
-				{
-					borderColor_B = value;
-				}
-			}
+			set => borderColor_B = value < 0 ? 0 : value > 255 ? 255 : value;
 		}
 		public int BorderColor_A
 		{
 			get => borderColor_A;
-			set
-			{
-				if (value >= 0 && value <= 255)
-				{
-					borderColor_A = value;
-				}
-			}
+			set => borderColor_A = value < 0 ? 0 : value > 255 ? 255 : value;
 		}
 
 		public float BorderThickness

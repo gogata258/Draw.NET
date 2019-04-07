@@ -1,11 +1,13 @@
-﻿using System.Drawing;
+﻿using Newtonsoft.Json;
+using System.Drawing;
 
 namespace Draw.Primitives
 {
 	public class Rectangle : ShapeBase
 	{
-		public Rectangle( ShapeBase shape, string name ) : base( shape, name ) { }
-		public Rectangle( float X, float Y, float width, float height, string name ) : base( X, Y, width, height, name ) { }
+		[JsonConstructor] private Rectangle( ) { }
+		public Rectangle( ShapeBase shape, string name ) : base( shape, name, typeof( Rectangle ).Name ) { }
+		public Rectangle( float X, float Y, float width, float height, string name ) : base( X, Y, width, height, name, typeof( Rectangle ).Name ) { }
 
 		public override void DrawSelf( Graphics grfx )
 		{

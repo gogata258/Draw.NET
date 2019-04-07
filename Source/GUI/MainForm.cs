@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
@@ -8,9 +11,11 @@ namespace Draw.GUI
 {
 	using Primitives;
 	using Processors;
+	using Utilities;
 
 	public partial class MainForm : Form
 	{
+		private const string FILE_EXTENSION_JSON = ".json";
 		private DialogProcessor dialogProcessor;
 		private List<ToolStripButton> manipulationTools;
 		private Dictionary<TextBox, string> propertyDict;
@@ -126,6 +131,9 @@ namespace Draw.GUI
 			viewPort.Invalidate( OnUIUpdate );
 		}
 
+		private int GetViewportWidth( ) => viewPort.Width;
+		private int GetViewportHeight( ) => viewPort.Height;
+
 
 		#region Other Control Handlers
 		private void TextBox_TextChanged( object sender, EventArgs e )
@@ -175,6 +183,37 @@ namespace Draw.GUI
 
 		#region ToolStrip Menu Handlers
 		private void ExitToolStripMenuItemClick( object sender, EventArgs e ) => Close( );
+		private void LoadToolStripMenuItemClick( object sender, EventArgs e )
+		{
+			DialogResult resut = dialogOpen.ShowDialog( );
+			if (resut == DialogResult.OK)
+			{
+				string selectedFileName = dialogOpen.FileName;
+				if (File.Exists( selectedFileName ))
+				{
+					dialogProcessor.DisplayProcessor.SetShapes( Serialization.DeserializeShapes( JsonConvert.DeserializeObject<List<JToken>>( File.ReadAllText( selectedFileName ) ) ) );
+					viewPort.Invalidate( OnUIUpdate );
+				}
+				else
+					MessageBox.Show( "invalid filename", "Error", MessageBoxButtons.OK );
+			}
+		}
+
+		private void SaveToolStripMenuItemClick( object sender, EventArgs e )
+		{
+			DialogResult resut = dialogSave.ShowDialog( );
+			if (resut == DialogResult.OK)
+			{
+				string fixedFilePath = dialogSave.FileName.Split( new [] {'.'}, StringSplitOptions.RemoveEmptyEntries ).FirstOrDefault();
+				if (!string.IsNullOrWhiteSpace( fixedFilePath ))
+				{
+					fixedFilePath += FILE_EXTENSION_JSON;
+					File.WriteAllText( fixedFilePath, Serialization.SerializeShapes( dialogProcessor.DisplayProcessor.Shapes ) );
+				}
+				else
+					MessageBox.Show( "invalid filename", "Error", MessageBoxButtons.OK );
+			}
+		}
 		#endregion
 
 		#region SpeedButton Handlers
@@ -305,8 +344,6 @@ namespace Draw.GUI
 		}
 		#endregion
 
-		private int GetViewportWidth( ) => viewPort.Width;
-		private int GetViewportHeight( ) => viewPort.Height;
 
 
 

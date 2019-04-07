@@ -1,11 +1,14 @@
-﻿using System.Drawing;
+﻿using Newtonsoft.Json;
+using System.Drawing;
 
 namespace Draw.Primitives
 {
 	public class Triangle : ShapeBase
 	{
-		public Triangle( ShapeBase shape, string name ) : base( shape, name ) { }
-		public Triangle( float X, float Y, float width, float height, string name ) : base( X, Y, width, height, name ) { }
+		[JsonConstructor] private Triangle( ) { }
+		public Triangle( ShapeBase shape, string name ) : base( shape, name, typeof( Triangle ).Name ) { }
+		public Triangle( float X, float Y, float width, float height, string name ) : base( X, Y, width, height, name, typeof( Triangle ).Name ) { }
+
 
 		private PointF[] Points => new PointF[]
 		{

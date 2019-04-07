@@ -32,8 +32,11 @@
 		{
 			this.mainMenu = new System.Windows.Forms.MenuStrip();
 			this.toolStrip_File = new System.Windows.Forms.ToolStripMenuItem();
+			this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolString_File_Exit = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStrip_Image = new System.Windows.Forms.ToolStripMenuItem();
+			this.exportToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStrip_Help = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStrip_Help_About = new System.Windows.Forms.ToolStripMenuItem();
 			this.statusBar = new System.Windows.Forms.StatusStrip();
@@ -105,10 +108,9 @@
 			this.hierarchyListbox = new System.Windows.Forms.ListBox();
 			this.rootContainer = new System.Windows.Forms.SplitContainer();
 			this.ControlsContainer = new System.Windows.Forms.SplitContainer();
+			this.dialogSave = new System.Windows.Forms.SaveFileDialog();
 			this.viewPort = new Draw.DoubleBufferedPanel();
-			this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.exportToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+			this.dialogOpen = new System.Windows.Forms.OpenFileDialog();
 			this.mainMenu.SuspendLayout();
 			this.statusBar.SuspendLayout();
 			this.quickActionsMenu.SuspendLayout();
@@ -164,10 +166,24 @@
 			this.toolStrip_File.Size = new System.Drawing.Size(37, 20);
 			this.toolStrip_File.Text = "File";
 			// 
+			// loadToolStripMenuItem
+			// 
+			this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
+			this.loadToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+			this.loadToolStripMenuItem.Text = "Load";
+			this.loadToolStripMenuItem.Click += new System.EventHandler(this.LoadToolStripMenuItemClick);
+			// 
+			// saveToolStripMenuItem
+			// 
+			this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+			this.saveToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+			this.saveToolStripMenuItem.Text = "Save";
+			this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItemClick);
+			// 
 			// toolString_File_Exit
 			// 
 			this.toolString_File_Exit.Name = "toolString_File_Exit";
-			this.toolString_File_Exit.Size = new System.Drawing.Size(180, 22);
+			this.toolString_File_Exit.Size = new System.Drawing.Size(100, 22);
 			this.toolString_File_Exit.Text = "Exit";
 			this.toolString_File_Exit.Click += new System.EventHandler(this.ExitToolStripMenuItemClick);
 			// 
@@ -178,6 +194,12 @@
 			this.toolStrip_Image.Name = "toolStrip_Image";
 			this.toolStrip_Image.Size = new System.Drawing.Size(52, 20);
 			this.toolStrip_Image.Text = "Image";
+			// 
+			// exportToolStripMenuItem1
+			// 
+			this.exportToolStripMenuItem1.Name = "exportToolStripMenuItem1";
+			this.exportToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
+			this.exportToolStripMenuItem1.Text = "Export";
 			// 
 			// toolStrip_Help
 			// 
@@ -190,7 +212,7 @@
 			// toolStrip_Help_About
 			// 
 			this.toolStrip_Help_About.Name = "toolStrip_Help_About";
-			this.toolStrip_Help_About.Size = new System.Drawing.Size(180, 22);
+			this.toolStrip_Help_About.Size = new System.Drawing.Size(116, 22);
 			this.toolStrip_Help_About.Text = "About...";
 			// 
 			// statusBar
@@ -993,6 +1015,11 @@
 			this.ControlsContainer.SplitterDistance = 280;
 			this.ControlsContainer.TabIndex = 1;
 			// 
+			// dialog_save
+			// 
+			this.dialogSave.DefaultExt = "json";
+			this.dialogSave.Filter = "Json file|*.json";
+			// 
 			// viewPort
 			// 
 			this.viewPort.AutoSize = true;
@@ -1014,23 +1041,10 @@
 			this.viewPort.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ViewPort_MouseMove);
 			this.viewPort.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ViewPort_MouseUp);
 			// 
-			// saveToolStripMenuItem
+			// dialog_open
 			// 
-			this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-			this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.saveToolStripMenuItem.Text = "Save";
-			// 
-			// loadToolStripMenuItem
-			// 
-			this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-			this.loadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.loadToolStripMenuItem.Text = "Load";
-			// 
-			// exportToolStripMenuItem1
-			// 
-			this.exportToolStripMenuItem1.Name = "exportToolStripMenuItem1";
-			this.exportToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-			this.exportToolStripMenuItem1.Text = "Export";
+			this.dialogOpen.DefaultExt = "json";
+			this.dialogOpen.Filter = "Json file|*.json";
 			// 
 			// MainForm
 			// 
@@ -1185,5 +1199,7 @@
 		private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem1;
+		private System.Windows.Forms.SaveFileDialog dialogSave;
+		private System.Windows.Forms.OpenFileDialog dialogOpen;
 	}
 }

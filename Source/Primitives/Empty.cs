@@ -1,10 +1,12 @@
-﻿using System.Drawing;
+﻿using Newtonsoft.Json;
+using System.Drawing;
 
 namespace Draw.Primitives
 {
 	internal class Empty : ShapeBase
 	{
-		public Empty( string name ) : base( name ) { }
+		[JsonConstructor] private Empty( ) { }
+		public Empty( string name ) : base( name, typeof( Empty ).Name ) { }
 
 		public override void DrawSelf( Graphics grfx )
 		{

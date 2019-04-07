@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 
@@ -6,9 +7,16 @@ namespace Draw.Primitives
 {
 	public class Group : ShapeBase
 	{
-		public List<ShapeBase> Shapes { get; }
+		[JsonConstructor] private Group( ) { }
+		public List<ShapeBase> Shapes { get; set; }
 
-		public Group( string name, List<ShapeBase> shapes ) : base( name )
+		public Group( ShapeBase shape, string name) : base(name, typeof(Group).Name)
+		{
+			Shapes = shape is Group g ? g.Shapes : new List<ShapeBase>( );
+			UpdateProperties( );
+		}
+
+		public Group( string name, List<ShapeBase> shapes ) : base( name, typeof( Group ).Name )
 		{
 			Shapes = shapes;
 			UpdateProperties( );
@@ -16,10 +24,13 @@ namespace Draw.Primitives
 
 		private void UpdateProperties( )
 		{
-			ObjectLocX = Shapes.OrderBy( s => s.ObjectLocX ).First( ).ObjectLocX;
-			ObjectLocY = Shapes.OrderBy( s => s.ObjectLocY ).First( ).ObjectLocY;
-			ObjectHeight = Shapes.Select( s => new { Value = s.ObjectLocY + s.ObjectHeight } ).OrderByDescending( s => s.Value ).First( ).Value - ObjectLocY;
-			ObjectWidth = Shapes.Select( s => new { Value = s.ObjectLocX + s.ObjectWidth } ).OrderByDescending( s => s.Value ).First( ).Value - ObjectLocX;
+			if (Shapes.Any( ))
+			{
+				ObjectLocX = Shapes.OrderBy( s => s.ObjectLocX ).First( ).ObjectLocX;
+				ObjectLocY = Shapes.OrderBy( s => s.ObjectLocY ).First( ).ObjectLocY;
+				ObjectHeight = Shapes.Select( s => new { Value = s.ObjectLocY + s.ObjectHeight } ).OrderByDescending( s => s.Value ).First( ).Value - ObjectLocY;
+				ObjectWidth = Shapes.Select( s => new { Value = s.ObjectLocX + s.ObjectWidth } ).OrderByDescending( s => s.Value ).First( ).Value - ObjectLocX;
+			}
 		}
 
 		public override void DrawSelf( Graphics grfx )
