@@ -162,6 +162,7 @@ namespace Draw.Primitives
 		#endregion
 
 		#endregion
+
 		public virtual void Translate( PointF distance )
 		{
 			ObjectLocX += distance.X;
