@@ -45,7 +45,7 @@ This project is made for an assignmnt at the Plovdiv University as part of my en
 ##### Menues
 
 * Support Saving as PNG
-* Support Exporting and Importing as JSSON or XML
+* Support Exporting and Importing as JSON or XML
 
 ##### Editor features
 
@@ -53,12 +53,9 @@ This project is made for an assignmnt at the Plovdiv University as part of my en
 
 ##### Misc
 
-* Performance Optiminisations
-
 ##### Primitives
 
 * polygons support with unfixed number of points
 
 ## Known Issues
 
-* Deletion via 'Delete' key works only after clicking viewport
