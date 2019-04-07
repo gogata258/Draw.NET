@@ -61,8 +61,10 @@ namespace Draw.GUI
 
 		private void SetManipulationTools( )
 		{
-			manipulationTools.Add( quickAction_Tools_Move );
-			manipulationTools.Add( quickAction_Tools_Select );
+			manipulationTools.Add( quickAction_Toggle_Move );
+			manipulationTools.Add( quickAction_Toggle_Select );
+			manipulationTools.Add( quickAction_Toggle_Rotate );
+			manipulationTools.Add( quickAction_Toggle_Scale );
 		}
 
 		private void OnUIUpdate( )
