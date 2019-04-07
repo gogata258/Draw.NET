@@ -46,6 +46,8 @@ namespace Draw.GUI
 				{ fillColorRTextbox, nameof(tempShape.FillColor_R) },
 				{ fillColorGTextbox, nameof(tempShape.FillColor_G) },
 				{ fillColorBTextbox, nameof(tempShape.FillColor_B) },
+				{ nameTextbox, nameof(tempShape.Name)},
+				{ rotationTextbox, nameof(tempShape.Rotation)}
 			};
 
 			timer = new System.Timers.Timer( 17 )
@@ -230,7 +232,7 @@ namespace Draw.GUI
 				if (!string.IsNullOrWhiteSpace( fixedFilePath ))
 				{
 					fixedFilePath += FILE_EXTENSION_PNG;
-					using (var bitmap = new Bitmap( GetViewportWidth(), GetViewportHeight() ))
+					using (var bitmap = new Bitmap( GetViewportWidth( ), GetViewportHeight( ) ))
 					{
 						viewPort.DrawToBitmap( bitmap, viewPort.Bounds );
 						bitmap.Save( fixedFilePath, ImageFormat.Png );
@@ -243,29 +245,25 @@ namespace Draw.GUI
 		#endregion
 
 		#region SpeedButton Handlers
-		private void DrawShape_Finalize( string shapeType )
-		{
-			statusBar.Items[0].Text = $"Последно действие: Рисуване на {shapeType}";
-			viewPort.Invalidate( OnUIUpdate );
-		}
+		private void DrawShape_Finalize( ) => viewPort.Invalidate( OnUIUpdate );
 
 		private void SpeedButton_Draw_Rectangle_Click( object sender, EventArgs e )
 		{
 			dialogProcessor.AddShape<Primitives.Rectangle>( GetViewportWidth( ), GetViewportHeight( ) );
-			DrawShape_Finalize( "правоъгълник" );
+			DrawShape_Finalize( );
 		}
 
 
 		private void SpeedButton_Draw_Triangle_Click( object sender, EventArgs e )
 		{
 			dialogProcessor.AddShape<Triangle>( GetViewportWidth( ), GetViewportHeight( ) );
-			DrawShape_Finalize( "триъгълник" );
+			DrawShape_Finalize( );
 		}
 
 		private void SpeedButton_Draw_Elipse_Click( object sender, EventArgs e )
 		{
 			dialogProcessor.AddShape<Elipse>( GetViewportWidth( ), GetViewportHeight( ) );
-			DrawShape_Finalize( "елипса" );
+			DrawShape_Finalize( );
 		}
 
 		private void SpeedButton_Group_Click( object sender, EventArgs e )
@@ -273,7 +271,7 @@ namespace Draw.GUI
 			if (dialogProcessor.MultiSelection.Count > 0)
 			{
 				dialogProcessor.GroupObjects( );
-				DrawShape_Finalize( "група" );
+				DrawShape_Finalize( );
 				viewPort.Invalidate( OnUIUpdate );
 			}
 		}
@@ -349,7 +347,6 @@ namespace Draw.GUI
 				if (item != null)
 				{
 					dialogProcessor.SetSelectionFromViewport( item );
-					statusBar.Items[0].Text = $"Последно действие: Селекция на примитив {item.Name}";
 					viewPort.Invalidate( OnUIUpdate );
 				}
 			}
@@ -361,7 +358,6 @@ namespace Draw.GUI
 		{
 			if (dialogProcessor.IsMoving && dialogProcessor.IsDragging && dialogProcessor.MultiSelection.Any( ))
 			{
-				statusBar.Items[0].Text = "Последно действие: Влачене";
 				dialogProcessor.TranslateTo( e.Location );
 				viewPort.Invalidate( OnUIUpdate );
 
