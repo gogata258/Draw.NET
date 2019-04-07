@@ -186,8 +186,8 @@ namespace Draw.GUI
 		#endregion
 
 		#region ToolStrip Menu Handlers
-		private void ExitToolStripMenuItemClick( object sender, EventArgs e ) => Close( );
-		private void LoadToolStripMenuItemClick( object sender, EventArgs e )
+		private void ToolStripMenuItem_Delete_Click( object sender, EventArgs e ) => Close( );
+		private void ToolStripMenuItem_Load_Click( object sender, EventArgs e )
 		{
 			DialogResult resut = dialogOpen.ShowDialog( );
 			if (resut == DialogResult.OK)
@@ -203,7 +203,7 @@ namespace Draw.GUI
 			}
 		}
 
-		private void SaveToolStripMenuItemClick( object sender, EventArgs e )
+		private void ToolStripMenuItem_Save_Click( object sender, EventArgs e )
 		{
 			DialogResult resut = dialogSave.ShowDialog( );
 			if (resut == DialogResult.OK)
@@ -219,7 +219,7 @@ namespace Draw.GUI
 			}
 		}
 
-		private void ExportToolStrpMenuItemClick( object sernder, EventArgs e )
+		private void ToolStripMenuItem_Export_Click( object sernder, EventArgs e )
 		{
 			DialogResult resut = dialogExport.ShowDialog( );
 			if (resut == DialogResult.OK)

@@ -172,21 +172,21 @@
 			this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
 			this.loadToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
 			this.loadToolStripMenuItem.Text = "Load";
-			this.loadToolStripMenuItem.Click += new System.EventHandler(this.LoadToolStripMenuItemClick);
+			this.loadToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenuItem_Load_Click);
 			// 
 			// saveToolStripMenuItem
 			// 
 			this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
 			this.saveToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
 			this.saveToolStripMenuItem.Text = "Save";
-			this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItemClick);
+			this.saveToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenuItem_Save_Click);
 			// 
 			// toolString_File_Exit
 			// 
 			this.toolString_File_Exit.Name = "toolString_File_Exit";
 			this.toolString_File_Exit.Size = new System.Drawing.Size(100, 22);
 			this.toolString_File_Exit.Text = "Exit";
-			this.toolString_File_Exit.Click += new System.EventHandler(this.ExitToolStripMenuItemClick);
+			this.toolString_File_Exit.Click += new System.EventHandler(this.ToolStripMenuItem_Delete_Click);
 			// 
 			// toolStrip_Image
 			// 
@@ -201,7 +201,7 @@
 			this.exportToolStripMenuItem1.Name = "exportToolStripMenuItem1";
 			this.exportToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
 			this.exportToolStripMenuItem1.Text = "Export";
-			this.exportToolStripMenuItem1.Click += new System.EventHandler(this.ExportToolStrpMenuItemClick);
+			this.exportToolStripMenuItem1.Click += new System.EventHandler(this.ToolStripMenuItem_Export_Click);
 			// 
 			// toolStrip_Help
 			// 
