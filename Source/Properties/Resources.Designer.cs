@@ -19,7 +19,7 @@ namespace Draw.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -93,6 +93,16 @@ namespace Draw.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Icon_Tool_Delete {
+            get {
+                object obj = ResourceManager.GetObject("Icon_Tool_Delete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Icon_Tool_Group {
             get {
                 object obj = ResourceManager.GetObject("Icon_Tool_Group", resourceCulture);
@@ -106,6 +116,26 @@ namespace Draw.Properties {
         internal static System.Drawing.Bitmap Icon_Tool_Move {
             get {
                 object obj = ResourceManager.GetObject("Icon_Tool_Move", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Icon_Tool_Rotate {
+            get {
+                object obj = ResourceManager.GetObject("Icon_Tool_Rotate", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Icon_Tool_Scale {
+            get {
+                object obj = ResourceManager.GetObject("Icon_Tool_Scale", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

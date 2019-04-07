@@ -160,4 +160,13 @@
   <ItemGroup>
     <None Include="Resources\Icon_Tool_Select.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icon_Tool_Rotate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icon_Tool_Delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icon_Tool_Scale.png" />
+  </ItemGroup>
 </Project>
