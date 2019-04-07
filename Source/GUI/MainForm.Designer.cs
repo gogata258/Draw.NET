@@ -112,6 +112,10 @@
 			this.dialogSave = new System.Windows.Forms.SaveFileDialog();
 			this.dialogOpen = new System.Windows.Forms.OpenFileDialog();
 			this.dialogExport = new System.Windows.Forms.SaveFileDialog();
+			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+			this.quickAction_Tool_Delete = new System.Windows.Forms.ToolStripButton();
+			this.quickAction_Tool_Rotate = new System.Windows.Forms.ToolStripButton();
+			this.quickAction_Tool_Scale = new System.Windows.Forms.ToolStripButton();
 			this.mainMenu.SuspendLayout();
 			this.statusBar.SuspendLayout();
 			this.quickActionsMenu.SuspendLayout();
@@ -147,10 +151,6 @@
 			// 
 			// mainMenu
 			// 
-			this.mainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStrip_File,
-            this.toolStrip_Image,
-            this.toolStrip_Help});
 			this.mainMenu.Location = new System.Drawing.Point(0, 0);
 			this.mainMenu.Name = "mainMenu";
 			this.mainMenu.Size = new System.Drawing.Size(1264, 24);
@@ -199,7 +199,7 @@
 			// exportToolStripMenuItem1
 			// 
 			this.exportToolStripMenuItem1.Name = "exportToolStripMenuItem1";
-			this.exportToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+			this.exportToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
 			this.exportToolStripMenuItem1.Text = "Export";
 			this.exportToolStripMenuItem1.Click += new System.EventHandler(this.ToolStripMenuItem_Export_Click);
 			// 
@@ -219,8 +219,6 @@
 			// 
 			// statusBar
 			// 
-			this.statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.currentStatusLabel});
 			this.statusBar.Location = new System.Drawing.Point(0, 659);
 			this.statusBar.Name = "statusBar";
 			this.statusBar.Size = new System.Drawing.Size(1264, 22);
@@ -234,16 +232,6 @@
 			// 
 			// quickActionsMenu
 			// 
-			this.quickActionsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.quickAction_Draw_Rect,
-            this.quickAction_Draw_Triangle,
-            this.quickAction_Draw_Elipse,
-            this.toolStripSeparator1,
-            this.quickAction_Tools_Move,
-            this.quickAction_Tools_Select,
-            this.toolStripSeparator2,
-            this.quickAction_Tools_Group,
-            this.quickAction_Tools_UnGroup});
 			this.quickActionsMenu.Location = new System.Drawing.Point(0, 24);
 			this.quickActionsMenu.Name = "quickActionsMenu";
 			this.quickActionsMenu.Size = new System.Drawing.Size(1264, 25);
@@ -1053,6 +1041,43 @@
 			this.dialogExport.DefaultExt = "png";
 			this.dialogExport.Filter = "PNG|*.png";
 			// 
+			// toolStripSeparator3
+			// 
+			this.toolStripSeparator3.Name = "toolStripSeparator3";
+			this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+			// 
+			// quickAction_Tool_Delete
+			// 
+			this.quickAction_Tool_Delete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.quickAction_Tool_Delete.Image = global::Draw.Properties.Resources.Icon_Tool_Delete;
+			this.quickAction_Tool_Delete.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.quickAction_Tool_Delete.Name = "quickAction_Tool_Delete";
+			this.quickAction_Tool_Delete.Size = new System.Drawing.Size(23, 22);
+			this.quickAction_Tool_Delete.Text = "Group Selected";
+			this.quickAction_Tool_Delete.ToolTipText = "Delete selected Items";
+			// 
+			// quickAction_Tool_Rotate
+			// 
+			this.quickAction_Tool_Rotate.CheckOnClick = true;
+			this.quickAction_Tool_Rotate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.quickAction_Tool_Rotate.Image = global::Draw.Properties.Resources.Icon_Tool_Rotate;
+			this.quickAction_Tool_Rotate.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.quickAction_Tool_Rotate.Name = "quickAction_Tool_Rotate";
+			this.quickAction_Tool_Rotate.Size = new System.Drawing.Size(23, 22);
+			this.quickAction_Tool_Rotate.Text = "SelectTool";
+			this.quickAction_Tool_Rotate.ToolTipText = "Rotate selected Items";
+			// 
+			// quickAction_Tool_Scale
+			// 
+			this.quickAction_Tool_Scale.CheckOnClick = true;
+			this.quickAction_Tool_Scale.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.quickAction_Tool_Scale.Image = global::Draw.Properties.Resources.Icon_Tool_Scale;
+			this.quickAction_Tool_Scale.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.quickAction_Tool_Scale.Name = "quickAction_Tool_Scale";
+			this.quickAction_Tool_Scale.Size = new System.Drawing.Size(23, 22);
+			this.quickAction_Tool_Scale.Text = "SelectTool";
+			this.quickAction_Tool_Scale.ToolTipText = "Scale selected Items";
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1209,5 +1234,9 @@
 		private System.Windows.Forms.SaveFileDialog dialogSave;
 		private System.Windows.Forms.OpenFileDialog dialogOpen;
 		private System.Windows.Forms.SaveFileDialog dialogExport;
+		private System.Windows.Forms.ToolStripButton quickAction_Tool_Scale;
+		private System.Windows.Forms.ToolStripButton quickAction_Tool_Rotate;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+		private System.Windows.Forms.ToolStripButton quickAction_Tool_Delete;
 	}
 }
