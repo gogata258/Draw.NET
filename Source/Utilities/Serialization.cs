@@ -28,7 +28,7 @@ namespace Draw.Utilities
 					var groupedShapes = new List<ShapeBase>();
 					if (foundTypeName == temp.GetType( ).Name && item[shapesKey].HasValues)
 					{
-						groupedShapes = DeserializeShapes( ( item[shapesKey].ToList( ) ) );
+						groupedShapes = DeserializeShapes(  item[shapesKey].ToList( )  );
 						item.Remove( shapesKey );
 					}
 					object shape = JsonConvert.DeserializeObject(item.ToString(), type);

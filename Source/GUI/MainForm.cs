@@ -228,7 +228,7 @@ namespace Draw.GUI
 				if (!string.IsNullOrWhiteSpace( fixedFilePath ))
 				{
 					fixedFilePath += FILE_EXTENSION_PNG;
-					using (var bitmap = new Bitmap( GetViewportWidth(), GetViewportHeight() ))
+					using (var bitmap = new Bitmap( GetViewportWidth( ), GetViewportHeight( ) ))
 					{
 						viewPort.DrawToBitmap( bitmap, viewPort.Bounds );
 						bitmap.Save( fixedFilePath, ImageFormat.Png );
@@ -300,15 +300,27 @@ namespace Draw.GUI
 				dialogProcessor.IsMoving = btn.Checked;
 		}
 
+		private void Tools_Rotate_CheckChanged( object sender, EventArgs e )
+		{
+			if (sender is ToolStripButton btn)
+				dialogProcessor.IsRotating = btn.Checked;
+		}
+
+		private void Tools_Scale_CheckChanged( object sender, EventArgs e )
+		{
+			if (sender is ToolStripButton btn)
+				dialogProcessor.IsScaling = btn.Checked;
+		}
+
 		private void Tools_Select_CheckChanged( object sender, EventArgs e )
 		{
 			if (sender is ToolStripButton btn)
 				dialogProcessor.IsSelecting = btn.Checked;
 		}
 
-		private void Tools_Delete_Clicked( object sender, EventArgs e )
+		private void SpeedButton_Delete_Clicked( object sender, EventArgs e )
 		{
-			if (sender is ToolStripButton btn)
+			if (sender is ToolStripButton)
 				DeleteSelection( );
 		}
 		#endregion
