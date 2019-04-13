@@ -36,12 +36,9 @@ namespace Draw.Primitives.Components
 		/// </summary>
 		[Obsolete("Start using points and scale to determine actual screen size")]
 		[JsonIgnore] internal float BorderHeigt => Height + BorderThickness - (2 * BORDER_OBJEC_OVERLAP_DISTANCE);
-
-		[Obsolete("Will be gone in next release. Implement color picker from within UI")]
-		[JsonIgnore] public Color BorderColor => Color.FromArgb(BorderColor_A, BorderColor_R, BorderColor_G, BorderColor_B);
-		[Obsolete("Will be gone in next release. Implement color picker from within UI")]
-		[JsonIgnore] public Color FillColor => Color.FromArgb(FillColor_A, FillColor_R, FillColor_G, FillColor_B);
 		protected virtual List<PointF> GetNormalizedPoints() => new List<PointF>( );
+		public Color BorderColor { get; set; }
+		public Color FillColor { get; set; }
 
 
 		/// <summary>
@@ -91,55 +88,5 @@ namespace Draw.Primitives.Components
 		public float RelativeMedianX { get => medianPointX; set => medianPointX = (value < -1) ? -1 : (value > 1) ? 1 : value; }
 		public float RelativeMedianY { get => medianPointY; set => medianPointY = (value < -1) ? -1 : (value > 1) ? 1 : value; }
 		public float BorderThickness { get => borderThicknes; set => borderThicknes = value < 0 ? 0 : value; }
-
-		[Obsolete("Will be gone in next release. Implement color picker from within UI")]
-		public int FillColor_R
-		{
-			get => fillColor_R;
-			set => fillColor_R = value < 0 ? 0 : value > 255 ? 255 : value;
-		}
-		[Obsolete("Will be gone in next release. Implement color picker from within UI")]
-		public int FillColor_G
-		{
-			get => fillColor_G;
-			set => fillColor_G = value < 0 ? 0 : value > 255 ? 255 : value;
-		}
-		[Obsolete("Will be gone in next release. Implement color picker from within UI")]
-		public int FillColor_B
-		{
-			get => fillColor_B;
-			set => fillColor_B = value < 0 ? 0 : value > 255 ? 255 : value;
-		}
-		[Obsolete("Will be gone in next release. Implement color picker from within UI")]
-		public int FillColor_A
-		{
-			get => fillColor_A;
-			set => fillColor_A = value < 0 ? 0 : value > 255 ? 255 : value;
-		}
-
-		[Obsolete("Will be gone in next release. Implement color picker from within UI")]
-		public int BorderColor_R
-		{
-			get => borderColor_R;
-			set => borderColor_R = value < 0 ? 0 : value > 255 ? 255 : value;
-		}
-		[Obsolete("Will be gone in next release. Implement color picker from within UI")]
-		public int BorderColor_G
-		{
-			get => borderColor_G;
-			set => borderColor_G = value < 0 ? 0 : value > 255 ? 255 : value;
-		}
-		[Obsolete("Will be gone in next release. Implement color picker from within UI")]
-		public int BorderColor_B
-		{
-			get => borderColor_B;
-			set => borderColor_B = value < 0 ? 0 : value > 255 ? 255 : value;
-		}
-		[Obsolete("Will be gone in next release. Implement color picker from within UI")]
-		public int BorderColor_A
-		{
-			get => borderColor_A;
-			set => borderColor_A = value < 0 ? 0 : value > 255 ? 255 : value;
-		}
 	}
 }

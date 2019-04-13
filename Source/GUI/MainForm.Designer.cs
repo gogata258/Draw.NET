@@ -78,45 +78,27 @@
 			this.rotationLayout = new System.Windows.Forms.FlowLayoutPanel();
 			this.rotationLabel = new System.Windows.Forms.Label();
 			this.rotationTextbox = new System.Windows.Forms.TextBox();
-			this.fillColorLayout = new System.Windows.Forms.FlowLayoutPanel();
-			this.fillColorLabel = new System.Windows.Forms.Label();
-			this.fillColorRLayout = new System.Windows.Forms.FlowLayoutPanel();
-			this.fillColorRLabel = new System.Windows.Forms.Label();
-			this.fillColorRTextbox = new System.Windows.Forms.TextBox();
-			this.fillColorGLayout = new System.Windows.Forms.FlowLayoutPanel();
-			this.fillColorGLabel = new System.Windows.Forms.Label();
-			this.fillColorGTextbox = new System.Windows.Forms.TextBox();
-			this.fillColorBLayout = new System.Windows.Forms.FlowLayoutPanel();
-			this.fillColorBLabel = new System.Windows.Forms.Label();
-			this.fillColorBTextbox = new System.Windows.Forms.TextBox();
-			this.fillColorALayout = new System.Windows.Forms.FlowLayoutPanel();
-			this.fillColorALabel = new System.Windows.Forms.Label();
-			this.fillColorATextbox = new System.Windows.Forms.TextBox();
-			this.borderColorLayout = new System.Windows.Forms.FlowLayoutPanel();
-			this.borderColorLabel = new System.Windows.Forms.Label();
-			this.borderColorRLayout = new System.Windows.Forms.FlowLayoutPanel();
-			this.borderColorRLabel = new System.Windows.Forms.Label();
-			this.borderColorRTextbox = new System.Windows.Forms.TextBox();
-			this.borderColorGLayout = new System.Windows.Forms.FlowLayoutPanel();
-			this.borderColorGLable = new System.Windows.Forms.Label();
-			this.borderColorGTextbox = new System.Windows.Forms.TextBox();
-			this.borderColorBLayout = new System.Windows.Forms.FlowLayoutPanel();
-			this.borderColorBLabel = new System.Windows.Forms.Label();
-			this.borderColorBTextbox = new System.Windows.Forms.TextBox();
-			this.borderColorALayout = new System.Windows.Forms.FlowLayoutPanel();
-			this.borderColorALabel = new System.Windows.Forms.Label();
-			this.borderColorATextbox = new System.Windows.Forms.TextBox();
+			this.colorLayout = new System.Windows.Forms.FlowLayoutPanel();
+			this.colorLabel = new System.Windows.Forms.Label();
 			this.borderThicknessLayout = new System.Windows.Forms.FlowLayoutPanel();
 			this.BorderThicknessLabel = new System.Windows.Forms.Label();
 			this.borderThicknessTextbox = new System.Windows.Forms.TextBox();
 			this.hierarchyListbox = new System.Windows.Forms.ListBox();
 			this.rootContainer = new System.Windows.Forms.SplitContainer();
 			this.ControlsContainer = new System.Windows.Forms.SplitContainer();
-			this.viewPort = new Draw.DoubleBufferedPanel();
 			this.dialogSave = new System.Windows.Forms.SaveFileDialog();
 			this.dialogOpen = new System.Windows.Forms.OpenFileDialog();
 			this.dialogExport = new System.Windows.Forms.SaveFileDialog();
 			this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+			this.dialogColorFill = new System.Windows.Forms.ColorDialog();
+			this.borderColorLayout = new System.Windows.Forms.FlowLayoutPanel();
+			this.borderColorLabel = new System.Windows.Forms.Label();
+			this.borderColorButton = new System.Windows.Forms.Button();
+			this.fillColorLayout = new System.Windows.Forms.FlowLayoutPanel();
+			this.fillColorLabel = new System.Windows.Forms.Label();
+			this.fillColorButton = new System.Windows.Forms.Button();
+			this.viewPort = new Draw.DoubleBufferedPanel();
+			this.dialogColorBorder = new System.Windows.Forms.ColorDialog();
 			this.mainMenu.SuspendLayout();
 			this.quickActionsMenu.SuspendLayout();
 			this.propertiesSideWindow.SuspendLayout();
@@ -128,16 +110,7 @@
 			this.locXLayout.SuspendLayout();
 			this.locYLayout.SuspendLayout();
 			this.rotationLayout.SuspendLayout();
-			this.fillColorLayout.SuspendLayout();
-			this.fillColorRLayout.SuspendLayout();
-			this.fillColorGLayout.SuspendLayout();
-			this.fillColorBLayout.SuspendLayout();
-			this.fillColorALayout.SuspendLayout();
-			this.borderColorLayout.SuspendLayout();
-			this.borderColorRLayout.SuspendLayout();
-			this.borderColorGLayout.SuspendLayout();
-			this.borderColorBLayout.SuspendLayout();
-			this.borderColorALayout.SuspendLayout();
+			this.colorLayout.SuspendLayout();
 			this.borderThicknessLayout.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.rootContainer)).BeginInit();
 			this.rootContainer.Panel1.SuspendLayout();
@@ -147,6 +120,8 @@
 			this.ControlsContainer.Panel1.SuspendLayout();
 			this.ControlsContainer.Panel2.SuspendLayout();
 			this.ControlsContainer.SuspendLayout();
+			this.borderColorLayout.SuspendLayout();
+			this.fillColorLayout.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// mainMenu
@@ -385,8 +360,7 @@
 			this.propertiesSideWindow.Controls.Add(this.sizeLayout);
 			this.propertiesSideWindow.Controls.Add(this.locationLayout);
 			this.propertiesSideWindow.Controls.Add(this.rotationLayout);
-			this.propertiesSideWindow.Controls.Add(this.fillColorLayout);
-			this.propertiesSideWindow.Controls.Add(this.borderColorLayout);
+			this.propertiesSideWindow.Controls.Add(this.colorLayout);
 			this.propertiesSideWindow.Controls.Add(this.borderThicknessLayout);
 			this.propertiesSideWindow.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.propertiesSideWindow.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
@@ -649,327 +623,32 @@
 			this.rotationTextbox.TabIndex = 0;
 			this.rotationTextbox.TextChanged += new System.EventHandler(this.PropertyTextBox_TextChanged);
 			// 
-			// fillColorLayout
+			// colorLayout
 			// 
-			this.fillColorLayout.AutoSize = true;
-			this.fillColorLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.fillColorLayout.Controls.Add(this.fillColorLabel);
-			this.fillColorLayout.Controls.Add(this.fillColorRLayout);
-			this.fillColorLayout.Controls.Add(this.fillColorGLayout);
-			this.fillColorLayout.Controls.Add(this.fillColorBLayout);
-			this.fillColorLayout.Controls.Add(this.fillColorALayout);
-			this.fillColorLayout.Dock = System.Windows.Forms.DockStyle.Left;
-			this.fillColorLayout.Location = new System.Drawing.Point(3, 143);
-			this.fillColorLayout.Name = "fillColorLayout";
-			this.fillColorLayout.Size = new System.Drawing.Size(300, 32);
-			this.fillColorLayout.TabIndex = 4;
-			this.fillColorLayout.WrapContents = false;
+			this.colorLayout.AutoSize = true;
+			this.colorLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.colorLayout.Controls.Add(this.colorLabel);
+			this.colorLayout.Controls.Add(this.fillColorLayout);
+			this.colorLayout.Controls.Add(this.borderColorLayout);
+			this.colorLayout.Dock = System.Windows.Forms.DockStyle.Left;
+			this.colorLayout.Location = new System.Drawing.Point(3, 143);
+			this.colorLayout.Name = "colorLayout";
+			this.colorLayout.Size = new System.Drawing.Size(207, 37);
+			this.colorLayout.TabIndex = 4;
+			this.colorLayout.WrapContents = false;
 			// 
-			// fillColorLabel
+			// colorLabel
 			// 
-			this.fillColorLabel.AutoSize = true;
-			this.fillColorLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.fillColorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.fillColorLabel.Location = new System.Drawing.Point(0, 0);
-			this.fillColorLabel.Margin = new System.Windows.Forms.Padding(0);
-			this.fillColorLabel.Name = "fillColorLabel";
-			this.fillColorLabel.Size = new System.Drawing.Size(71, 32);
-			this.fillColorLabel.TabIndex = 1;
-			this.fillColorLabel.Text = "Fill Color:";
-			this.fillColorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// fillColorRLayout
-			// 
-			this.fillColorRLayout.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.fillColorRLayout.AutoSize = true;
-			this.fillColorRLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.fillColorRLayout.Controls.Add(this.fillColorRLabel);
-			this.fillColorRLayout.Controls.Add(this.fillColorRTextbox);
-			this.fillColorRLayout.Location = new System.Drawing.Point(74, 3);
-			this.fillColorRLayout.Name = "fillColorRLayout";
-			this.fillColorRLayout.Size = new System.Drawing.Size(52, 26);
-			this.fillColorRLayout.TabIndex = 4;
-			// 
-			// fillColorRLabel
-			// 
-			this.fillColorRLabel.AutoSize = true;
-			this.fillColorRLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.fillColorRLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.fillColorRLabel.Location = new System.Drawing.Point(0, 0);
-			this.fillColorRLabel.Margin = new System.Windows.Forms.Padding(0);
-			this.fillColorRLabel.Name = "fillColorRLabel";
-			this.fillColorRLabel.Size = new System.Drawing.Size(16, 26);
-			this.fillColorRLabel.TabIndex = 1;
-			this.fillColorRLabel.Text = "R";
-			this.fillColorRLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// fillColorRTextbox
-			// 
-			this.fillColorRTextbox.Location = new System.Drawing.Point(19, 3);
-			this.fillColorRTextbox.Name = "fillColorRTextbox";
-			this.fillColorRTextbox.Size = new System.Drawing.Size(30, 20);
-			this.fillColorRTextbox.TabIndex = 0;
-			this.fillColorRTextbox.TextChanged += new System.EventHandler(this.PropertyTextBox_TextChanged);
-			// 
-			// fillColorGLayout
-			// 
-			this.fillColorGLayout.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.fillColorGLayout.AutoSize = true;
-			this.fillColorGLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.fillColorGLayout.Controls.Add(this.fillColorGLabel);
-			this.fillColorGLayout.Controls.Add(this.fillColorGTextbox);
-			this.fillColorGLayout.Location = new System.Drawing.Point(132, 3);
-			this.fillColorGLayout.Name = "fillColorGLayout";
-			this.fillColorGLayout.Size = new System.Drawing.Size(52, 26);
-			this.fillColorGLayout.TabIndex = 5;
-			// 
-			// fillColorGLabel
-			// 
-			this.fillColorGLabel.AutoSize = true;
-			this.fillColorGLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.fillColorGLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.fillColorGLabel.Location = new System.Drawing.Point(0, 0);
-			this.fillColorGLabel.Margin = new System.Windows.Forms.Padding(0);
-			this.fillColorGLabel.Name = "fillColorGLabel";
-			this.fillColorGLabel.Size = new System.Drawing.Size(16, 26);
-			this.fillColorGLabel.TabIndex = 1;
-			this.fillColorGLabel.Text = "G";
-			this.fillColorGLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// fillColorGTextbox
-			// 
-			this.fillColorGTextbox.Location = new System.Drawing.Point(19, 3);
-			this.fillColorGTextbox.Name = "fillColorGTextbox";
-			this.fillColorGTextbox.Size = new System.Drawing.Size(30, 20);
-			this.fillColorGTextbox.TabIndex = 0;
-			this.fillColorGTextbox.TextChanged += new System.EventHandler(this.PropertyTextBox_TextChanged);
-			// 
-			// fillColorBLayout
-			// 
-			this.fillColorBLayout.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.fillColorBLayout.AutoSize = true;
-			this.fillColorBLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.fillColorBLayout.Controls.Add(this.fillColorBLabel);
-			this.fillColorBLayout.Controls.Add(this.fillColorBTextbox);
-			this.fillColorBLayout.Location = new System.Drawing.Point(190, 3);
-			this.fillColorBLayout.Name = "fillColorBLayout";
-			this.fillColorBLayout.Size = new System.Drawing.Size(51, 26);
-			this.fillColorBLayout.TabIndex = 6;
-			// 
-			// fillColorBLabel
-			// 
-			this.fillColorBLabel.AutoSize = true;
-			this.fillColorBLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.fillColorBLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.fillColorBLabel.Location = new System.Drawing.Point(0, 0);
-			this.fillColorBLabel.Margin = new System.Windows.Forms.Padding(0);
-			this.fillColorBLabel.Name = "fillColorBLabel";
-			this.fillColorBLabel.Size = new System.Drawing.Size(15, 26);
-			this.fillColorBLabel.TabIndex = 1;
-			this.fillColorBLabel.Text = "B";
-			this.fillColorBLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// fillColorBTextbox
-			// 
-			this.fillColorBTextbox.Location = new System.Drawing.Point(18, 3);
-			this.fillColorBTextbox.Name = "fillColorBTextbox";
-			this.fillColorBTextbox.Size = new System.Drawing.Size(30, 20);
-			this.fillColorBTextbox.TabIndex = 0;
-			this.fillColorBTextbox.TextChanged += new System.EventHandler(this.PropertyTextBox_TextChanged);
-			// 
-			// fillColorALayout
-			// 
-			this.fillColorALayout.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.fillColorALayout.AutoSize = true;
-			this.fillColorALayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.fillColorALayout.Controls.Add(this.fillColorALabel);
-			this.fillColorALayout.Controls.Add(this.fillColorATextbox);
-			this.fillColorALayout.Location = new System.Drawing.Point(247, 3);
-			this.fillColorALayout.Name = "fillColorALayout";
-			this.fillColorALayout.Size = new System.Drawing.Size(50, 26);
-			this.fillColorALayout.TabIndex = 7;
-			// 
-			// fillColorALabel
-			// 
-			this.fillColorALabel.AutoSize = true;
-			this.fillColorALabel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.fillColorALabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.fillColorALabel.Location = new System.Drawing.Point(0, 0);
-			this.fillColorALabel.Margin = new System.Windows.Forms.Padding(0);
-			this.fillColorALabel.Name = "fillColorALabel";
-			this.fillColorALabel.Size = new System.Drawing.Size(14, 26);
-			this.fillColorALabel.TabIndex = 1;
-			this.fillColorALabel.Text = "A";
-			this.fillColorALabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// fillColorATextbox
-			// 
-			this.fillColorATextbox.Location = new System.Drawing.Point(17, 3);
-			this.fillColorATextbox.Name = "fillColorATextbox";
-			this.fillColorATextbox.Size = new System.Drawing.Size(30, 20);
-			this.fillColorATextbox.TabIndex = 0;
-			this.fillColorATextbox.TextChanged += new System.EventHandler(this.PropertyTextBox_TextChanged);
-			// 
-			// borderColorLayout
-			// 
-			this.borderColorLayout.AutoSize = true;
-			this.borderColorLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.borderColorLayout.Controls.Add(this.borderColorLabel);
-			this.borderColorLayout.Controls.Add(this.borderColorRLayout);
-			this.borderColorLayout.Controls.Add(this.borderColorGLayout);
-			this.borderColorLayout.Controls.Add(this.borderColorBLayout);
-			this.borderColorLayout.Controls.Add(this.borderColorALayout);
-			this.borderColorLayout.Dock = System.Windows.Forms.DockStyle.Left;
-			this.borderColorLayout.Location = new System.Drawing.Point(3, 181);
-			this.borderColorLayout.Name = "borderColorLayout";
-			this.borderColorLayout.Size = new System.Drawing.Size(327, 32);
-			this.borderColorLayout.TabIndex = 10;
-			this.borderColorLayout.WrapContents = false;
-			// 
-			// borderColorLabel
-			// 
-			this.borderColorLabel.AutoSize = true;
-			this.borderColorLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.borderColorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.borderColorLabel.Location = new System.Drawing.Point(0, 0);
-			this.borderColorLabel.Margin = new System.Windows.Forms.Padding(0);
-			this.borderColorLabel.Name = "borderColorLabel";
-			this.borderColorLabel.Size = new System.Drawing.Size(98, 32);
-			this.borderColorLabel.TabIndex = 1;
-			this.borderColorLabel.Text = "Border Color:";
-			this.borderColorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// borderColorRLayout
-			// 
-			this.borderColorRLayout.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.borderColorRLayout.AutoSize = true;
-			this.borderColorRLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.borderColorRLayout.Controls.Add(this.borderColorRLabel);
-			this.borderColorRLayout.Controls.Add(this.borderColorRTextbox);
-			this.borderColorRLayout.Location = new System.Drawing.Point(101, 3);
-			this.borderColorRLayout.Name = "borderColorRLayout";
-			this.borderColorRLayout.Size = new System.Drawing.Size(52, 26);
-			this.borderColorRLayout.TabIndex = 4;
-			// 
-			// borderColorRLabel
-			// 
-			this.borderColorRLabel.AutoSize = true;
-			this.borderColorRLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.borderColorRLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.borderColorRLabel.Location = new System.Drawing.Point(0, 0);
-			this.borderColorRLabel.Margin = new System.Windows.Forms.Padding(0);
-			this.borderColorRLabel.Name = "borderColorRLabel";
-			this.borderColorRLabel.Size = new System.Drawing.Size(16, 26);
-			this.borderColorRLabel.TabIndex = 1;
-			this.borderColorRLabel.Text = "R";
-			this.borderColorRLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// borderColorRTextbox
-			// 
-			this.borderColorRTextbox.Location = new System.Drawing.Point(19, 3);
-			this.borderColorRTextbox.Name = "borderColorRTextbox";
-			this.borderColorRTextbox.Size = new System.Drawing.Size(30, 20);
-			this.borderColorRTextbox.TabIndex = 0;
-			this.borderColorRTextbox.TextChanged += new System.EventHandler(this.PropertyTextBox_TextChanged);
-			// 
-			// borderColorGLayout
-			// 
-			this.borderColorGLayout.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.borderColorGLayout.AutoSize = true;
-			this.borderColorGLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.borderColorGLayout.Controls.Add(this.borderColorGLable);
-			this.borderColorGLayout.Controls.Add(this.borderColorGTextbox);
-			this.borderColorGLayout.Location = new System.Drawing.Point(159, 3);
-			this.borderColorGLayout.Name = "borderColorGLayout";
-			this.borderColorGLayout.Size = new System.Drawing.Size(52, 26);
-			this.borderColorGLayout.TabIndex = 5;
-			// 
-			// borderColorGLable
-			// 
-			this.borderColorGLable.AutoSize = true;
-			this.borderColorGLable.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.borderColorGLable.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.borderColorGLable.Location = new System.Drawing.Point(0, 0);
-			this.borderColorGLable.Margin = new System.Windows.Forms.Padding(0);
-			this.borderColorGLable.Name = "borderColorGLable";
-			this.borderColorGLable.Size = new System.Drawing.Size(16, 26);
-			this.borderColorGLable.TabIndex = 1;
-			this.borderColorGLable.Text = "G";
-			this.borderColorGLable.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// borderColorGTextbox
-			// 
-			this.borderColorGTextbox.Location = new System.Drawing.Point(19, 3);
-			this.borderColorGTextbox.Name = "borderColorGTextbox";
-			this.borderColorGTextbox.Size = new System.Drawing.Size(30, 20);
-			this.borderColorGTextbox.TabIndex = 0;
-			this.borderColorGTextbox.TextChanged += new System.EventHandler(this.PropertyTextBox_TextChanged);
-			// 
-			// borderColorBLayout
-			// 
-			this.borderColorBLayout.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.borderColorBLayout.AutoSize = true;
-			this.borderColorBLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.borderColorBLayout.Controls.Add(this.borderColorBLabel);
-			this.borderColorBLayout.Controls.Add(this.borderColorBTextbox);
-			this.borderColorBLayout.Location = new System.Drawing.Point(217, 3);
-			this.borderColorBLayout.Name = "borderColorBLayout";
-			this.borderColorBLayout.Size = new System.Drawing.Size(51, 26);
-			this.borderColorBLayout.TabIndex = 6;
-			// 
-			// borderColorBLabel
-			// 
-			this.borderColorBLabel.AutoSize = true;
-			this.borderColorBLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.borderColorBLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.borderColorBLabel.Location = new System.Drawing.Point(0, 0);
-			this.borderColorBLabel.Margin = new System.Windows.Forms.Padding(0);
-			this.borderColorBLabel.Name = "borderColorBLabel";
-			this.borderColorBLabel.Size = new System.Drawing.Size(15, 26);
-			this.borderColorBLabel.TabIndex = 1;
-			this.borderColorBLabel.Text = "B";
-			this.borderColorBLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// borderColorBTextbox
-			// 
-			this.borderColorBTextbox.Location = new System.Drawing.Point(18, 3);
-			this.borderColorBTextbox.Name = "borderColorBTextbox";
-			this.borderColorBTextbox.Size = new System.Drawing.Size(30, 20);
-			this.borderColorBTextbox.TabIndex = 0;
-			this.borderColorBTextbox.TextChanged += new System.EventHandler(this.PropertyTextBox_TextChanged);
-			// 
-			// borderColorALayout
-			// 
-			this.borderColorALayout.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.borderColorALayout.AutoSize = true;
-			this.borderColorALayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.borderColorALayout.Controls.Add(this.borderColorALabel);
-			this.borderColorALayout.Controls.Add(this.borderColorATextbox);
-			this.borderColorALayout.Location = new System.Drawing.Point(274, 3);
-			this.borderColorALayout.Name = "borderColorALayout";
-			this.borderColorALayout.Size = new System.Drawing.Size(50, 26);
-			this.borderColorALayout.TabIndex = 7;
-			// 
-			// borderColorALabel
-			// 
-			this.borderColorALabel.AutoSize = true;
-			this.borderColorALabel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.borderColorALabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.borderColorALabel.Location = new System.Drawing.Point(0, 0);
-			this.borderColorALabel.Margin = new System.Windows.Forms.Padding(0);
-			this.borderColorALabel.Name = "borderColorALabel";
-			this.borderColorALabel.Size = new System.Drawing.Size(14, 26);
-			this.borderColorALabel.TabIndex = 1;
-			this.borderColorALabel.Text = "A";
-			this.borderColorALabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// borderColorATextbox
-			// 
-			this.borderColorATextbox.Location = new System.Drawing.Point(17, 3);
-			this.borderColorATextbox.Name = "borderColorATextbox";
-			this.borderColorATextbox.Size = new System.Drawing.Size(30, 20);
-			this.borderColorATextbox.TabIndex = 0;
-			this.borderColorATextbox.TextChanged += new System.EventHandler(this.PropertyTextBox_TextChanged);
+			this.colorLabel.AutoSize = true;
+			this.colorLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.colorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.colorLabel.Location = new System.Drawing.Point(0, 0);
+			this.colorLabel.Margin = new System.Windows.Forms.Padding(0);
+			this.colorLabel.Name = "colorLabel";
+			this.colorLabel.Size = new System.Drawing.Size(49, 37);
+			this.colorLabel.TabIndex = 1;
+			this.colorLabel.Text = "Color:";
+			this.colorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// borderThicknessLayout
 			// 
@@ -978,9 +657,9 @@
 			this.borderThicknessLayout.Controls.Add(this.BorderThicknessLabel);
 			this.borderThicknessLayout.Controls.Add(this.borderThicknessTextbox);
 			this.borderThicknessLayout.Dock = System.Windows.Forms.DockStyle.Left;
-			this.borderThicknessLayout.Location = new System.Drawing.Point(3, 219);
+			this.borderThicknessLayout.Location = new System.Drawing.Point(3, 186);
 			this.borderThicknessLayout.Name = "borderThicknessLayout";
-			this.borderThicknessLayout.Size = new System.Drawing.Size(159, 26);
+			this.borderThicknessLayout.Size = new System.Drawing.Size(231, 26);
 			this.borderThicknessLayout.TabIndex = 3;
 			// 
 			// BorderThicknessLabel
@@ -991,14 +670,14 @@
 			this.BorderThicknessLabel.Location = new System.Drawing.Point(0, 0);
 			this.BorderThicknessLabel.Margin = new System.Windows.Forms.Padding(0);
 			this.BorderThicknessLabel.Name = "BorderThicknessLabel";
-			this.BorderThicknessLabel.Size = new System.Drawing.Size(53, 26);
+			this.BorderThicknessLabel.Size = new System.Drawing.Size(125, 26);
 			this.BorderThicknessLabel.TabIndex = 1;
-			this.BorderThicknessLabel.Text = "Border";
+			this.BorderThicknessLabel.Text = "Border Thickness";
 			this.BorderThicknessLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// borderThicknessTextbox
 			// 
-			this.borderThicknessTextbox.Location = new System.Drawing.Point(56, 3);
+			this.borderThicknessTextbox.Location = new System.Drawing.Point(128, 3);
 			this.borderThicknessTextbox.Name = "borderThicknessTextbox";
 			this.borderThicknessTextbox.Size = new System.Drawing.Size(100, 20);
 			this.borderThicknessTextbox.TabIndex = 0;
@@ -1054,27 +733,6 @@
 			this.ControlsContainer.SplitterDistance = 290;
 			this.ControlsContainer.TabIndex = 1;
 			// 
-			// viewPort
-			// 
-			this.viewPort.AutoSize = true;
-			this.viewPort.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.viewPort.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.viewPort.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.viewPort.Location = new System.Drawing.Point(3, 3);
-			this.viewPort.Margin = new System.Windows.Forms.Padding(0);
-			this.viewPort.Name = "viewPort";
-			this.viewPort.Padding = new System.Windows.Forms.Padding(10);
-			this.viewPort.Size = new System.Drawing.Size(914, 626);
-			this.viewPort.TabIndex = 0;
-			this.viewPort.Paint += new System.Windows.Forms.PaintEventHandler(this.ViewPort_Paint);
-			this.viewPort.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ViewPort_KeyDown);
-			this.viewPort.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ViewPort_KeyUp);
-			this.viewPort.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ViewPort_MouseClick);
-			this.viewPort.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ViewPort_MouseDown);
-			this.viewPort.MouseEnter += new System.EventHandler(this.ViewPort_MouseEnter);
-			this.viewPort.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ViewPort_MouseMove);
-			this.viewPort.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ViewPort_MouseUp);
-			// 
 			// dialogSave
 			// 
 			this.dialogSave.DefaultExt = "json";
@@ -1098,6 +756,97 @@
 			this.toolStripButton1.Name = "toolStripButton1";
 			this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
 			this.toolStripButton1.Text = "toolStripButton1";
+			// 
+			// borderColorLayout
+			// 
+			this.borderColorLayout.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.borderColorLayout.AutoSize = true;
+			this.borderColorLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.borderColorLayout.Controls.Add(this.borderColorLabel);
+			this.borderColorLayout.Controls.Add(this.borderColorButton);
+			this.borderColorLayout.Location = new System.Drawing.Point(118, 3);
+			this.borderColorLayout.Name = "borderColorLayout";
+			this.borderColorLayout.Size = new System.Drawing.Size(86, 31);
+			this.borderColorLayout.TabIndex = 5;
+			// 
+			// borderColorLabel
+			// 
+			this.borderColorLabel.AutoSize = true;
+			this.borderColorLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.borderColorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.borderColorLabel.Location = new System.Drawing.Point(0, 0);
+			this.borderColorLabel.Margin = new System.Windows.Forms.Padding(0);
+			this.borderColorLabel.Name = "borderColorLabel";
+			this.borderColorLabel.Size = new System.Drawing.Size(55, 31);
+			this.borderColorLabel.TabIndex = 1;
+			this.borderColorLabel.Text = "Border:";
+			this.borderColorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
+			// borderColorButton
+			// 
+			this.borderColorButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.borderColorButton.Location = new System.Drawing.Point(58, 3);
+			this.borderColorButton.Name = "borderColorButton";
+			this.borderColorButton.Size = new System.Drawing.Size(25, 25);
+			this.borderColorButton.TabIndex = 2;
+			this.borderColorButton.UseVisualStyleBackColor = false;
+			this.borderColorButton.Click += new System.EventHandler(this.ColorBox_Border_Click);
+			// 
+			// fillColorLayout
+			// 
+			this.fillColorLayout.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.fillColorLayout.AutoSize = true;
+			this.fillColorLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.fillColorLayout.Controls.Add(this.fillColorLabel);
+			this.fillColorLayout.Controls.Add(this.fillColorButton);
+			this.fillColorLayout.Location = new System.Drawing.Point(52, 3);
+			this.fillColorLayout.Name = "fillColorLayout";
+			this.fillColorLayout.Size = new System.Drawing.Size(60, 31);
+			this.fillColorLayout.TabIndex = 6;
+			// 
+			// fillColorLabel
+			// 
+			this.fillColorLabel.AutoSize = true;
+			this.fillColorLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.fillColorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.fillColorLabel.Location = new System.Drawing.Point(0, 0);
+			this.fillColorLabel.Margin = new System.Windows.Forms.Padding(0);
+			this.fillColorLabel.Name = "fillColorLabel";
+			this.fillColorLabel.Size = new System.Drawing.Size(29, 31);
+			this.fillColorLabel.TabIndex = 1;
+			this.fillColorLabel.Text = "Fill:";
+			this.fillColorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
+			// fillColorButton
+			// 
+			this.fillColorButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.fillColorButton.Location = new System.Drawing.Point(32, 3);
+			this.fillColorButton.Name = "fillColorButton";
+			this.fillColorButton.Size = new System.Drawing.Size(25, 25);
+			this.fillColorButton.TabIndex = 2;
+			this.fillColorButton.UseVisualStyleBackColor = false;
+			this.fillColorButton.Click += new System.EventHandler(this.ColorBox_Fill_Click);
+			// 
+			// viewPort
+			// 
+			this.viewPort.AutoSize = true;
+			this.viewPort.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.viewPort.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.viewPort.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.viewPort.Location = new System.Drawing.Point(3, 3);
+			this.viewPort.Margin = new System.Windows.Forms.Padding(0);
+			this.viewPort.Name = "viewPort";
+			this.viewPort.Padding = new System.Windows.Forms.Padding(10);
+			this.viewPort.Size = new System.Drawing.Size(914, 626);
+			this.viewPort.TabIndex = 0;
+			this.viewPort.Paint += new System.Windows.Forms.PaintEventHandler(this.ViewPort_Paint);
+			this.viewPort.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ViewPort_KeyDown);
+			this.viewPort.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ViewPort_KeyUp);
+			this.viewPort.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ViewPort_MouseClick);
+			this.viewPort.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ViewPort_MouseDown);
+			this.viewPort.MouseEnter += new System.EventHandler(this.ViewPort_MouseEnter);
+			this.viewPort.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ViewPort_MouseMove);
+			this.viewPort.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ViewPort_MouseUp);
 			// 
 			// MainForm
 			// 
@@ -1133,26 +882,8 @@
 			this.locYLayout.PerformLayout();
 			this.rotationLayout.ResumeLayout(false);
 			this.rotationLayout.PerformLayout();
-			this.fillColorLayout.ResumeLayout(false);
-			this.fillColorLayout.PerformLayout();
-			this.fillColorRLayout.ResumeLayout(false);
-			this.fillColorRLayout.PerformLayout();
-			this.fillColorGLayout.ResumeLayout(false);
-			this.fillColorGLayout.PerformLayout();
-			this.fillColorBLayout.ResumeLayout(false);
-			this.fillColorBLayout.PerformLayout();
-			this.fillColorALayout.ResumeLayout(false);
-			this.fillColorALayout.PerformLayout();
-			this.borderColorLayout.ResumeLayout(false);
-			this.borderColorLayout.PerformLayout();
-			this.borderColorRLayout.ResumeLayout(false);
-			this.borderColorRLayout.PerformLayout();
-			this.borderColorGLayout.ResumeLayout(false);
-			this.borderColorGLayout.PerformLayout();
-			this.borderColorBLayout.ResumeLayout(false);
-			this.borderColorBLayout.PerformLayout();
-			this.borderColorALayout.ResumeLayout(false);
-			this.borderColorALayout.PerformLayout();
+			this.colorLayout.ResumeLayout(false);
+			this.colorLayout.PerformLayout();
 			this.borderThicknessLayout.ResumeLayout(false);
 			this.borderThicknessLayout.PerformLayout();
 			this.rootContainer.Panel1.ResumeLayout(false);
@@ -1165,6 +896,10 @@
 			this.ControlsContainer.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.ControlsContainer)).EndInit();
 			this.ControlsContainer.ResumeLayout(false);
+			this.borderColorLayout.ResumeLayout(false);
+			this.borderColorLayout.PerformLayout();
+			this.fillColorLayout.ResumeLayout(false);
+			this.fillColorLayout.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -1192,20 +927,8 @@
 		private System.Windows.Forms.FlowLayoutPanel borderThicknessLayout;
 		private System.Windows.Forms.Label BorderThicknessLabel;
 		private System.Windows.Forms.TextBox borderThicknessTextbox;
-		private System.Windows.Forms.FlowLayoutPanel fillColorLayout;
-		private System.Windows.Forms.Label fillColorLabel;
-		private System.Windows.Forms.FlowLayoutPanel fillColorRLayout;
-		private System.Windows.Forms.Label fillColorRLabel;
-		private System.Windows.Forms.TextBox fillColorRTextbox;
-		private System.Windows.Forms.FlowLayoutPanel fillColorGLayout;
-		private System.Windows.Forms.Label fillColorGLabel;
-		private System.Windows.Forms.TextBox fillColorGTextbox;
-		private System.Windows.Forms.FlowLayoutPanel fillColorBLayout;
-		private System.Windows.Forms.Label fillColorBLabel;
-		private System.Windows.Forms.TextBox fillColorBTextbox;
-		private System.Windows.Forms.FlowLayoutPanel fillColorALayout;
-		private System.Windows.Forms.Label fillColorALabel;
-		private System.Windows.Forms.TextBox fillColorATextbox;
+		private System.Windows.Forms.FlowLayoutPanel colorLayout;
+		private System.Windows.Forms.Label colorLabel;
 		private System.Windows.Forms.FlowLayoutPanel sizeLayout;
 		private System.Windows.Forms.Label scaleLabel;
 		private System.Windows.Forms.FlowLayoutPanel locationLayout;
@@ -1216,20 +939,6 @@
 		private System.Windows.Forms.FlowLayoutPanel locYLayout;
 		private System.Windows.Forms.Label locYLabel;
 		private System.Windows.Forms.TextBox LocYTextbox;
-		private System.Windows.Forms.FlowLayoutPanel borderColorLayout;
-		private System.Windows.Forms.Label borderColorLabel;
-		private System.Windows.Forms.FlowLayoutPanel borderColorRLayout;
-		private System.Windows.Forms.Label borderColorRLabel;
-		private System.Windows.Forms.TextBox borderColorRTextbox;
-		private System.Windows.Forms.FlowLayoutPanel borderColorGLayout;
-		private System.Windows.Forms.Label borderColorGLable;
-		private System.Windows.Forms.TextBox borderColorGTextbox;
-		private System.Windows.Forms.FlowLayoutPanel borderColorBLayout;
-		private System.Windows.Forms.Label borderColorBLabel;
-		private System.Windows.Forms.TextBox borderColorBTextbox;
-		private System.Windows.Forms.FlowLayoutPanel borderColorALayout;
-		private System.Windows.Forms.Label borderColorALabel;
-		private System.Windows.Forms.TextBox borderColorATextbox;
 		private System.Windows.Forms.ListBox hierarchyListbox;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
 		private System.Windows.Forms.ToolStripButton quickAction_Tool_Group;
@@ -1256,5 +965,13 @@
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
 		private System.Windows.Forms.ToolStripButton quickAction_Tool_Delete;
 		private System.Windows.Forms.ToolStripButton toolStripButton1;
+		private System.Windows.Forms.ColorDialog dialogColorFill;
+		private System.Windows.Forms.FlowLayoutPanel fillColorLayout;
+		private System.Windows.Forms.Label fillColorLabel;
+		private System.Windows.Forms.Button fillColorButton;
+		private System.Windows.Forms.FlowLayoutPanel borderColorLayout;
+		private System.Windows.Forms.Label borderColorLabel;
+		private System.Windows.Forms.Button borderColorButton;
+		private System.Windows.Forms.ColorDialog dialogColorBorder;
 	}
 }

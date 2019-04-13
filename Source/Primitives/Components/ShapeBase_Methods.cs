@@ -10,6 +10,7 @@ namespace Draw.Primitives.Components
 	public abstract partial class ShapeBase
 	{
 		private const float DEFAULT_MEDIAN_POINT_RELATIVE_LOCATION = 0.0f;
+		private readonly Color defaultColor = Color.Orange;
 
 		/// <summary>
 		/// This ctor is used for JSon import
@@ -46,8 +47,8 @@ namespace Draw.Primitives.Components
 			ScaleX = scaleX;
 			ScaleY = scaleY;
 
-			SetFillColor(Color.IndianRed);
-			SetBorderColor(Color.Indigo);
+			FillColor = defaultColor;
+			BorderColor = defaultColor;
 			BorderThickness = 0;
 		}
 
@@ -60,8 +61,8 @@ namespace Draw.Primitives.Components
 		public ShapeBase(ShapeBase shape, string name, string type) : this(shape.LocationX, shape.LocationY, shape.ScaleX, shape.ScaleY, name, type)
 		{
 			BorderThickness = shape.BorderThickness;
-			SetFillColor(shape.FillColor);
-			SetBorderColor(shape.BorderColor);
+			FillColor = shape.FillColor;
+			BorderColor = shape.BorderColor;
 		}
 
 		/// <summary>
@@ -112,24 +113,6 @@ namespace Draw.Primitives.Components
 		/// </summary>
 		/// <param name="grfx">The graphics which to use to draw the shape</param>
 		public virtual void DrawSelf(Graphics grfx) => grfx.ResetTransform( );
-
-		[Obsolete("Will be gone in next release. Implement color picker from within UI")]
-		private void SetBorderColor(Color color)
-		{
-			BorderColor_A = color.A;
-			BorderColor_R = color.R;
-			BorderColor_G = color.G;
-			BorderColor_B = color.B;
-		}
-
-		[Obsolete("Will be gone in next release. Implement color picker from within UI")]
-		private void SetFillColor(Color color)
-		{
-			FillColor_A = color.A;
-			FillColor_R = color.R;
-			FillColor_G = color.G;
-			FillColor_B = color.B;
-		}
 
 		protected Matrix GetTransformationMatrix()
 		{

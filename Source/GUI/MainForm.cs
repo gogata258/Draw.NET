@@ -39,14 +39,6 @@ namespace Draw.GUI
 				{ LocXTextbox, nameof(tempShape.LocationX) },
 				{ LocYTextbox,nameof(tempShape.LocationY) },
 				{ borderThicknessTextbox, nameof(tempShape.BorderThickness) },
-				{ borderColorATextbox, nameof(tempShape.BorderColor_A) },
-				{ borderColorRTextbox,nameof(tempShape.BorderColor_R) },
-				{ borderColorGTextbox, nameof(tempShape.BorderColor_G) },
-				{ borderColorBTextbox, nameof(tempShape.BorderColor_B) },
-				{ fillColorATextbox, nameof(tempShape.FillColor_A) },
-				{ fillColorRTextbox, nameof(tempShape.FillColor_R) },
-				{ fillColorGTextbox, nameof(tempShape.FillColor_G) },
-				{ fillColorBTextbox, nameof(tempShape.FillColor_B) },
 				{ nameTextbox, nameof(tempShape.Name)},
 				{ rotationTextbox, nameof(tempShape.Rotation)}
 			};
@@ -82,8 +74,25 @@ namespace Draw.GUI
 
 				isUpdatingUI = false;
 
+				SetColorValues( );
+
 				timer.Start( );
 			}
+		}
+
+		private void SetColorValues()
+		{
+			Color defaultColor = Color.Gray;
+			Color fillColor = defaultColor, borderColor = defaultColor;
+			if (dialogProcessor.MultiSelection.Any( ))
+			{
+				ShapeBase shape = dialogProcessor.MultiSelection.First( );
+				fillColor = shape.FillColor;
+				borderColor = shape.BorderColor;
+			}
+
+			fillColorButton.BackColor = fillColor;
+			borderColorButton.BackColor = borderColor;
 		}
 
 		private void UpdateHierarchyItems()
@@ -170,6 +179,30 @@ namespace Draw.GUI
 			}
 		}
 
+		private void ColorBox_Fill_Click(object sender, EventArgs e)
+		{
+			if (sender is Button)
+			{
+				if (dialogColorFill.ShowDialog( ) == DialogResult.OK)
+				{
+					dialogProcessor.MultiSelection.ForEach(s => s.FillColor = dialogColorFill.Color);
+					viewPort.Invalidate( );
+				}
+			}
+		}
+
+		private void ColorBox_Border_Click(object sender, EventArgs e)
+		{
+			if (sender is Button)
+			{
+				if (dialogColorBorder.ShowDialog( ) == DialogResult.OK)
+				{
+					dialogProcessor.MultiSelection.ForEach(s => s.BorderColor = dialogColorBorder.Color);
+					viewPort.Invalidate( );
+				}
+			}
+		}
+
 		private void HierarchySelectionChanged(object sender, EventArgs e)
 		{
 			if (sender is ListBox lb && !isUpdatingUI)
@@ -242,7 +275,9 @@ namespace Draw.GUI
 				else
 					MessageBox.Show("invalid filename", "Error", MessageBoxButtons.OK);
 			}
+
 		}
+
 		#endregion
 
 		#region SpeedButton Handlers
@@ -376,5 +411,6 @@ namespace Draw.GUI
 			else if (e.KeyCode == Keys.Delete) DeleteSelection( );
 		}
 		#endregion
+
 	}
 }
