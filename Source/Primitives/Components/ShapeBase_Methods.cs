@@ -1,0 +1,145 @@
+﻿using System;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+
+namespace Draw.Primitives.Components
+{
+	/// <summary>
+	/// All shapes derrive from Base Shape
+	/// </summary>
+	public abstract partial class ShapeBase
+	{
+		private const float DEFAULT_MEDIAN_POINT_RELATIVE_LOCATION = 0.0f;
+
+		/// <summary>
+		/// This ctor is used for JSon import
+		/// </summary>
+		internal ShapeBase() { }
+
+		/// <summary>
+		/// Used when the shape has no visual component. Like Group or Empty
+		/// </summary>
+		/// <param name="name">name of the shape</param>
+		/// <param name="type">the name of the class of the instantiated shape</param>
+		internal ShapeBase(string name, string type)
+		{
+			Id = Guid.NewGuid( );
+			Name = name;
+			ShapeType = type;
+			RelativeMedianX = DEFAULT_MEDIAN_POINT_RELATIVE_LOCATION;
+			RelativeMedianY = DEFAULT_MEDIAN_POINT_RELATIVE_LOCATION;
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="X">The X component of the top left corner of the bonding box</param>
+		/// <param name="Y">The Y component of the top left corner of the bonding box</param>
+		/// <param name="scaleX">The width of the object</param>
+		/// <param name="scaleY">The height of the object</param>
+		/// <param name="name">name of the shape</param>
+		/// <param name="type">the name of the class of the instantiated shape</param>
+		public ShapeBase(float X, float Y, float scaleX, float scaleY, string name, string type) : this(name, type)
+		{
+			LocationX = X;
+			LocationY = Y;
+			ScaleX = scaleX;
+			ScaleY = scaleY;
+
+			SetFillColor(Color.IndianRed);
+			SetBorderColor(Color.Indigo);
+			BorderThickness = 0;
+		}
+
+		/// <summary>
+		/// Used when duplicating objects
+		/// </summary>
+		/// <param name="shape">The model to for the duplication</param>
+		/// <param name="name">name of the shape</param>
+		/// <param name="type">the name of the class of the instantiated shape</param>
+		public ShapeBase(ShapeBase shape, string name, string type) : this(shape.LocationX, shape.LocationY, shape.ScaleX, shape.ScaleY, name, type)
+		{
+			BorderThickness = shape.BorderThickness;
+			SetFillColor(shape.FillColor);
+			SetBorderColor(shape.BorderColor);
+		}
+
+		/// <summary>
+		/// Gets the distance between two points
+		/// </summary>
+		/// <param name="point1"></param>
+		/// <param name="point2"></param>
+		/// <returns></returns>
+		public static float Length(float point1, float point2) => Math.Abs(point1) + Math.Abs(point2);
+
+		/// <summary>
+		/// Translates the object
+		/// </summary>
+		/// <param name="distance"></param>
+		public virtual void Translate(PointF distance)
+		{
+			LocationX += distance.X;
+			LocationY += distance.Y;
+		}
+
+		//TODO 
+		/// <summary>
+		/// Rotate the shape
+		/// </summary>
+		/// <param name="angle"></param>
+		public virtual void Rotate(float angle) => Rotation += angle;
+
+		//TODO
+		/// <summary>
+		/// Scale the shape
+		/// </summary>
+		/// <param name="size">the delta dimetions of scaling</param>
+		public virtual void Scale(PointF size)
+		{
+			ScaleX += size.X;
+			ScaleY += size.Y;
+		}
+
+		/// <summary>
+		/// Checks if the  given point is within the object bounds
+		/// </summary>
+		/// <param name="point">point to check</param>
+		/// <returns></returns>
+		public virtual ShapeBase Contains(PointF point) => BorderBoundingBox.Contains(point.X, point.Y) ? this : null;
+
+		/// <summary>
+		/// Virtual method for the drawiwng. Should always be overwritten
+		/// </summary>
+		/// <param name="grfx">The graphics which to use to draw the shape</param>
+		public virtual void DrawSelf(Graphics grfx) => grfx.ResetTransform( );
+
+		[Obsolete("Will be gone in next release. Implement color picker from within UI")]
+		private void SetBorderColor(Color color)
+		{
+			BorderColor_A = color.A;
+			BorderColor_R = color.R;
+			BorderColor_G = color.G;
+			BorderColor_B = color.B;
+		}
+
+		[Obsolete("Will be gone in next release. Implement color picker from within UI")]
+		private void SetFillColor(Color color)
+		{
+			FillColor_A = color.A;
+			FillColor_R = color.R;
+			FillColor_G = color.G;
+			FillColor_B = color.B;
+		}
+
+		protected Matrix GetTransformationMatrix()
+		{
+			var matrix = new Matrix();
+			//TODO Median point should be 0,0 by default and work adding points based on that. Changes should come from user;
+			matrix.RotateAt(Rotation, MedianPoint);
+			matrix.Translate(LocationX, LocationY);
+			matrix.Scale(ScaleX, ScaleY);
+			return matrix;
+		}
+
+	}
+}

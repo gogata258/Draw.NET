@@ -3,25 +3,33 @@ using System.Drawing;
 
 namespace Draw.Primitives
 {
+	using Components;
+	using System.Collections.Generic;
+
 	public class Triangle : ShapeBase
 	{
-		[JsonConstructor] private Triangle( ) { }
-		public Triangle( ShapeBase shape, string name ) : base( shape, name, typeof( Triangle ).Name ) { }
-		public Triangle( float X, float Y, float width, float height, string name ) : base( X, Y, width, height, name, typeof( Triangle ).Name ) { }
+		[JsonConstructor] private Triangle() { }
+		public Triangle(ShapeBase shape, string name) : base(shape, name, typeof(Triangle).Name) { }
+		public Triangle(float X, float Y, float width, float height, string name) : base(X, Y, width, height, name, typeof(Triangle).Name) { }
 
-
-		private PointF[] Points => new PointF[]
+		// get 0 in a constant
+		// This are point locations normalized
+		protected override List<PointF> GetNormalizedPoints() => new List<PointF>( )
 		{
-			new PointF(ObjectLocX + (ObjectWidth/2), ObjectLocY),
-			new PointF(ObjectLocX + ObjectWidth, ObjectLocY + ObjectHeight),
-			new PointF(ObjectLocX, ObjectLocY+ObjectHeight)
+			new PointF(0, 0.5f),
+			new PointF(-0.5f, -0.5f),
+			new PointF(0.5f, -0.5f)
 		};
-		public override void DrawSelf( Graphics grfx )
+
+		public override void DrawSelf(Graphics grfx)
 		{
-			grfx.RotateTransform( Rotation );
-			grfx.DrawPolygon( new Pen( BorderColor, BorderThickness ), Points );
-			grfx.FillPolygon( new SolidBrush( FillColor ), Points );
-			grfx.RotateTransform( -Rotation );
+			PointF[] drawPoints = GetNormalizedPoints( ).ToArray( );
+			GetTransformationMatrix( ).TransformPoints(drawPoints);
+
+			grfx.DrawPolygon(new Pen(BorderColor, BorderThickness), drawPoints);
+			grfx.FillPolygon(new SolidBrush(FillColor), drawPoints);
+
+			base.DrawSelf(grfx);
 		}
 	}
 }

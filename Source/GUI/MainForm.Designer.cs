@@ -60,13 +60,13 @@
 			this.nameLabel = new System.Windows.Forms.Label();
 			this.nameTextbox = new System.Windows.Forms.TextBox();
 			this.sizeLayout = new System.Windows.Forms.FlowLayoutPanel();
-			this.sizeLabel = new System.Windows.Forms.Label();
-			this.widthLayout = new System.Windows.Forms.FlowLayoutPanel();
-			this.widthLabel = new System.Windows.Forms.Label();
-			this.widthTextBox = new System.Windows.Forms.TextBox();
-			this.heightLayout = new System.Windows.Forms.FlowLayoutPanel();
-			this.heightLabel = new System.Windows.Forms.Label();
-			this.heightTextBox = new System.Windows.Forms.TextBox();
+			this.scaleLabel = new System.Windows.Forms.Label();
+			this.scaleXLayout = new System.Windows.Forms.FlowLayoutPanel();
+			this.scaleXLabel = new System.Windows.Forms.Label();
+			this.scaleXTextBox = new System.Windows.Forms.TextBox();
+			this.scaleYLayout = new System.Windows.Forms.FlowLayoutPanel();
+			this.scaleYLabel = new System.Windows.Forms.Label();
+			this.scaleYTextBox = new System.Windows.Forms.TextBox();
 			this.locationLayout = new System.Windows.Forms.FlowLayoutPanel();
 			this.locationLabel = new System.Windows.Forms.Label();
 			this.locXLayout = new System.Windows.Forms.FlowLayoutPanel();
@@ -112,18 +112,18 @@
 			this.hierarchyListbox = new System.Windows.Forms.ListBox();
 			this.rootContainer = new System.Windows.Forms.SplitContainer();
 			this.ControlsContainer = new System.Windows.Forms.SplitContainer();
+			this.viewPort = new Draw.DoubleBufferedPanel();
 			this.dialogSave = new System.Windows.Forms.SaveFileDialog();
 			this.dialogOpen = new System.Windows.Forms.OpenFileDialog();
 			this.dialogExport = new System.Windows.Forms.SaveFileDialog();
 			this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-			this.viewPort = new Draw.DoubleBufferedPanel();
 			this.mainMenu.SuspendLayout();
 			this.quickActionsMenu.SuspendLayout();
 			this.propertiesSideWindow.SuspendLayout();
 			this.nameLayout.SuspendLayout();
 			this.sizeLayout.SuspendLayout();
-			this.widthLayout.SuspendLayout();
-			this.heightLayout.SuspendLayout();
+			this.scaleXLayout.SuspendLayout();
+			this.scaleYLayout.SuspendLayout();
 			this.locationLayout.SuspendLayout();
 			this.locXLayout.SuspendLayout();
 			this.locYLayout.SuspendLayout();
@@ -436,93 +436,93 @@
 			// 
 			this.sizeLayout.AutoSize = true;
 			this.sizeLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.sizeLayout.Controls.Add(this.sizeLabel);
-			this.sizeLayout.Controls.Add(this.widthLayout);
-			this.sizeLayout.Controls.Add(this.heightLayout);
+			this.sizeLayout.Controls.Add(this.scaleLabel);
+			this.sizeLayout.Controls.Add(this.scaleXLayout);
+			this.sizeLayout.Controls.Add(this.scaleYLayout);
 			this.sizeLayout.Dock = System.Windows.Forms.DockStyle.Left;
 			this.sizeLayout.Location = new System.Drawing.Point(3, 35);
 			this.sizeLayout.Name = "sizeLayout";
-			this.sizeLayout.Size = new System.Drawing.Size(279, 32);
+			this.sizeLayout.Size = new System.Drawing.Size(242, 32);
 			this.sizeLayout.TabIndex = 8;
 			// 
-			// sizeLabel
+			// scaleLabel
 			// 
-			this.sizeLabel.AutoSize = true;
-			this.sizeLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.sizeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.sizeLabel.Location = new System.Drawing.Point(0, 0);
-			this.sizeLabel.Margin = new System.Windows.Forms.Padding(0);
-			this.sizeLabel.Name = "sizeLabel";
-			this.sizeLabel.Size = new System.Drawing.Size(41, 32);
-			this.sizeLabel.TabIndex = 1;
-			this.sizeLabel.Text = "Size:";
-			this.sizeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.scaleLabel.AutoSize = true;
+			this.scaleLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.scaleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.scaleLabel.Location = new System.Drawing.Point(0, 0);
+			this.scaleLabel.Margin = new System.Windows.Forms.Padding(0);
+			this.scaleLabel.Name = "scaleLabel";
+			this.scaleLabel.Size = new System.Drawing.Size(49, 32);
+			this.scaleLabel.TabIndex = 1;
+			this.scaleLabel.Text = "Scale:";
+			this.scaleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// widthLayout
+			// scaleXLayout
 			// 
-			this.widthLayout.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.widthLayout.AutoSize = true;
-			this.widthLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.widthLayout.Controls.Add(this.widthLabel);
-			this.widthLayout.Controls.Add(this.widthTextBox);
-			this.widthLayout.Location = new System.Drawing.Point(44, 3);
-			this.widthLayout.Name = "widthLayout";
-			this.widthLayout.Size = new System.Drawing.Size(114, 26);
-			this.widthLayout.TabIndex = 0;
+			this.scaleXLayout.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.scaleXLayout.AutoSize = true;
+			this.scaleXLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.scaleXLayout.Controls.Add(this.scaleXLabel);
+			this.scaleXLayout.Controls.Add(this.scaleXTextBox);
+			this.scaleXLayout.Location = new System.Drawing.Point(52, 3);
+			this.scaleXLayout.Name = "scaleXLayout";
+			this.scaleXLayout.Size = new System.Drawing.Size(91, 26);
+			this.scaleXLayout.TabIndex = 0;
 			// 
-			// widthLabel
+			// scaleXLabel
 			// 
-			this.widthLabel.AutoSize = true;
-			this.widthLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.widthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.widthLabel.Location = new System.Drawing.Point(0, 0);
-			this.widthLabel.Margin = new System.Windows.Forms.Padding(0);
-			this.widthLabel.Name = "widthLabel";
-			this.widthLabel.Size = new System.Drawing.Size(38, 26);
-			this.widthLabel.TabIndex = 1;
-			this.widthLabel.Text = "Width";
-			this.widthLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.scaleXLabel.AutoSize = true;
+			this.scaleXLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.scaleXLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.scaleXLabel.Location = new System.Drawing.Point(0, 0);
+			this.scaleXLabel.Margin = new System.Windows.Forms.Padding(0);
+			this.scaleXLabel.Name = "scaleXLabel";
+			this.scaleXLabel.Size = new System.Drawing.Size(15, 26);
+			this.scaleXLabel.TabIndex = 1;
+			this.scaleXLabel.Text = "X";
+			this.scaleXLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// widthTextBox
+			// scaleXTextBox
 			// 
-			this.widthTextBox.Location = new System.Drawing.Point(41, 3);
-			this.widthTextBox.Name = "widthTextBox";
-			this.widthTextBox.Size = new System.Drawing.Size(70, 20);
-			this.widthTextBox.TabIndex = 0;
-			this.widthTextBox.TextChanged += new System.EventHandler(this.PropertyTextBox_TextChanged);
+			this.scaleXTextBox.Location = new System.Drawing.Point(18, 3);
+			this.scaleXTextBox.Name = "scaleXTextBox";
+			this.scaleXTextBox.Size = new System.Drawing.Size(70, 20);
+			this.scaleXTextBox.TabIndex = 0;
+			this.scaleXTextBox.TextChanged += new System.EventHandler(this.PropertyTextBox_TextChanged);
 			// 
-			// heightLayout
+			// scaleYLayout
 			// 
-			this.heightLayout.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.heightLayout.AutoSize = true;
-			this.heightLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.heightLayout.Controls.Add(this.heightLabel);
-			this.heightLayout.Controls.Add(this.heightTextBox);
-			this.heightLayout.Location = new System.Drawing.Point(164, 3);
-			this.heightLayout.Name = "heightLayout";
-			this.heightLayout.Size = new System.Drawing.Size(112, 26);
-			this.heightLayout.TabIndex = 1;
+			this.scaleYLayout.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.scaleYLayout.AutoSize = true;
+			this.scaleYLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.scaleYLayout.Controls.Add(this.scaleYLabel);
+			this.scaleYLayout.Controls.Add(this.scaleYTextBox);
+			this.scaleYLayout.Location = new System.Drawing.Point(149, 3);
+			this.scaleYLayout.Name = "scaleYLayout";
+			this.scaleYLayout.Size = new System.Drawing.Size(90, 26);
+			this.scaleYLayout.TabIndex = 1;
 			// 
-			// heightLabel
+			// scaleYLabel
 			// 
-			this.heightLabel.AutoSize = true;
-			this.heightLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.heightLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.heightLabel.Location = new System.Drawing.Point(0, 0);
-			this.heightLabel.Margin = new System.Windows.Forms.Padding(0);
-			this.heightLabel.Name = "heightLabel";
-			this.heightLabel.Size = new System.Drawing.Size(36, 26);
-			this.heightLabel.TabIndex = 1;
-			this.heightLabel.Text = "Hight";
-			this.heightLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.scaleYLabel.AutoSize = true;
+			this.scaleYLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.scaleYLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.scaleYLabel.Location = new System.Drawing.Point(0, 0);
+			this.scaleYLabel.Margin = new System.Windows.Forms.Padding(0);
+			this.scaleYLabel.Name = "scaleYLabel";
+			this.scaleYLabel.Size = new System.Drawing.Size(14, 26);
+			this.scaleYLabel.TabIndex = 1;
+			this.scaleYLabel.Text = "Y";
+			this.scaleYLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// heightTextBox
+			// scaleYTextBox
 			// 
-			this.heightTextBox.Location = new System.Drawing.Point(39, 3);
-			this.heightTextBox.Name = "heightTextBox";
-			this.heightTextBox.Size = new System.Drawing.Size(70, 20);
-			this.heightTextBox.TabIndex = 0;
-			this.heightTextBox.TextChanged += new System.EventHandler(this.PropertyTextBox_TextChanged);
+			this.scaleYTextBox.Location = new System.Drawing.Point(17, 3);
+			this.scaleYTextBox.Name = "scaleYTextBox";
+			this.scaleYTextBox.Size = new System.Drawing.Size(70, 20);
+			this.scaleYTextBox.TabIndex = 0;
+			this.scaleYTextBox.TextChanged += new System.EventHandler(this.PropertyTextBox_TextChanged);
 			// 
 			// locationLayout
 			// 
@@ -1054,6 +1054,27 @@
 			this.ControlsContainer.SplitterDistance = 290;
 			this.ControlsContainer.TabIndex = 1;
 			// 
+			// viewPort
+			// 
+			this.viewPort.AutoSize = true;
+			this.viewPort.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.viewPort.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.viewPort.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.viewPort.Location = new System.Drawing.Point(3, 3);
+			this.viewPort.Margin = new System.Windows.Forms.Padding(0);
+			this.viewPort.Name = "viewPort";
+			this.viewPort.Padding = new System.Windows.Forms.Padding(10);
+			this.viewPort.Size = new System.Drawing.Size(914, 626);
+			this.viewPort.TabIndex = 0;
+			this.viewPort.Paint += new System.Windows.Forms.PaintEventHandler(this.ViewPort_Paint);
+			this.viewPort.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ViewPort_KeyDown);
+			this.viewPort.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ViewPort_KeyUp);
+			this.viewPort.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ViewPort_MouseClick);
+			this.viewPort.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ViewPort_MouseDown);
+			this.viewPort.MouseEnter += new System.EventHandler(this.ViewPort_MouseEnter);
+			this.viewPort.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ViewPort_MouseMove);
+			this.viewPort.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ViewPort_MouseUp);
+			// 
 			// dialogSave
 			// 
 			this.dialogSave.DefaultExt = "json";
@@ -1078,27 +1099,6 @@
 			this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
 			this.toolStripButton1.Text = "toolStripButton1";
 			// 
-			// viewPort
-			// 
-			this.viewPort.AutoSize = true;
-			this.viewPort.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.viewPort.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.viewPort.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.viewPort.Location = new System.Drawing.Point(3, 3);
-			this.viewPort.Margin = new System.Windows.Forms.Padding(0);
-			this.viewPort.Name = "viewPort";
-			this.viewPort.Padding = new System.Windows.Forms.Padding(10);
-			this.viewPort.Size = new System.Drawing.Size(914, 626);
-			this.viewPort.TabIndex = 0;
-			this.viewPort.Paint += new System.Windows.Forms.PaintEventHandler(this.ViewPort_Paint);
-			this.viewPort.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ViewPort_KeyDown);
-			this.viewPort.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ViewPort_KeyUp);
-			this.viewPort.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ViewPort_MouseClick);
-			this.viewPort.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ViewPort_MouseDown);
-			this.viewPort.MouseEnter += new System.EventHandler(this.ViewPort_MouseEnter);
-			this.viewPort.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ViewPort_MouseMove);
-			this.viewPort.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ViewPort_MouseUp);
-			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1121,10 +1121,10 @@
 			this.nameLayout.PerformLayout();
 			this.sizeLayout.ResumeLayout(false);
 			this.sizeLayout.PerformLayout();
-			this.widthLayout.ResumeLayout(false);
-			this.widthLayout.PerformLayout();
-			this.heightLayout.ResumeLayout(false);
-			this.heightLayout.PerformLayout();
+			this.scaleXLayout.ResumeLayout(false);
+			this.scaleXLayout.PerformLayout();
+			this.scaleYLayout.ResumeLayout(false);
+			this.scaleYLayout.PerformLayout();
 			this.locationLayout.ResumeLayout(false);
 			this.locationLayout.PerformLayout();
 			this.locXLayout.ResumeLayout(false);
@@ -1183,12 +1183,12 @@
 		private System.Windows.Forms.MenuStrip mainMenu;
 		private System.Windows.Forms.ToolStripButton quickAction_Draw_Elipse;
 		private System.Windows.Forms.FlowLayoutPanel propertiesSideWindow;
-		private System.Windows.Forms.FlowLayoutPanel widthLayout;
-		private System.Windows.Forms.Label widthLabel;
-		private System.Windows.Forms.TextBox widthTextBox;
-		private System.Windows.Forms.FlowLayoutPanel heightLayout;
-		private System.Windows.Forms.Label heightLabel;
-		private System.Windows.Forms.TextBox heightTextBox;
+		private System.Windows.Forms.FlowLayoutPanel scaleXLayout;
+		private System.Windows.Forms.Label scaleXLabel;
+		private System.Windows.Forms.TextBox scaleXTextBox;
+		private System.Windows.Forms.FlowLayoutPanel scaleYLayout;
+		private System.Windows.Forms.Label scaleYLabel;
+		private System.Windows.Forms.TextBox scaleYTextBox;
 		private System.Windows.Forms.FlowLayoutPanel borderThicknessLayout;
 		private System.Windows.Forms.Label BorderThicknessLabel;
 		private System.Windows.Forms.TextBox borderThicknessTextbox;
@@ -1207,7 +1207,7 @@
 		private System.Windows.Forms.Label fillColorALabel;
 		private System.Windows.Forms.TextBox fillColorATextbox;
 		private System.Windows.Forms.FlowLayoutPanel sizeLayout;
-		private System.Windows.Forms.Label sizeLabel;
+		private System.Windows.Forms.Label scaleLabel;
 		private System.Windows.Forms.FlowLayoutPanel locationLayout;
 		private System.Windows.Forms.Label locationLabel;
 		private System.Windows.Forms.FlowLayoutPanel locXLayout;

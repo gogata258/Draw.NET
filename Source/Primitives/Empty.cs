@@ -3,6 +3,8 @@ using System.Drawing;
 
 namespace Draw.Primitives
 {
+	using Components;
+
 	internal class Empty : ShapeBase
 	{
 		[JsonConstructor] private Empty( ) { }
