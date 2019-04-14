@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Numerics;
+using System.Windows;
 
 namespace Draw.Processors
 {
@@ -127,10 +127,11 @@ namespace Draw.Processors
 		{
 			MultiSelection.ForEach(s =>
 			{
-				Vector2 startVect = VectorMath.GetNormalizedVector(s.MedianPoint, LastLocation);
-				Vector2 endVect = VectorMath.GetNormalizedVector(s.MedianPoint, p);
+				Vector startVect = VectorMath.GetVector(s.MedianPoint, LastLocation);
+				Vector endVect = VectorMath.GetVector(s.MedianPoint, p);
 
-				s.Rotate(VectorMath.GetAngle(startVect, endVect) * VectorMath.GetRotationDirection(startVect, endVect));
+				float angle = VectorMath.GetAngle(startVect, endVect);
+				s.Rotate(angle);
 			});
 
 			LastLocation = p;

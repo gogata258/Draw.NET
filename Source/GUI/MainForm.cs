@@ -370,7 +370,6 @@ namespace Draw.GUI
 			if (!dialogProcessor.IsSelecting)
 			{
 				dialogProcessor.IsDragging = true;
-				dialogProcessor.LastLocation = e.Location;
 				DrawShape_Finalize( );
 			}
 		}
