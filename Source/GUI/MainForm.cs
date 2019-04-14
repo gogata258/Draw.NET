@@ -288,7 +288,7 @@ namespace Draw.GUI
 
 		private void SpeedButton_Draw_Rectangle_Click(object sender, EventArgs e)
 		{
-			dialogProcessor.AddShape<Primitives.Rectangle>(GetViewportWidth( ), GetViewportHeight( ));
+			dialogProcessor.AddShape<Rectangle>(GetViewportWidth( ), GetViewportHeight( ));
 			DrawShape_Finalize( );
 		}
 

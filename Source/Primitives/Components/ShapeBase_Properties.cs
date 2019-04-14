@@ -63,7 +63,7 @@ namespace Draw.Primitives.Components
 			set
 			{
 				fillAlpha = (value < 0) ? 0 : (value > 255) ? 255 : value;
-				FillColor = BorderColor;
+				FillColor = FillColor;
 			}
 		}
 

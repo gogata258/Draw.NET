@@ -139,7 +139,7 @@ namespace Draw.Primitives.Components
 			var matrix = new Matrix();
 			matrix.RotateAt(Rotation, MedianPoint);
 			matrix.Translate(LocationX, LocationY);
-			matrix.Scale(ScaleX + BorderThickness, ScaleY + BorderThickness);
+			matrix.Scale(ScaleX, ScaleY);
 			return matrix;
 		}
 	}
