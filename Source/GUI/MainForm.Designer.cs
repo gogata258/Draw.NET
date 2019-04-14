@@ -79,25 +79,33 @@
 			this.rotationLabel = new System.Windows.Forms.Label();
 			this.rotationTextbox = new System.Windows.Forms.TextBox();
 			this.colorLayout = new System.Windows.Forms.FlowLayoutPanel();
-			this.colorLabel = new System.Windows.Forms.Label();
+			this.visualLabel = new System.Windows.Forms.Label();
+			this.fillLayout = new System.Windows.Forms.FlowLayoutPanel();
+			this.fillColorLayout = new System.Windows.Forms.FlowLayoutPanel();
+			this.fillColorLabel = new System.Windows.Forms.Label();
+			this.fillColorButton = new System.Windows.Forms.Button();
+			this.fillAlphaLayout = new System.Windows.Forms.FlowLayoutPanel();
+			this.fillAlphaLabel = new System.Windows.Forms.Label();
+			this.fillAlphaTextbox = new System.Windows.Forms.TextBox();
+			this.borderLayout = new System.Windows.Forms.FlowLayoutPanel();
+			this.borderColorLayout = new System.Windows.Forms.FlowLayoutPanel();
+			this.borderColorLabel = new System.Windows.Forms.Label();
+			this.borderColorButton = new System.Windows.Forms.Button();
+			this.borderAlphaLayout = new System.Windows.Forms.FlowLayoutPanel();
+			this.borderAlphaLabel = new System.Windows.Forms.Label();
+			this.borderAlphaTextbox = new System.Windows.Forms.TextBox();
 			this.borderThicknessLayout = new System.Windows.Forms.FlowLayoutPanel();
-			this.BorderThicknessLabel = new System.Windows.Forms.Label();
+			this.borderThicknessLabel = new System.Windows.Forms.Label();
 			this.borderThicknessTextbox = new System.Windows.Forms.TextBox();
 			this.hierarchyListbox = new System.Windows.Forms.ListBox();
 			this.rootContainer = new System.Windows.Forms.SplitContainer();
 			this.ControlsContainer = new System.Windows.Forms.SplitContainer();
+			this.viewPort = new Draw.DoubleBufferedPanel();
 			this.dialogSave = new System.Windows.Forms.SaveFileDialog();
 			this.dialogOpen = new System.Windows.Forms.OpenFileDialog();
 			this.dialogExport = new System.Windows.Forms.SaveFileDialog();
 			this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
 			this.dialogColorFill = new System.Windows.Forms.ColorDialog();
-			this.borderColorLayout = new System.Windows.Forms.FlowLayoutPanel();
-			this.borderColorLabel = new System.Windows.Forms.Label();
-			this.borderColorButton = new System.Windows.Forms.Button();
-			this.fillColorLayout = new System.Windows.Forms.FlowLayoutPanel();
-			this.fillColorLabel = new System.Windows.Forms.Label();
-			this.fillColorButton = new System.Windows.Forms.Button();
-			this.viewPort = new Draw.DoubleBufferedPanel();
 			this.dialogColorBorder = new System.Windows.Forms.ColorDialog();
 			this.mainMenu.SuspendLayout();
 			this.quickActionsMenu.SuspendLayout();
@@ -111,6 +119,12 @@
 			this.locYLayout.SuspendLayout();
 			this.rotationLayout.SuspendLayout();
 			this.colorLayout.SuspendLayout();
+			this.fillLayout.SuspendLayout();
+			this.fillColorLayout.SuspendLayout();
+			this.fillAlphaLayout.SuspendLayout();
+			this.borderLayout.SuspendLayout();
+			this.borderColorLayout.SuspendLayout();
+			this.borderAlphaLayout.SuspendLayout();
 			this.borderThicknessLayout.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.rootContainer)).BeginInit();
 			this.rootContainer.Panel1.SuspendLayout();
@@ -120,8 +134,6 @@
 			this.ControlsContainer.Panel1.SuspendLayout();
 			this.ControlsContainer.Panel2.SuspendLayout();
 			this.ControlsContainer.SuspendLayout();
-			this.borderColorLayout.SuspendLayout();
-			this.fillColorLayout.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// mainMenu
@@ -165,7 +177,7 @@
 			this.fileSubMenu_ToolStrip_Exit.Name = "fileSubMenu_ToolStrip_Exit";
 			this.fileSubMenu_ToolStrip_Exit.Size = new System.Drawing.Size(100, 22);
 			this.fileSubMenu_ToolStrip_Exit.Text = "Exit";
-			this.fileSubMenu_ToolStrip_Exit.Click += new System.EventHandler(this.ToolStripMenuItem_Delete_Click);
+			this.fileSubMenu_ToolStrip_Exit.Click += new System.EventHandler(this.ToolStripMenuItem_Exit_Click);
 			// 
 			// mainMenu_ToolStrip_Image
 			// 
@@ -271,8 +283,8 @@
 			this.quickAction_Toggle_Select.Size = new System.Drawing.Size(23, 22);
 			this.quickAction_Toggle_Select.Text = "SelectTool";
 			this.quickAction_Toggle_Select.ToolTipText = "Select items";
-			this.quickAction_Toggle_Select.CheckedChanged += new System.EventHandler(this.Tools_Select_CheckChanged);
-			this.quickAction_Toggle_Select.Click += new System.EventHandler(this.Tools_Clicked);
+			this.quickAction_Toggle_Select.CheckedChanged += new System.EventHandler(this.SpeedButton_Toggleable_Select_CheckChanged);
+			this.quickAction_Toggle_Select.Click += new System.EventHandler(this.SpeedButton_Toggleable_Clicked);
 			// 
 			// quickAction_Toggle_Move
 			// 
@@ -284,8 +296,8 @@
 			this.quickAction_Toggle_Move.Size = new System.Drawing.Size(23, 22);
 			this.quickAction_Toggle_Move.Text = "MoveTool";
 			this.quickAction_Toggle_Move.ToolTipText = "Move selected items";
-			this.quickAction_Toggle_Move.CheckedChanged += new System.EventHandler(this.Tools_Move_CheckChanged);
-			this.quickAction_Toggle_Move.Click += new System.EventHandler(this.Tools_Clicked);
+			this.quickAction_Toggle_Move.CheckedChanged += new System.EventHandler(this.SpeedButton_Toggleable_Move_CheckChanged);
+			this.quickAction_Toggle_Move.Click += new System.EventHandler(this.SpeedButton_Toggleable_Clicked);
 			// 
 			// quickAction_Toggle_Rotate
 			// 
@@ -297,6 +309,8 @@
 			this.quickAction_Toggle_Rotate.Size = new System.Drawing.Size(23, 22);
 			this.quickAction_Toggle_Rotate.Text = "SelectTool";
 			this.quickAction_Toggle_Rotate.ToolTipText = "Rotate selected Items";
+			this.quickAction_Toggle_Rotate.CheckedChanged += new System.EventHandler(this.SpeedButton_Toggleable_Rotate_CheckChanged);
+			this.quickAction_Toggle_Rotate.Click += new System.EventHandler(this.SpeedButton_Toggleable_Clicked);
 			// 
 			// quickAction_Toggle_Scale
 			// 
@@ -308,6 +322,8 @@
 			this.quickAction_Toggle_Scale.Size = new System.Drawing.Size(23, 22);
 			this.quickAction_Toggle_Scale.Text = "SelectTool";
 			this.quickAction_Toggle_Scale.ToolTipText = "Scale selected Items";
+			this.quickAction_Toggle_Scale.CheckedChanged += new System.EventHandler(this.SpeedButton_Toggleable_Scale_CheckChanged);
+			this.quickAction_Toggle_Scale.Click += new System.EventHandler(this.SpeedButton_Toggleable_Clicked);
 			// 
 			// toolStripSeparator2
 			// 
@@ -350,6 +366,7 @@
 			this.quickAction_Tool_Delete.Size = new System.Drawing.Size(23, 22);
 			this.quickAction_Tool_Delete.Text = "Group Selected";
 			this.quickAction_Tool_Delete.ToolTipText = "Delete selected Items";
+			this.quickAction_Tool_Delete.Click += new System.EventHandler(this.SpeedButton_Delete_Clicked);
 			// 
 			// propertiesSideWindow
 			// 
@@ -361,7 +378,6 @@
 			this.propertiesSideWindow.Controls.Add(this.locationLayout);
 			this.propertiesSideWindow.Controls.Add(this.rotationLayout);
 			this.propertiesSideWindow.Controls.Add(this.colorLayout);
-			this.propertiesSideWindow.Controls.Add(this.borderThicknessLayout);
 			this.propertiesSideWindow.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.propertiesSideWindow.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
 			this.propertiesSideWindow.Location = new System.Drawing.Point(0, 0);
@@ -627,59 +643,221 @@
 			// 
 			this.colorLayout.AutoSize = true;
 			this.colorLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.colorLayout.Controls.Add(this.colorLabel);
-			this.colorLayout.Controls.Add(this.fillColorLayout);
-			this.colorLayout.Controls.Add(this.borderColorLayout);
+			this.colorLayout.Controls.Add(this.visualLabel);
+			this.colorLayout.Controls.Add(this.fillLayout);
+			this.colorLayout.Controls.Add(this.borderLayout);
 			this.colorLayout.Dock = System.Windows.Forms.DockStyle.Left;
+			this.colorLayout.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
 			this.colorLayout.Location = new System.Drawing.Point(3, 143);
 			this.colorLayout.Name = "colorLayout";
-			this.colorLayout.Size = new System.Drawing.Size(207, 37);
+			this.colorLayout.Size = new System.Drawing.Size(330, 104);
 			this.colorLayout.TabIndex = 4;
 			this.colorLayout.WrapContents = false;
 			// 
-			// colorLabel
+			// visualLabel
 			// 
-			this.colorLabel.AutoSize = true;
-			this.colorLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.colorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.colorLabel.Location = new System.Drawing.Point(0, 0);
-			this.colorLabel.Margin = new System.Windows.Forms.Padding(0);
-			this.colorLabel.Name = "colorLabel";
-			this.colorLabel.Size = new System.Drawing.Size(49, 37);
-			this.colorLabel.TabIndex = 1;
-			this.colorLabel.Text = "Color:";
-			this.colorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.visualLabel.AutoSize = true;
+			this.visualLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.visualLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.visualLabel.Location = new System.Drawing.Point(0, 0);
+			this.visualLabel.Margin = new System.Windows.Forms.Padding(0);
+			this.visualLabel.Name = "visualLabel";
+			this.visualLabel.Size = new System.Drawing.Size(330, 18);
+			this.visualLabel.TabIndex = 1;
+			this.visualLabel.Text = "Visual Properties:";
+			this.visualLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
+			// fillLayout
+			// 
+			this.fillLayout.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.fillLayout.AutoSize = true;
+			this.fillLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.fillLayout.Controls.Add(this.fillColorLayout);
+			this.fillLayout.Controls.Add(this.fillAlphaLayout);
+			this.fillLayout.Location = new System.Drawing.Point(82, 21);
+			this.fillLayout.Name = "fillLayout";
+			this.fillLayout.Size = new System.Drawing.Size(166, 37);
+			this.fillLayout.TabIndex = 7;
+			// 
+			// fillColorLayout
+			// 
+			this.fillColorLayout.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.fillColorLayout.AutoSize = true;
+			this.fillColorLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.fillColorLayout.Controls.Add(this.fillColorLabel);
+			this.fillColorLayout.Controls.Add(this.fillColorButton);
+			this.fillColorLayout.Location = new System.Drawing.Point(3, 3);
+			this.fillColorLayout.Name = "fillColorLayout";
+			this.fillColorLayout.Size = new System.Drawing.Size(60, 31);
+			this.fillColorLayout.TabIndex = 6;
+			// 
+			// fillColorLabel
+			// 
+			this.fillColorLabel.AutoSize = true;
+			this.fillColorLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.fillColorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.fillColorLabel.Location = new System.Drawing.Point(0, 0);
+			this.fillColorLabel.Margin = new System.Windows.Forms.Padding(0);
+			this.fillColorLabel.Name = "fillColorLabel";
+			this.fillColorLabel.Size = new System.Drawing.Size(29, 31);
+			this.fillColorLabel.TabIndex = 1;
+			this.fillColorLabel.Text = "Fill:";
+			this.fillColorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
+			// fillColorButton
+			// 
+			this.fillColorButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.fillColorButton.Location = new System.Drawing.Point(32, 3);
+			this.fillColorButton.Name = "fillColorButton";
+			this.fillColorButton.Size = new System.Drawing.Size(25, 25);
+			this.fillColorButton.TabIndex = 2;
+			this.fillColorButton.UseVisualStyleBackColor = false;
+			this.fillColorButton.Click += new System.EventHandler(this.ColorBox_Fill_Click);
+			// 
+			// fillAlphaLayout
+			// 
+			this.fillAlphaLayout.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.fillAlphaLayout.AutoSize = true;
+			this.fillAlphaLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.fillAlphaLayout.Controls.Add(this.fillAlphaLabel);
+			this.fillAlphaLayout.Controls.Add(this.fillAlphaTextbox);
+			this.fillAlphaLayout.Location = new System.Drawing.Point(69, 3);
+			this.fillAlphaLayout.Name = "fillAlphaLayout";
+			this.fillAlphaLayout.Size = new System.Drawing.Size(94, 26);
+			this.fillAlphaLayout.TabIndex = 7;
+			// 
+			// fillAlphaLabel
+			// 
+			this.fillAlphaLabel.AutoSize = true;
+			this.fillAlphaLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.fillAlphaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.fillAlphaLabel.Location = new System.Drawing.Point(0, 0);
+			this.fillAlphaLabel.Margin = new System.Windows.Forms.Padding(0);
+			this.fillAlphaLabel.Name = "fillAlphaLabel";
+			this.fillAlphaLabel.Size = new System.Drawing.Size(48, 26);
+			this.fillAlphaLabel.TabIndex = 1;
+			this.fillAlphaLabel.Text = "Alpha:";
+			this.fillAlphaLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
+			// fillAlphaTextbox
+			// 
+			this.fillAlphaTextbox.Location = new System.Drawing.Point(51, 3);
+			this.fillAlphaTextbox.Name = "fillAlphaTextbox";
+			this.fillAlphaTextbox.Size = new System.Drawing.Size(40, 20);
+			this.fillAlphaTextbox.TabIndex = 2;
+			this.fillAlphaTextbox.TextChanged += new System.EventHandler(this.PropertyTextBox_TextChanged);
+			// 
+			// borderLayout
+			// 
+			this.borderLayout.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.borderLayout.AutoSize = true;
+			this.borderLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.borderLayout.Controls.Add(this.borderColorLayout);
+			this.borderLayout.Controls.Add(this.borderAlphaLayout);
+			this.borderLayout.Controls.Add(this.borderThicknessLayout);
+			this.borderLayout.Location = new System.Drawing.Point(3, 64);
+			this.borderLayout.Name = "borderLayout";
+			this.borderLayout.Size = new System.Drawing.Size(324, 37);
+			this.borderLayout.TabIndex = 8;
+			// 
+			// borderColorLayout
+			// 
+			this.borderColorLayout.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.borderColorLayout.AutoSize = true;
+			this.borderColorLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.borderColorLayout.Controls.Add(this.borderColorLabel);
+			this.borderColorLayout.Controls.Add(this.borderColorButton);
+			this.borderColorLayout.Location = new System.Drawing.Point(3, 3);
+			this.borderColorLayout.Name = "borderColorLayout";
+			this.borderColorLayout.Size = new System.Drawing.Size(86, 31);
+			this.borderColorLayout.TabIndex = 6;
+			// 
+			// borderColorLabel
+			// 
+			this.borderColorLabel.AutoSize = true;
+			this.borderColorLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.borderColorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.borderColorLabel.Location = new System.Drawing.Point(0, 0);
+			this.borderColorLabel.Margin = new System.Windows.Forms.Padding(0);
+			this.borderColorLabel.Name = "borderColorLabel";
+			this.borderColorLabel.Size = new System.Drawing.Size(55, 31);
+			this.borderColorLabel.TabIndex = 1;
+			this.borderColorLabel.Text = "Border:";
+			this.borderColorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
+			// borderColorButton
+			// 
+			this.borderColorButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.borderColorButton.Location = new System.Drawing.Point(58, 3);
+			this.borderColorButton.Name = "borderColorButton";
+			this.borderColorButton.Size = new System.Drawing.Size(25, 25);
+			this.borderColorButton.TabIndex = 2;
+			this.borderColorButton.UseVisualStyleBackColor = false;
+			this.borderColorButton.Click += new System.EventHandler(this.ColorBox_Border_Click);
+			// 
+			// borderAlphaLayout
+			// 
+			this.borderAlphaLayout.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.borderAlphaLayout.AutoSize = true;
+			this.borderAlphaLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.borderAlphaLayout.Controls.Add(this.borderAlphaLabel);
+			this.borderAlphaLayout.Controls.Add(this.borderAlphaTextbox);
+			this.borderAlphaLayout.Location = new System.Drawing.Point(95, 3);
+			this.borderAlphaLayout.Name = "borderAlphaLayout";
+			this.borderAlphaLayout.Size = new System.Drawing.Size(94, 26);
+			this.borderAlphaLayout.TabIndex = 7;
+			// 
+			// borderAlphaLabel
+			// 
+			this.borderAlphaLabel.AutoSize = true;
+			this.borderAlphaLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.borderAlphaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.borderAlphaLabel.Location = new System.Drawing.Point(0, 0);
+			this.borderAlphaLabel.Margin = new System.Windows.Forms.Padding(0);
+			this.borderAlphaLabel.Name = "borderAlphaLabel";
+			this.borderAlphaLabel.Size = new System.Drawing.Size(48, 26);
+			this.borderAlphaLabel.TabIndex = 1;
+			this.borderAlphaLabel.Text = "Alpha:";
+			this.borderAlphaLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
+			// borderAlphaTextbox
+			// 
+			this.borderAlphaTextbox.Location = new System.Drawing.Point(51, 3);
+			this.borderAlphaTextbox.Name = "borderAlphaTextbox";
+			this.borderAlphaTextbox.Size = new System.Drawing.Size(40, 20);
+			this.borderAlphaTextbox.TabIndex = 2;
+			this.borderAlphaTextbox.TextChanged += new System.EventHandler(this.PropertyTextBox_TextChanged);
 			// 
 			// borderThicknessLayout
 			// 
 			this.borderThicknessLayout.AutoSize = true;
 			this.borderThicknessLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.borderThicknessLayout.Controls.Add(this.BorderThicknessLabel);
+			this.borderThicknessLayout.Controls.Add(this.borderThicknessLabel);
 			this.borderThicknessLayout.Controls.Add(this.borderThicknessTextbox);
 			this.borderThicknessLayout.Dock = System.Windows.Forms.DockStyle.Left;
-			this.borderThicknessLayout.Location = new System.Drawing.Point(3, 186);
+			this.borderThicknessLayout.Location = new System.Drawing.Point(195, 3);
 			this.borderThicknessLayout.Name = "borderThicknessLayout";
-			this.borderThicknessLayout.Size = new System.Drawing.Size(231, 26);
+			this.borderThicknessLayout.Size = new System.Drawing.Size(126, 31);
 			this.borderThicknessLayout.TabIndex = 3;
 			// 
-			// BorderThicknessLabel
+			// borderThicknessLabel
 			// 
-			this.BorderThicknessLabel.AutoSize = true;
-			this.BorderThicknessLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.BorderThicknessLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.BorderThicknessLabel.Location = new System.Drawing.Point(0, 0);
-			this.BorderThicknessLabel.Margin = new System.Windows.Forms.Padding(0);
-			this.BorderThicknessLabel.Name = "BorderThicknessLabel";
-			this.BorderThicknessLabel.Size = new System.Drawing.Size(125, 26);
-			this.BorderThicknessLabel.TabIndex = 1;
-			this.BorderThicknessLabel.Text = "Border Thickness";
-			this.BorderThicknessLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.borderThicknessLabel.AutoSize = true;
+			this.borderThicknessLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.borderThicknessLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.borderThicknessLabel.Location = new System.Drawing.Point(0, 0);
+			this.borderThicknessLabel.Margin = new System.Windows.Forms.Padding(0);
+			this.borderThicknessLabel.Name = "borderThicknessLabel";
+			this.borderThicknessLabel.Size = new System.Drawing.Size(80, 26);
+			this.borderThicknessLabel.TabIndex = 1;
+			this.borderThicknessLabel.Text = "Thickness:";
+			this.borderThicknessLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// borderThicknessTextbox
 			// 
-			this.borderThicknessTextbox.Location = new System.Drawing.Point(128, 3);
+			this.borderThicknessTextbox.Location = new System.Drawing.Point(83, 3);
 			this.borderThicknessTextbox.Name = "borderThicknessTextbox";
-			this.borderThicknessTextbox.Size = new System.Drawing.Size(100, 20);
+			this.borderThicknessTextbox.Size = new System.Drawing.Size(40, 20);
 			this.borderThicknessTextbox.TabIndex = 0;
 			this.borderThicknessTextbox.TextChanged += new System.EventHandler(this.PropertyTextBox_TextChanged);
 			// 
@@ -733,6 +911,27 @@
 			this.ControlsContainer.SplitterDistance = 290;
 			this.ControlsContainer.TabIndex = 1;
 			// 
+			// viewPort
+			// 
+			this.viewPort.AutoSize = true;
+			this.viewPort.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.viewPort.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.viewPort.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.viewPort.Location = new System.Drawing.Point(3, 3);
+			this.viewPort.Margin = new System.Windows.Forms.Padding(0);
+			this.viewPort.Name = "viewPort";
+			this.viewPort.Padding = new System.Windows.Forms.Padding(10);
+			this.viewPort.Size = new System.Drawing.Size(914, 626);
+			this.viewPort.TabIndex = 0;
+			this.viewPort.Paint += new System.Windows.Forms.PaintEventHandler(this.ViewPort_Paint);
+			this.viewPort.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ViewPort_KeyDown);
+			this.viewPort.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ViewPort_KeyUp);
+			this.viewPort.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ViewPort_MouseClick);
+			this.viewPort.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ViewPort_MouseDown);
+			this.viewPort.MouseEnter += new System.EventHandler(this.ViewPort_MouseEnter);
+			this.viewPort.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ViewPort_MouseMove);
+			this.viewPort.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ViewPort_MouseUp);
+			// 
 			// dialogSave
 			// 
 			this.dialogSave.DefaultExt = "json";
@@ -757,96 +956,13 @@
 			this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
 			this.toolStripButton1.Text = "toolStripButton1";
 			// 
-			// borderColorLayout
+			// dialogColorFill
 			// 
-			this.borderColorLayout.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.borderColorLayout.AutoSize = true;
-			this.borderColorLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.borderColorLayout.Controls.Add(this.borderColorLabel);
-			this.borderColorLayout.Controls.Add(this.borderColorButton);
-			this.borderColorLayout.Location = new System.Drawing.Point(118, 3);
-			this.borderColorLayout.Name = "borderColorLayout";
-			this.borderColorLayout.Size = new System.Drawing.Size(86, 31);
-			this.borderColorLayout.TabIndex = 5;
+			this.dialogColorFill.AnyColor = true;
 			// 
-			// borderColorLabel
+			// dialogColorBorder
 			// 
-			this.borderColorLabel.AutoSize = true;
-			this.borderColorLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.borderColorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.borderColorLabel.Location = new System.Drawing.Point(0, 0);
-			this.borderColorLabel.Margin = new System.Windows.Forms.Padding(0);
-			this.borderColorLabel.Name = "borderColorLabel";
-			this.borderColorLabel.Size = new System.Drawing.Size(55, 31);
-			this.borderColorLabel.TabIndex = 1;
-			this.borderColorLabel.Text = "Border:";
-			this.borderColorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// borderColorButton
-			// 
-			this.borderColorButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-			this.borderColorButton.Location = new System.Drawing.Point(58, 3);
-			this.borderColorButton.Name = "borderColorButton";
-			this.borderColorButton.Size = new System.Drawing.Size(25, 25);
-			this.borderColorButton.TabIndex = 2;
-			this.borderColorButton.UseVisualStyleBackColor = false;
-			this.borderColorButton.Click += new System.EventHandler(this.ColorBox_Border_Click);
-			// 
-			// fillColorLayout
-			// 
-			this.fillColorLayout.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.fillColorLayout.AutoSize = true;
-			this.fillColorLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.fillColorLayout.Controls.Add(this.fillColorLabel);
-			this.fillColorLayout.Controls.Add(this.fillColorButton);
-			this.fillColorLayout.Location = new System.Drawing.Point(52, 3);
-			this.fillColorLayout.Name = "fillColorLayout";
-			this.fillColorLayout.Size = new System.Drawing.Size(60, 31);
-			this.fillColorLayout.TabIndex = 6;
-			// 
-			// fillColorLabel
-			// 
-			this.fillColorLabel.AutoSize = true;
-			this.fillColorLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.fillColorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.fillColorLabel.Location = new System.Drawing.Point(0, 0);
-			this.fillColorLabel.Margin = new System.Windows.Forms.Padding(0);
-			this.fillColorLabel.Name = "fillColorLabel";
-			this.fillColorLabel.Size = new System.Drawing.Size(29, 31);
-			this.fillColorLabel.TabIndex = 1;
-			this.fillColorLabel.Text = "Fill:";
-			this.fillColorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// fillColorButton
-			// 
-			this.fillColorButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-			this.fillColorButton.Location = new System.Drawing.Point(32, 3);
-			this.fillColorButton.Name = "fillColorButton";
-			this.fillColorButton.Size = new System.Drawing.Size(25, 25);
-			this.fillColorButton.TabIndex = 2;
-			this.fillColorButton.UseVisualStyleBackColor = false;
-			this.fillColorButton.Click += new System.EventHandler(this.ColorBox_Fill_Click);
-			// 
-			// viewPort
-			// 
-			this.viewPort.AutoSize = true;
-			this.viewPort.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.viewPort.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.viewPort.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.viewPort.Location = new System.Drawing.Point(3, 3);
-			this.viewPort.Margin = new System.Windows.Forms.Padding(0);
-			this.viewPort.Name = "viewPort";
-			this.viewPort.Padding = new System.Windows.Forms.Padding(10);
-			this.viewPort.Size = new System.Drawing.Size(914, 626);
-			this.viewPort.TabIndex = 0;
-			this.viewPort.Paint += new System.Windows.Forms.PaintEventHandler(this.ViewPort_Paint);
-			this.viewPort.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ViewPort_KeyDown);
-			this.viewPort.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ViewPort_KeyUp);
-			this.viewPort.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ViewPort_MouseClick);
-			this.viewPort.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ViewPort_MouseDown);
-			this.viewPort.MouseEnter += new System.EventHandler(this.ViewPort_MouseEnter);
-			this.viewPort.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ViewPort_MouseMove);
-			this.viewPort.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ViewPort_MouseUp);
+			this.dialogColorBorder.AnyColor = true;
 			// 
 			// MainForm
 			// 
@@ -884,6 +1000,18 @@
 			this.rotationLayout.PerformLayout();
 			this.colorLayout.ResumeLayout(false);
 			this.colorLayout.PerformLayout();
+			this.fillLayout.ResumeLayout(false);
+			this.fillLayout.PerformLayout();
+			this.fillColorLayout.ResumeLayout(false);
+			this.fillColorLayout.PerformLayout();
+			this.fillAlphaLayout.ResumeLayout(false);
+			this.fillAlphaLayout.PerformLayout();
+			this.borderLayout.ResumeLayout(false);
+			this.borderLayout.PerformLayout();
+			this.borderColorLayout.ResumeLayout(false);
+			this.borderColorLayout.PerformLayout();
+			this.borderAlphaLayout.ResumeLayout(false);
+			this.borderAlphaLayout.PerformLayout();
 			this.borderThicknessLayout.ResumeLayout(false);
 			this.borderThicknessLayout.PerformLayout();
 			this.rootContainer.Panel1.ResumeLayout(false);
@@ -896,10 +1024,6 @@
 			this.ControlsContainer.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.ControlsContainer)).EndInit();
 			this.ControlsContainer.ResumeLayout(false);
-			this.borderColorLayout.ResumeLayout(false);
-			this.borderColorLayout.PerformLayout();
-			this.fillColorLayout.ResumeLayout(false);
-			this.fillColorLayout.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -925,10 +1049,10 @@
 		private System.Windows.Forms.Label scaleYLabel;
 		private System.Windows.Forms.TextBox scaleYTextBox;
 		private System.Windows.Forms.FlowLayoutPanel borderThicknessLayout;
-		private System.Windows.Forms.Label BorderThicknessLabel;
+		private System.Windows.Forms.Label borderThicknessLabel;
 		private System.Windows.Forms.TextBox borderThicknessTextbox;
 		private System.Windows.Forms.FlowLayoutPanel colorLayout;
-		private System.Windows.Forms.Label colorLabel;
+		private System.Windows.Forms.Label visualLabel;
 		private System.Windows.Forms.FlowLayoutPanel sizeLayout;
 		private System.Windows.Forms.Label scaleLabel;
 		private System.Windows.Forms.FlowLayoutPanel locationLayout;
@@ -969,9 +1093,17 @@
 		private System.Windows.Forms.FlowLayoutPanel fillColorLayout;
 		private System.Windows.Forms.Label fillColorLabel;
 		private System.Windows.Forms.Button fillColorButton;
+		private System.Windows.Forms.ColorDialog dialogColorBorder;
+		private System.Windows.Forms.FlowLayoutPanel fillLayout;
+		private System.Windows.Forms.FlowLayoutPanel fillAlphaLayout;
+		private System.Windows.Forms.Label fillAlphaLabel;
+		private System.Windows.Forms.TextBox fillAlphaTextbox;
+		private System.Windows.Forms.FlowLayoutPanel borderLayout;
 		private System.Windows.Forms.FlowLayoutPanel borderColorLayout;
 		private System.Windows.Forms.Label borderColorLabel;
 		private System.Windows.Forms.Button borderColorButton;
-		private System.Windows.Forms.ColorDialog dialogColorBorder;
+		private System.Windows.Forms.FlowLayoutPanel borderAlphaLayout;
+		private System.Windows.Forms.Label borderAlphaLabel;
+		private System.Windows.Forms.TextBox borderAlphaTextbox;
 	}
 }

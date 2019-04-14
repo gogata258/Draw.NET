@@ -34,13 +34,15 @@ namespace Draw.GUI
 			ShapeBase tempShape = new Empty("temp");
 			propertyDict = new Dictionary<TextBox, string>( )
 			{
+				{ nameTextbox, nameof(tempShape.Name)},
 				{ scaleYTextBox, nameof(tempShape.ScaleY) },
 				{ scaleXTextBox,nameof(tempShape.ScaleX) },
 				{ LocXTextbox, nameof(tempShape.LocationX) },
 				{ LocYTextbox,nameof(tempShape.LocationY) },
+				{ rotationTextbox, nameof(tempShape.Rotation)},
+				{ fillAlphaTextbox, nameof(tempShape.FillAlpha)},
+				{ borderAlphaTextbox, nameof(tempShape.BorderAlpha)},
 				{ borderThicknessTextbox, nameof(tempShape.BorderThickness) },
-				{ nameTextbox, nameof(tempShape.Name)},
-				{ rotationTextbox, nameof(tempShape.Rotation)}
 			};
 
 			timer = new System.Timers.Timer(17)
@@ -146,7 +148,7 @@ namespace Draw.GUI
 		private void DeleteSelection()
 		{
 			dialogProcessor.MultiSelection.ForEach(s => dialogProcessor.DeleteShape(dialogProcessor.DisplayProcessor.Shapes, s));
-			viewPort.Invalidate(OnUIUpdate);
+			DrawShape_Finalize( );
 		}
 
 		private int GetViewportWidth() => viewPort.Width;
@@ -175,7 +177,7 @@ namespace Draw.GUI
 					}
 					prop.SetValue(shape, value);
 				}
-				viewPort.Invalidate(OnUIUpdate);
+				DrawShape_Finalize( );
 			}
 		}
 
@@ -216,7 +218,7 @@ namespace Draw.GUI
 				if (!ids.All(i => dialogProcessor.MultiSelection.Any(s => s.Id.ToString( ) == i)))
 				{
 					dialogProcessor.SetSelectionFromHierarchy(ids);
-					viewPort.Invalidate(OnUIUpdate);
+					DrawShape_Finalize( );
 				}
 			}
 		}
@@ -224,7 +226,7 @@ namespace Draw.GUI
 		#endregion
 
 		#region ToolStrip Menu Handlers
-		private void ToolStripMenuItem_Delete_Click(object sender, EventArgs e) => Close( );
+		private void ToolStripMenuItem_Exit_Click(object sender, EventArgs e) => Close( );
 		private void ToolStripMenuItem_Load_Click(object sender, EventArgs e)
 		{
 			DialogResult resut = dialogOpen.ShowDialog( );
@@ -234,7 +236,7 @@ namespace Draw.GUI
 				if (File.Exists(selectedFileName))
 				{
 					dialogProcessor.DisplayProcessor.SetShapes(Serialization.DeserializeShapes(JsonConvert.DeserializeObject<List<JToken>>(File.ReadAllText(selectedFileName))));
-					viewPort.Invalidate(OnUIUpdate);
+					DrawShape_Finalize( );
 				}
 				else
 					MessageBox.Show("invalid filename", "Error", MessageBoxButtons.OK);
@@ -308,7 +310,6 @@ namespace Draw.GUI
 			{
 				dialogProcessor.GroupObjects( );
 				DrawShape_Finalize( );
-				viewPort.Invalidate(OnUIUpdate);
 			}
 		}
 
@@ -317,11 +318,17 @@ namespace Draw.GUI
 			if (dialogProcessor.MultiSelection.Count > 0)
 			{
 				dialogProcessor.UngroupObjects( );
-				viewPort.Invalidate(OnUIUpdate);
+				DrawShape_Finalize( );
 			}
 		}
 
-		private void Tools_Clicked(object sender, EventArgs e)
+		private void SpeedButton_Delete_Clicked(object sender, EventArgs e)
+		{
+			if (sender is ToolStripButton)
+				DeleteSelection( );
+		}
+
+		private void SpeedButton_Toggleable_Clicked(object sender, EventArgs e)
 		{
 			if (sender is ToolStripButton btn)
 			{
@@ -330,34 +337,27 @@ namespace Draw.GUI
 			}
 		}
 
-		private void Tools_Move_CheckChanged(object sender, EventArgs e)
+		private void SpeedButton_Toggleable_Move_CheckChanged(object sender, EventArgs e)
 		{
 			if (sender is ToolStripButton btn)
 				dialogProcessor.IsMoving = btn.Checked;
 		}
 
-		private void Tools_Rotate_CheckChanged(object sender, EventArgs e)
+		private void SpeedButton_Toggleable_Rotate_CheckChanged(object sender, EventArgs e)
 		{
 			if (sender is ToolStripButton btn)
 				dialogProcessor.IsRotating = btn.Checked;
 		}
 
-		private void Tools_Scale_CheckChanged(object sender, EventArgs e)
+		private void SpeedButton_Toggleable_Scale_CheckChanged(object sender, EventArgs e)
 		{
 			if (sender is ToolStripButton btn)
 				dialogProcessor.IsScaling = btn.Checked;
 		}
 
-		private void Tools_Select_CheckChanged(object sender, EventArgs e)
+		private void SpeedButton_Toggleable_Select_CheckChanged(object sender, EventArgs e)
 		{
-			if (sender is ToolStripButton btn)
-				dialogProcessor.IsSelecting = btn.Checked;
-		}
 
-		private void Tools_Delete_Clicked(object sender, EventArgs e)
-		{
-			if (sender is ToolStripButton)
-				DeleteSelection( );
 		}
 		#endregion
 
@@ -370,7 +370,7 @@ namespace Draw.GUI
 			{
 				dialogProcessor.IsDragging = true;
 				dialogProcessor.LastLocation = e.Location;
-				viewPort.Invalidate(OnUIUpdate);
+				DrawShape_Finalize( );
 			}
 		}
 
@@ -382,7 +382,7 @@ namespace Draw.GUI
 				if (item != null)
 				{
 					dialogProcessor.SetSelectionFromViewport(item);
-					viewPort.Invalidate(OnUIUpdate);
+					DrawShape_Finalize( );
 				}
 			}
 		}
@@ -394,7 +394,7 @@ namespace Draw.GUI
 			if (dialogProcessor.IsMoving && dialogProcessor.IsDragging && dialogProcessor.MultiSelection.Any( ))
 			{
 				dialogProcessor.TranslateTo(e.Location);
-				viewPort.Invalidate(OnUIUpdate);
+				DrawShape_Finalize( );
 			}
 		}
 

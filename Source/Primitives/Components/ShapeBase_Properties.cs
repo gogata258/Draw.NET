@@ -13,17 +13,16 @@ namespace Draw.Primitives.Components
 		[Obsolete("Use Scale instead")]private float width;
 		[Obsolete("Use Scale instead")]private float height;
 		private float borderThicknes;
-		[Obsolete("Will be gone in next release. Implement color picker from within UI")] private int borderColor_R;
-		[Obsolete("Will be gone in next release. Implement color picker from within UI")] private int borderColor_G;
-		[Obsolete("Will be gone in next release. Implement color picker from within UI")] private int borderColor_B;
-		[Obsolete("Will be gone in next release. Implement color picker from within UI")] private int borderColor_A;
-		[Obsolete("Will be gone in next release. Implement color picker from within UI")] private int fillColor_R;
-		[Obsolete("Will be gone in next release. Implement color picker from within UI")] private int fillColor_G;
-		private int fillColor_B;
-		private int fillColor_A;
 		private string name;
 		private float scaleX;
 		private float scaleY;
+
+		//TODO have a separate alpha field and override getters and setters
+		private Color borderColor;
+		private int borderAlpha;
+
+		private Color fillColor;
+		private int fillAlpha;
 
 		/// <summary>
 		/// Calculated property. The width of the bounding box of the  border
@@ -37,8 +36,36 @@ namespace Draw.Primitives.Components
 		[Obsolete("Start using points and scale to determine actual screen size")]
 		[JsonIgnore] internal float BorderHeigt => Height + BorderThickness - (2 * BORDER_OBJEC_OVERLAP_DISTANCE);
 		protected virtual List<PointF> GetNormalizedPoints() => new List<PointF>( );
-		public Color BorderColor { get; set; }
-		public Color FillColor { get; set; }
+
+		public Color BorderColor
+		{
+			get => borderColor;
+			set => borderColor = Color.FromArgb(borderAlpha, value);
+		}
+		public int BorderAlpha
+		{
+			get => borderAlpha;
+			set
+			{
+				borderAlpha = (value < 0) ? 0 : (value > 255) ? 255 : value;
+				BorderColor = BorderColor;
+			}
+		}
+
+		public Color FillColor
+		{
+			get => fillColor;
+			set => fillColor = Color.FromArgb(fillAlpha, value);
+		}
+		public int FillAlpha
+		{
+			get => fillAlpha;
+			set
+			{
+				fillAlpha = (value < 0) ? 0 : (value > 255) ? 255 : value;
+				BorderColor = BorderColor;
+			}
+		}
 
 
 		/// <summary>
