@@ -370,6 +370,7 @@ namespace Draw.GUI
 			if (!dialogProcessor.IsSelecting)
 			{
 				dialogProcessor.IsDragging = true;
+				dialogProcessor.LastLocation = e.Location;
 				DrawShape_Finalize( );
 			}
 		}
@@ -394,15 +395,13 @@ namespace Draw.GUI
 			if (dialogProcessor.IsDragging && dialogProcessor.MultiSelection.Any( ))
 			{
 				if (dialogProcessor.IsMoving)
-				{
 					dialogProcessor.TranslateTo(e.Location);
-					DrawShape_Finalize( );
-				}
 				if (dialogProcessor.IsRotating)
-				{
 					dialogProcessor.RotateAngle(e.Location);
-					DrawShape_Finalize( );
-				}
+				if (dialogProcessor.IsScaling)
+					dialogProcessor.Scale(e.Location);
+
+				DrawShape_Finalize( );
 			}
 		}
 

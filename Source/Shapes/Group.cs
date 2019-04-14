@@ -7,6 +7,7 @@ namespace Draw.Shapes
 {
 	using Abstracts;
 	using System;
+	using System.Windows;
 
 	public class Group : ShapeBase
 	{
@@ -72,9 +73,9 @@ namespace Draw.Shapes
 			base.DrawSelf(grfx);
 		}
 
-		public override void Translate(PointF distance)
+		public override void Translate(Vector vect)
 		{
-			Shapes.ForEach(s => s.Translate(distance));
+			Shapes.ForEach(s => s.Translate(vect));
 			UpdateProperties( );
 		}
 

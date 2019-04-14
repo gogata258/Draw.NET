@@ -119,7 +119,13 @@ namespace Draw.Processors
 
 		public void TranslateTo(PointF p)
 		{
-			MultiSelection.ForEach(s => s.Translate(new PointF(p.X - LastLocation.X, p.Y - LastLocation.Y)));
+			MultiSelection.ForEach(s => s.Translate(VectorMath.GetVector(LastLocation, p)));
+			LastLocation = p;
+		}
+
+		public void Scale(PointF p)
+		{
+			MultiSelection.ForEach(s => s.Scale(VectorMath.GetVector(LastLocation, p)));
 			LastLocation = p;
 		}
 

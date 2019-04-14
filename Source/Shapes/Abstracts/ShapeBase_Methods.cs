@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Windows;
 
 namespace Draw.Shapes.Abstracts
 {
@@ -72,10 +73,10 @@ namespace Draw.Shapes.Abstracts
 		/// Translates the object
 		/// </summary>
 		/// <param name="distance"></param>
-		public virtual void Translate(PointF distance)
+		public virtual void Translate(Vector vect)
 		{
-			LocationX += distance.X;
-			LocationY += distance.Y;
+			LocationX -= (float)vect.X;
+			LocationY -= (float)vect.Y;
 		}
 
 		//TODO Implement Rotation
@@ -90,10 +91,10 @@ namespace Draw.Shapes.Abstracts
 		/// Scale the shape
 		/// </summary>
 		/// <param name="size">the delta dimetions of scaling</param>
-		public virtual void Scale(PointF size)
+		public virtual void Scale(Vector size)
 		{
-			ScaleX += size.X;
-			ScaleY += size.Y;
+			ScaleX += (float)size.X;
+			ScaleY += (float)size.Y;
 		}
 
 		/// <summary>
