@@ -84,8 +84,9 @@ namespace Draw.GUI
 
 		private void SetColorValues()
 		{
-			Color defaultColor = Color.Gray;
-			Color fillColor = defaultColor, borderColor = defaultColor;
+			Color fillColor = Color.Empty;
+			Color borderColor = Color.Empty;
+
 			if (dialogProcessor.MultiSelection.Any( ))
 			{
 				ShapeBase shape = dialogProcessor.MultiSelection.First( );
@@ -188,7 +189,7 @@ namespace Draw.GUI
 				if (dialogColorFill.ShowDialog( ) == DialogResult.OK)
 				{
 					dialogProcessor.MultiSelection.ForEach(s => s.FillColor = dialogColorFill.Color);
-					viewPort.Invalidate( );
+					DrawShape_Finalize( );
 				}
 			}
 		}
@@ -200,7 +201,7 @@ namespace Draw.GUI
 				if (dialogColorBorder.ShowDialog( ) == DialogResult.OK)
 				{
 					dialogProcessor.MultiSelection.ForEach(s => s.BorderColor = dialogColorBorder.Color);
-					viewPort.Invalidate( );
+					DrawShape_Finalize( );
 				}
 			}
 		}

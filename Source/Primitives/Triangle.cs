@@ -24,9 +24,14 @@ namespace Draw.Primitives
 		public override void DrawSelf(Graphics grfx)
 		{
 			PointF[] drawPoints = GetNormalizedPoints( ).ToArray( );
-			GetTransformationMatrix( ).TransformPoints(drawPoints);
+			GetShapeTransformationMatrix( ).TransformPoints(drawPoints);
 
-			grfx.DrawPolygon(new Pen(BorderColor, BorderThickness), drawPoints);
+			if (BorderThickness > 0)
+			{
+				PointF[] borderPoints = GetNormalizedPoints().ToArray();
+				GetBorderTransformationMatrix( ).TransformPoints(borderPoints);
+				grfx.DrawPolygon(new Pen(BorderColor, BorderThickness), borderPoints);
+			}
 			grfx.FillPolygon(new SolidBrush(FillColor), drawPoints);
 
 			base.DrawSelf(grfx);

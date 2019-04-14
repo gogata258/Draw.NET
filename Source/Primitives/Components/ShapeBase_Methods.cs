@@ -48,7 +48,9 @@ namespace Draw.Primitives.Components
 			ScaleY = scaleY;
 
 			FillColor = defaultColor;
+			FillAlpha = 255;
 			BorderColor = defaultColor;
+			BorderAlpha = 255;
 			BorderThickness = 0;
 		}
 
@@ -114,15 +116,31 @@ namespace Draw.Primitives.Components
 		/// <param name="grfx">The graphics which to use to draw the shape</param>
 		public virtual void DrawSelf(Graphics grfx) => grfx.ResetTransform( );
 
-		protected Matrix GetTransformationMatrix()
+		/// <summary>
+		/// Get the transformation matrix from the current properties of the shape
+		/// </summary>
+		/// <returns>Matrix that applies all transformations</returns>
+		protected Matrix GetShapeTransformationMatrix()
 		{
 			var matrix = new Matrix();
-			//TODO Median point should be 0,0 by default and work adding points based on that. Changes should come from user;
 			matrix.RotateAt(Rotation, MedianPoint);
 			matrix.Translate(LocationX, LocationY);
 			matrix.Scale(ScaleX, ScaleY);
 			return matrix;
 		}
 
+
+		/// <summary>
+		/// Get the transformation matrix from the border that will be applied to the shape
+		/// </summary>
+		/// <returns>Matrix that is scaled so the border fits around the shape</returns>
+		protected Matrix GetBorderTransformationMatrix()
+		{
+			var matrix = new Matrix();
+			matrix.RotateAt(Rotation, MedianPoint);
+			matrix.Translate(LocationX, LocationY);
+			matrix.Scale(ScaleX + BorderThickness, ScaleY + BorderThickness);
+			return matrix;
+		}
 	}
 }

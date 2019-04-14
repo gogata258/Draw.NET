@@ -23,7 +23,7 @@ namespace Draw.Primitives
 		public override void DrawSelf(Graphics grfx)
 		{
 			PointF[] drawPoints = GetNormalizedPoints( ).ToArray( );
-			GetTransformationMatrix( ).TransformPoints(drawPoints);
+			GetShapeTransformationMatrix( ).TransformPoints(drawPoints);
 
 			grfx.DrawPolygon(new Pen(BorderColor, BorderThickness), drawPoints);
 			grfx.FillPolygon(new SolidBrush(FillColor), drawPoints);
