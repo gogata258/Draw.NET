@@ -78,6 +78,7 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Program.cs" />
+    <Compile Include="Shapes\Abstracts\ClosedCurveBase.cs" />
     <Compile Include="Shapes\Abstracts\PrimitiveBase.cs" />
     <Compile Include="Shapes\Abstracts\ShapeBase_Methods.cs" />
     <Compile Include="Shapes\Elipse.cs" />
