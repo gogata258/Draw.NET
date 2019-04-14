@@ -52,7 +52,6 @@ namespace Draw.Processors
 			return null;
 		}
 
-		//TODO this does not work. Fix it
 		internal void SetSelectionFromHierarchy(List<string> ids)
 		{
 			if (ids.Count > 0)

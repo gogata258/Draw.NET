@@ -78,14 +78,14 @@ namespace Draw.Shapes.Abstracts
 			LocationY += distance.Y;
 		}
 
-		//TODO 
+		//TODO Implement Rotation
 		/// <summary>
 		/// Rotate the shape
 		/// </summary>
 		/// <param name="angle"></param>
 		public virtual void Rotate(float angle) => Rotation += angle;
 
-		//TODO
+		//TODO Implmenet Sacling
 		/// <summary>
 		/// Scale the shape
 		/// </summary>

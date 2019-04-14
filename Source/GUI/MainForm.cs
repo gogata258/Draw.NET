@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace Draw.GUI
 {
+	using Processors;
 	using Shapes;
 	using Shapes.Abstracts;
-	using Processors;
 	using Utilities;
 
 	public partial class MainForm : Form
@@ -216,11 +216,10 @@ namespace Draw.GUI
 					object item = lb.SelectedItems[i];
 					ids.Add(GetIdFromListboxItem(item));
 				}
-				if (!ids.All(i => dialogProcessor.MultiSelection.Any(s => s.Id.ToString( ) == i)))
-				{
-					dialogProcessor.SetSelectionFromHierarchy(ids);
-					DrawShape_Finalize( );
-				}
+
+				dialogProcessor.SetSelectionFromHierarchy(ids);
+				DrawShape_Finalize( );
+
 			}
 		}
 
