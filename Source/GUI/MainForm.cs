@@ -357,7 +357,8 @@ namespace Draw.GUI
 
 		private void SpeedButton_Toggleable_Select_CheckChanged(object sender, EventArgs e)
 		{
-
+			if (sender is ToolStripButton btn)
+				dialogProcessor.IsSelecting = btn.Checked;
 		}
 		#endregion
 
@@ -366,7 +367,7 @@ namespace Draw.GUI
 
 		private void ViewPort_MouseDown(object sender, MouseEventArgs e)
 		{
-			if (dialogProcessor.IsMoving)
+			if (!dialogProcessor.IsSelecting)
 			{
 				dialogProcessor.IsDragging = true;
 				dialogProcessor.LastLocation = e.Location;
@@ -391,10 +392,18 @@ namespace Draw.GUI
 
 		private void ViewPort_MouseMove(object sender, MouseEventArgs e)
 		{
-			if (dialogProcessor.IsMoving && dialogProcessor.IsDragging && dialogProcessor.MultiSelection.Any( ))
+			if (dialogProcessor.IsDragging && dialogProcessor.MultiSelection.Any( ))
 			{
-				dialogProcessor.TranslateTo(e.Location);
-				DrawShape_Finalize( );
+				if (dialogProcessor.IsMoving)
+				{
+					dialogProcessor.TranslateTo(e.Location);
+					DrawShape_Finalize( );
+				}
+				if (dialogProcessor.IsRotating)
+				{
+					dialogProcessor.RotateAngle(e.Location);
+					DrawShape_Finalize( );
+				}
 			}
 		}
 

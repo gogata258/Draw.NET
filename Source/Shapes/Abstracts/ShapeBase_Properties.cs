@@ -26,7 +26,6 @@ namespace Draw.Shapes.Abstracts
 			set => borderColor = Color.FromArgb(borderAlpha, value);
 		}
 
-
 		public Color FillColor
 		{
 			get => fillColor;

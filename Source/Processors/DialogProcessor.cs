@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Numerics;
 
 namespace Draw.Processors
 {
 	using Shapes;
 	using Shapes.Abstracts;
+	using Utilities;
 
 	public class DialogProcessor
 	{
@@ -118,6 +120,19 @@ namespace Draw.Processors
 		public void TranslateTo(PointF p)
 		{
 			MultiSelection.ForEach(s => s.Translate(new PointF(p.X - LastLocation.X, p.Y - LastLocation.Y)));
+			LastLocation = p;
+		}
+
+		public void RotateAngle(PointF p)
+		{
+			MultiSelection.ForEach(s =>
+			{
+				Vector2 startVect = VectorMath.GetVector(s.MedianPoint, LastLocation);
+				Vector2 endVect = VectorMath.GetVector(s.MedianPoint, p);
+
+				s.Rotate(VectorMath.GetAngle(startVect, endVect));
+			});
+
 			LastLocation = p;
 		}
 	}
