@@ -13,6 +13,7 @@ namespace Draw.Processors
 	public class DialogProcessor
 	{
 		private const int SHAPE_DIMENTION = 100;
+		private const int ROTATION_MULTIPLIER = 10;
 
 		public DialogProcessor()
 		{
@@ -130,7 +131,7 @@ namespace Draw.Processors
 				Vector2 startVect = VectorMath.GetVector(s.MedianPoint, LastLocation);
 				Vector2 endVect = VectorMath.GetVector(s.MedianPoint, p);
 
-				s.Rotate(VectorMath.GetAngle(startVect, endVect));
+				s.Rotate(VectorMath.GetAngle(startVect, endVect) * VectorMath.GetRotationDirection(startVect, endVect));
 			});
 
 			LastLocation = p;

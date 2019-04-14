@@ -20,7 +20,13 @@ namespace Draw.Utilities
 		/// <param name="vect1"></param>
 		/// <param name="vect2"></param>
 		/// <returns></returns>
-		public static float GetAngle(Vector2 vect1, Vector2 vect2) => (float) Math.Acos(Vector2.Dot(vect1, vect2) / (vect1.Length( ) * vect2.Length( )));
+		public static float GetAngle(Vector2 vect1, Vector2 vect2) => (float) Math.Acos(Vector2.Dot(vect1, vect2) / (vect1.LengthSquared( ) * vect2.LengthSquared( )));
+
+		public static float GetRotationDirection(Vector2 vect1, Vector2 vect2)
+		{
+			float rawData = Vector2.Dot(vect1, vect2);
+			return rawData < 0 ? -1 : 1;
+		}
 
 	}
 }
