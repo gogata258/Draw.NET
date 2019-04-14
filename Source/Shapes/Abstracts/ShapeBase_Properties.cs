@@ -20,8 +20,6 @@ namespace Draw.Shapes.Abstracts
 		private Color fillColor;
 		private int fillAlpha;
 
-		//TODO test export and import if properly handles colors
-		[JsonIgnore]
 		public Color BorderColor
 		{
 			get => borderColor;
@@ -29,7 +27,6 @@ namespace Draw.Shapes.Abstracts
 		}
 
 
-		[JsonIgnore]
 		public Color FillColor
 		{
 			get => fillColor;
