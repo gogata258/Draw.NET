@@ -23,6 +23,7 @@ This project is made for an assignmnt at the Plovdiv University as part of my en
 * Selection
 * Translation
 * Rotation
+* Scaling
 * Grouping
 * Ungrouping
 * Group Manipulation
@@ -42,8 +43,6 @@ This project is made for an assignmnt at the Plovdiv University as part of my en
 ## Work in progress
 
 ##### Editor features
-
-* Scaling
 
 ## Planned Features
 
