@@ -6,6 +6,7 @@ using System.Linq;
 namespace Draw.Shapes
 {
 	using Abstracts;
+	using System;
 
 	public class Group : ShapeBase
 	{
@@ -28,23 +29,46 @@ namespace Draw.Shapes
 		{
 			if (Shapes.Any( ))
 			{
-				float widthStart = Shapes.OrderBy( s => s.BorderBoundingBox.Left).First( ).BorderBoundingBox.Left;
-				float widthEnd = Shapes.OrderByDescending( s => s.BorderBoundingBox.Right).First( ).BorderBoundingBox.Right;
-				Height = ShapeBase.Length(widthStart, widthEnd);
-
-				float heightStart = Shapes.OrderBy( s => s.BorderBoundingBox.Top).First( ).BorderBoundingBox.Top;
-				float heightEnd = Shapes.OrderByDescending( s => s.BorderBoundingBox.Bottom).First( ).BorderBoundingBox.Bottom;
-				Width = ShapeBase.Length(heightStart, heightEnd);
-
 				LocationX = Shapes.Average(s => s.LocationX);
 				LocationY = Shapes.Average(s => s.LocationY);
+
+				float startX = Shapes.OrderBy(s => s.BoundingBox.X).First().BoundingBox.X;
+				float endX = Shapes.OrderByDescending(s => s.BoundingBox.Right).First().BoundingBox.Right;
+
+				float startY = Shapes.OrderBy(s => s.BoundingBox.Y).First().BoundingBox.Y;
+				float endY = Shapes.OrderByDescending(s => s.BoundingBox.Bottom).First().BoundingBox.Bottom;
+
+				ScaleX = Length(startX, endX);
+				ScaleY = Length(startY, endY);
 			}
 		}
 
+		/// <summary>
+		/// Gets the distance between two points
+		/// </summary>
+		/// <param name="point1"></param>
+		/// <param name="point2"></param>
+		/// <returns></returns>
+		public static float Length(float point1, float point2) => Math.Abs(point1) + Math.Abs(point2);
+
+		protected override List<PointF> GetNormalizedPoints() => new List<PointF>( )
+		{
+			new PointF(-0.5f, 0.5f),
+			new PointF(0.5f, 0.5f),
+			new PointF(0.5f, -0.5f),
+			new PointF(-0.5f, -0.5f)
+		};
+
 		public override void DrawSelf(Graphics grfx)
 		{
-			grfx.RotateTransform(Rotation);
+			PointF[] points = GetNormalizedPoints( ).ToArray( );
+			GetTransformationMatrix( ).TransformPoints(points);
+
+			if (BorderAlpha > 0)
+				grfx.DrawPolygon(new Pen(BorderColor, BorderThickness), points);
+
 			Shapes.ForEach(s => s.DrawSelf(grfx));
+
 			base.DrawSelf(grfx);
 		}
 
@@ -58,7 +82,7 @@ namespace Draw.Shapes
 		{
 			ShapeBase hitTarget = Shapes.FirstOrDefault(s => s.Contains(point) != null);
 			if (hitTarget is null)
-				hitTarget = BorderBoundingBox.Contains(point) ? this : null;
+				hitTarget = BoundingBox.Contains(point) ? this : null;
 			return hitTarget;
 		}
 	}

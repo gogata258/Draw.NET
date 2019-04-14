@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 
@@ -68,14 +69,6 @@ namespace Draw.Shapes.Abstracts
 		}
 
 		/// <summary>
-		/// Gets the distance between two points
-		/// </summary>
-		/// <param name="point1"></param>
-		/// <param name="point2"></param>
-		/// <returns></returns>
-		public static float Length(float point1, float point2) => Math.Abs(point1) + Math.Abs(point2);
-
-		/// <summary>
 		/// Translates the object
 		/// </summary>
 		/// <param name="distance"></param>
@@ -108,7 +101,7 @@ namespace Draw.Shapes.Abstracts
 		/// </summary>
 		/// <param name="point">point to check</param>
 		/// <returns></returns>
-		public virtual ShapeBase Contains(PointF point) => BorderBoundingBox.Contains(point.X, point.Y) ? this : null;
+		public virtual ShapeBase Contains(PointF point) => BoundingBox.Contains(point.X, point.Y) ? this : null;
 
 		/// <summary>
 		/// Virtual method for the drawiwng. Should always be overwritten
@@ -120,7 +113,7 @@ namespace Draw.Shapes.Abstracts
 		/// Get the transformation matrix from the current properties of the shape
 		/// </summary>
 		/// <returns>Matrix that applies all transformations</returns>
-		protected Matrix GetTransformationMatrix()
+		protected virtual Matrix GetTransformationMatrix()
 		{
 			var matrix = new Matrix();
 			matrix.RotateAt(Rotation, MedianPoint);
@@ -130,8 +123,14 @@ namespace Draw.Shapes.Abstracts
 		}
 
 		/// <summary>
-		/// Get the transformed points as there are before the shape is are draw on the screen
+		/// List of points that describe the shape. Should be overriden by any drawable shape
 		/// </summary>
+		/// <returns>List of points that describe the shape</returns>
+		protected virtual List<PointF> GetNormalizedPoints() => new List<PointF>( );
+
+		/// <summary>
+		/// Get the transformed points as there are before the shape is are draw on the screen
+		/// </summary>s
 		/// <returns></returns>
 		protected PointF[] GetTransformedPoints()
 		{
