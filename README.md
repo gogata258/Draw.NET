@@ -22,6 +22,7 @@ This project is made for an assignmnt at the Plovdiv University as part of my en
 
 * Selection
 * Translation
+* Rotation
 * Grouping
 * Ungrouping
 * Group Manipulation
@@ -42,7 +43,6 @@ This project is made for an assignmnt at the Plovdiv University as part of my en
 
 ##### Editor features
 
-* Rotation
 * Scaling
 
 ## Planned Features
@@ -52,8 +52,6 @@ This project is made for an assignmnt at the Plovdiv University as part of my en
 * Support Exporting and Importing as XML
 
 ##### Editor features
-
-* Dedicated button for deletion of objects (use delete key at present)
 
 ##### Misc
 
