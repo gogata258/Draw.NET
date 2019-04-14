@@ -5,8 +5,8 @@ using System.Linq;
 
 namespace Draw.Processors
 {
-	using Primitives;
-	using Primitives.Components;
+	using Shapes;
+	using Shapes.Abstracts;
 
 	public class DialogProcessor
 	{

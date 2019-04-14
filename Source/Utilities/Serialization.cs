@@ -7,8 +7,8 @@ using System.Reflection;
 
 namespace Draw.Utilities
 {
-	using Primitives;
-	using Primitives.Components;
+	using Shapes;
+	using Shapes.Abstracts;
 
 	public static class Serialization
 	{

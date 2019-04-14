@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Drawing.Drawing2D;
 
-namespace Draw.Primitives.Components
+namespace Draw.Shapes.Abstracts
 {
 	/// <summary>
 	/// All shapes derrive from Base Shape
@@ -120,7 +120,7 @@ namespace Draw.Primitives.Components
 		/// Get the transformation matrix from the current properties of the shape
 		/// </summary>
 		/// <returns>Matrix that applies all transformations</returns>
-		protected Matrix GetShapeTransformationMatrix()
+		protected Matrix GetTransformationMatrix()
 		{
 			var matrix = new Matrix();
 			matrix.RotateAt(Rotation, MedianPoint);
@@ -129,18 +129,15 @@ namespace Draw.Primitives.Components
 			return matrix;
 		}
 
-
 		/// <summary>
-		/// Get the transformation matrix from the border that will be applied to the shape
+		/// Get the transformed points as there are before the shape is are draw on the screen
 		/// </summary>
-		/// <returns>Matrix that is scaled so the border fits around the shape</returns>
-		protected Matrix GetBorderTransformationMatrix()
+		/// <returns></returns>
+		protected PointF[] GetTransformedPoints()
 		{
-			var matrix = new Matrix();
-			matrix.RotateAt(Rotation, MedianPoint);
-			matrix.Translate(LocationX, LocationY);
-			matrix.Scale(ScaleX, ScaleY);
-			return matrix;
+			PointF[] points = GetNormalizedPoints( ).ToArray( );
+			GetTransformationMatrix( ).TransformPoints(points);
+			return points;
 		}
 	}
 }

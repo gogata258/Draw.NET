@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 
-namespace Draw.Primitives.Components
+namespace Draw.Shapes.Abstracts
 {
 	public abstract partial class ShapeBase
 	{

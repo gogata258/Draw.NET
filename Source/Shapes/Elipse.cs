@@ -2,9 +2,9 @@
 using System.Drawing;
 using System.Drawing.Drawing2D;
 
-namespace Draw.Primitives
+namespace Draw.Shapes
 {
-	using Components;
+	using Abstracts;
 
 	public class Elipse : ShapeBase
 	{

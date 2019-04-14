@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 
-namespace Draw.Primitives
+namespace Draw.Shapes
 {
-	using Components;
+	using Abstracts;
 
 	public class Group : ShapeBase
 	{

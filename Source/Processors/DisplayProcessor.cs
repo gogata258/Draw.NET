@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Draw
 {
-	using Primitives.Components;
+	using Shapes.Abstracts;
 
 	public class DisplayProcessor
 	{

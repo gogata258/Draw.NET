@@ -78,13 +78,14 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Program.cs" />
-    <Compile Include="Primitives\Components\ShapeBase_Methods.cs" />
-    <Compile Include="Primitives\Elipse.cs" />
-    <Compile Include="Primitives\Empty.cs" />
-    <Compile Include="Primitives\Group.cs" />
-    <Compile Include="Primitives\Rectangle.cs" />
-    <Compile Include="Primitives\Components\ShapeBase_Properties.cs" />
-    <Compile Include="Primitives\Triangle.cs" />
+    <Compile Include="Shapes\Abstracts\PrimitiveBase.cs" />
+    <Compile Include="Shapes\Abstracts\ShapeBase_Methods.cs" />
+    <Compile Include="Shapes\Elipse.cs" />
+    <Compile Include="Shapes\Empty.cs" />
+    <Compile Include="Shapes\Group.cs" />
+    <Compile Include="Shapes\Rectangle.cs" />
+    <Compile Include="Shapes\Abstracts\ShapeBase_Properties.cs" />
+    <Compile Include="Shapes\Triangle.cs" />
     <Compile Include="Processors\DialogProcessor.cs" />
     <Compile Include="Processors\DisplayProcessor.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

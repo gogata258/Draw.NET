@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System.Drawing;
 
-namespace Draw.Primitives
+namespace Draw.Shapes
 {
-	using Components;
+	using Abstracts;
 
 	internal class Empty : ShapeBase
 	{

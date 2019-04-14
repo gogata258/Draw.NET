@@ -11,8 +11,8 @@ using System.Windows.Forms;
 
 namespace Draw.GUI
 {
-	using Primitives;
-	using Primitives.Components;
+	using Shapes;
+	using Shapes.Abstracts;
 	using Processors;
 	using Utilities;
 
