@@ -1,5 +1,4 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows;
 
 namespace Draw.Utilities
@@ -21,12 +20,5 @@ namespace Draw.Utilities
 		/// <param name="vect2"></param>
 		/// <returns></returns>
 		public static float GetAngle(Vector vect1, Vector vect2) => (float) Vector.AngleBetween(vect1, vect2);
-
-		public static float GetRotationDirection(Vector vect1, Vector vect2)
-		{
-			double rawData = Vector.CrossProduct(vect1, vect2); ;
-			return rawData < 0 ? -1 : 1;
-		}
-
 	}
 }
