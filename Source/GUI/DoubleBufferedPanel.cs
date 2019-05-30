@@ -5,9 +5,9 @@ namespace Draw
 {
 	public partial class DoubleBufferedPanel : UserControl
 	{
-		public DoubleBufferedPanel( ) => InitializeComponent( );
+		public DoubleBufferedPanel() => InitializeComponent( );
 
-		public void Invalidate( Action updateUIControls )
+		public void Invalidate(Action updateUIControls)
 		{
 			Invalidate( );
 			updateUIControls.Invoke( );

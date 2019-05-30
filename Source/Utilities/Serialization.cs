@@ -12,7 +12,7 @@ namespace Draw.Utilities
 
 	public static class Serialization
 	{
-		internal static List<ShapeBase> DeserializeShapes( List<JToken> list )
+		internal static List<ShapeBase> DeserializeShapes(List<JToken> list)
 		{
 			var shapes = new List<ShapeBase>( );
 			var temp = new Group("empty", new List<ShapeBase>());
@@ -30,20 +30,20 @@ namespace Draw.Utilities
 					var groupedShapes = new List<ShapeBase>();
 					if (foundTypeName == temp.GetType( ).Name && item[shapesKey].HasValues)
 					{
-						groupedShapes = DeserializeShapes( item[shapesKey].ToList( ) );
-						item.Remove( shapesKey );
+						groupedShapes = DeserializeShapes(item[shapesKey].ToList( ));
+						item.Remove(shapesKey);
 					}
 					object shape = JsonConvert.DeserializeObject(item.ToString(), type);
 					if (shape is Group g && groupedShapes.Any( ))
 						g.Shapes = groupedShapes;
-					if (shape != null) shapes.Add( (ShapeBase) shape );
+					if (shape != null) shapes.Add((ShapeBase) shape);
 				}
 			}
 
 			return shapes;
 		}
 
-		internal static string SerializeShapes( List<ShapeBase> shapes ) => JsonConvert.SerializeObject( shapes, Formatting.Indented );
+		internal static string SerializeShapes(List<ShapeBase> shapes) => JsonConvert.SerializeObject(shapes, Formatting.Indented);
 
 	}
 }

@@ -1,4 +1,7 @@
-﻿using System.Windows.Forms;
+﻿using System.Runtime.InteropServices;
+using System.Windows.Forms;
+
+[assembly: ComVisible(false)]
 
 namespace Draw.GUI.Components
 {
