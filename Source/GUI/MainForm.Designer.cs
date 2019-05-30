@@ -7,21 +7,6 @@
 		/// </summary>
 		private System.ComponentModel.IContainer components = null;
 
-		/// <summary>
-		/// Disposes resources used by the form.
-		/// </summary>
-		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-		protected override void Dispose( bool disposing )
-		{
-			if (disposing)
-			{
-				if (components != null)
-				{
-					components.Dispose( );
-				}
-			}
-			base.Dispose( disposing );
-		}
 
 		/// <summary>
 		/// This method is required for Windows Forms designer support.
@@ -42,19 +27,9 @@
 			this.helpSubMenu_ToolStrip_About = new System.Windows.Forms.ToolStripMenuItem();
 			this.currentStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.quickActionsMenu = new System.Windows.Forms.ToolStrip();
-			this.quickAction_Draw_Elipse = new System.Windows.Forms.ToolStripButton();
-			this.quickAction_Draw_Rect = new System.Windows.Forms.ToolStripButton();
-			this.quickAction_Draw_Triangle = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-			this.quickAction_Toggle_Select = new System.Windows.Forms.ToolStripButton();
-			this.quickAction_Toggle_Move = new System.Windows.Forms.ToolStripButton();
-			this.quickAction_Toggle_Rotate = new System.Windows.Forms.ToolStripButton();
-			this.quickAction_Toggle_Scale = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-			this.quickAction_Tool_Group = new System.Windows.Forms.ToolStripButton();
-			this.quickAction_Tool_UnGroup = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-			this.quickAction_Tool_Delete = new System.Windows.Forms.ToolStripButton();
 			this.propertiesSideWindow = new System.Windows.Forms.FlowLayoutPanel();
 			this.nameLayout = new System.Windows.Forms.FlowLayoutPanel();
 			this.nameLabel = new System.Windows.Forms.Label();
@@ -104,9 +79,20 @@
 			this.dialogSave = new System.Windows.Forms.SaveFileDialog();
 			this.dialogOpen = new System.Windows.Forms.OpenFileDialog();
 			this.dialogExport = new System.Windows.Forms.SaveFileDialog();
-			this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
 			this.dialogColorFill = new System.Windows.Forms.ColorDialog();
 			this.dialogColorBorder = new System.Windows.Forms.ColorDialog();
+			this.quickAction_Draw_Elipse = new System.Windows.Forms.ToolStripButton();
+			this.quickAction_Draw_Rect = new System.Windows.Forms.ToolStripButton();
+			this.quickAction_Draw_Triangle = new System.Windows.Forms.ToolStripButton();
+			this.quickAction_Draw_Envelope = new System.Windows.Forms.ToolStripButton();
+			this.quickAction_Toggle_Select = new System.Windows.Forms.ToolStripButton();
+			this.quickAction_Toggle_Move = new System.Windows.Forms.ToolStripButton();
+			this.quickAction_Toggle_Rotate = new System.Windows.Forms.ToolStripButton();
+			this.quickAction_Toggle_Scale = new System.Windows.Forms.ToolStripButton();
+			this.quickAction_Tool_Group = new System.Windows.Forms.ToolStripButton();
+			this.quickAction_Tool_UnGroup = new System.Windows.Forms.ToolStripButton();
+			this.quickAction_Tool_Delete = new System.Windows.Forms.ToolStripButton();
+			this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
 			this.mainMenu.SuspendLayout();
 			this.quickActionsMenu.SuspendLayout();
 			this.propertiesSideWindow.SuspendLayout();
@@ -219,6 +205,7 @@
             this.quickAction_Draw_Elipse,
             this.quickAction_Draw_Rect,
             this.quickAction_Draw_Triangle,
+            this.quickAction_Draw_Envelope,
             this.toolStripSeparator1,
             this.quickAction_Toggle_Select,
             this.quickAction_Toggle_Move,
@@ -235,138 +222,20 @@
 			this.quickActionsMenu.TabIndex = 3;
 			this.quickActionsMenu.Text = "toolStrip1";
 			// 
-			// quickAction_Draw_Elipse
-			// 
-			this.quickAction_Draw_Elipse.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.quickAction_Draw_Elipse.Image = global::Draw.Properties.Resources.Icon_Prim_Elipse;
-			this.quickAction_Draw_Elipse.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.quickAction_Draw_Elipse.Name = "quickAction_Draw_Elipse";
-			this.quickAction_Draw_Elipse.Size = new System.Drawing.Size(23, 22);
-			this.quickAction_Draw_Elipse.Text = "DrawElipse";
-			this.quickAction_Draw_Elipse.ToolTipText = "Draw new elipse";
-			this.quickAction_Draw_Elipse.Click += new System.EventHandler(this.SpeedButton_Draw_Elipse_Click);
-			// 
-			// quickAction_Draw_Rect
-			// 
-			this.quickAction_Draw_Rect.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.quickAction_Draw_Rect.Image = global::Draw.Properties.Resources.Icon_Prim_Rectangle;
-			this.quickAction_Draw_Rect.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.quickAction_Draw_Rect.Name = "quickAction_Draw_Rect";
-			this.quickAction_Draw_Rect.Size = new System.Drawing.Size(23, 22);
-			this.quickAction_Draw_Rect.Text = "DrawRectangle";
-			this.quickAction_Draw_Rect.ToolTipText = "Draw new rectangle";
-			this.quickAction_Draw_Rect.Click += new System.EventHandler(this.SpeedButton_Draw_Rectangle_Click);
-			// 
-			// quickAction_Draw_Triangle
-			// 
-			this.quickAction_Draw_Triangle.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.quickAction_Draw_Triangle.Image = global::Draw.Properties.Resources.Icon_Prim_Triangle;
-			this.quickAction_Draw_Triangle.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.quickAction_Draw_Triangle.Name = "quickAction_Draw_Triangle";
-			this.quickAction_Draw_Triangle.Size = new System.Drawing.Size(23, 22);
-			this.quickAction_Draw_Triangle.Text = "DrawTriangle";
-			this.quickAction_Draw_Triangle.ToolTipText = "Draw new triangle";
-			this.quickAction_Draw_Triangle.Click += new System.EventHandler(this.SpeedButton_Draw_Triangle_Click);
-			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
 			this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-			// 
-			// quickAction_Toggle_Select
-			// 
-			this.quickAction_Toggle_Select.CheckOnClick = true;
-			this.quickAction_Toggle_Select.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.quickAction_Toggle_Select.Image = global::Draw.Properties.Resources.Icon_Tool_Select;
-			this.quickAction_Toggle_Select.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.quickAction_Toggle_Select.Name = "quickAction_Toggle_Select";
-			this.quickAction_Toggle_Select.Size = new System.Drawing.Size(23, 22);
-			this.quickAction_Toggle_Select.Text = "SelectTool";
-			this.quickAction_Toggle_Select.ToolTipText = "Select items";
-			this.quickAction_Toggle_Select.CheckedChanged += new System.EventHandler(this.SpeedButton_Toggleable_Select_CheckChanged);
-			this.quickAction_Toggle_Select.Click += new System.EventHandler(this.SpeedButton_Toggleable_Clicked);
-			// 
-			// quickAction_Toggle_Move
-			// 
-			this.quickAction_Toggle_Move.CheckOnClick = true;
-			this.quickAction_Toggle_Move.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.quickAction_Toggle_Move.Image = global::Draw.Properties.Resources.Icon_Tool_Move;
-			this.quickAction_Toggle_Move.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.quickAction_Toggle_Move.Name = "quickAction_Toggle_Move";
-			this.quickAction_Toggle_Move.Size = new System.Drawing.Size(23, 22);
-			this.quickAction_Toggle_Move.Text = "MoveTool";
-			this.quickAction_Toggle_Move.ToolTipText = "Move selected items";
-			this.quickAction_Toggle_Move.CheckedChanged += new System.EventHandler(this.SpeedButton_Toggleable_Move_CheckChanged);
-			this.quickAction_Toggle_Move.Click += new System.EventHandler(this.SpeedButton_Toggleable_Clicked);
-			// 
-			// quickAction_Toggle_Rotate
-			// 
-			this.quickAction_Toggle_Rotate.CheckOnClick = true;
-			this.quickAction_Toggle_Rotate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.quickAction_Toggle_Rotate.Image = global::Draw.Properties.Resources.Icon_Tool_Rotate;
-			this.quickAction_Toggle_Rotate.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.quickAction_Toggle_Rotate.Name = "quickAction_Toggle_Rotate";
-			this.quickAction_Toggle_Rotate.Size = new System.Drawing.Size(23, 22);
-			this.quickAction_Toggle_Rotate.Text = "SelectTool";
-			this.quickAction_Toggle_Rotate.ToolTipText = "Rotate selected Items";
-			this.quickAction_Toggle_Rotate.CheckedChanged += new System.EventHandler(this.SpeedButton_Toggleable_Rotate_CheckChanged);
-			this.quickAction_Toggle_Rotate.Click += new System.EventHandler(this.SpeedButton_Toggleable_Clicked);
-			// 
-			// quickAction_Toggle_Scale
-			// 
-			this.quickAction_Toggle_Scale.CheckOnClick = true;
-			this.quickAction_Toggle_Scale.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.quickAction_Toggle_Scale.Image = global::Draw.Properties.Resources.Icon_Tool_Scale;
-			this.quickAction_Toggle_Scale.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.quickAction_Toggle_Scale.Name = "quickAction_Toggle_Scale";
-			this.quickAction_Toggle_Scale.Size = new System.Drawing.Size(23, 22);
-			this.quickAction_Toggle_Scale.Text = "SelectTool";
-			this.quickAction_Toggle_Scale.ToolTipText = "Scale selected Items";
-			this.quickAction_Toggle_Scale.CheckedChanged += new System.EventHandler(this.SpeedButton_Toggleable_Scale_CheckChanged);
-			this.quickAction_Toggle_Scale.Click += new System.EventHandler(this.SpeedButton_Toggleable_Clicked);
 			// 
 			// toolStripSeparator2
 			// 
 			this.toolStripSeparator2.Name = "toolStripSeparator2";
 			this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
 			// 
-			// quickAction_Tool_Group
-			// 
-			this.quickAction_Tool_Group.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.quickAction_Tool_Group.Image = global::Draw.Properties.Resources.Icon_Tool_Group;
-			this.quickAction_Tool_Group.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.quickAction_Tool_Group.Name = "quickAction_Tool_Group";
-			this.quickAction_Tool_Group.Size = new System.Drawing.Size(23, 22);
-			this.quickAction_Tool_Group.Text = "Group Selected";
-			this.quickAction_Tool_Group.ToolTipText = "Group selected items";
-			this.quickAction_Tool_Group.Click += new System.EventHandler(this.SpeedButton_Group_Click);
-			// 
-			// quickAction_Tool_UnGroup
-			// 
-			this.quickAction_Tool_UnGroup.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.quickAction_Tool_UnGroup.Image = global::Draw.Properties.Resources.Icon_Tool_Ungroup;
-			this.quickAction_Tool_UnGroup.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.quickAction_Tool_UnGroup.Name = "quickAction_Tool_UnGroup";
-			this.quickAction_Tool_UnGroup.Size = new System.Drawing.Size(23, 22);
-			this.quickAction_Tool_UnGroup.Text = "Ungroup Selected";
-			this.quickAction_Tool_UnGroup.ToolTipText = "Ungroup selected groups";
-			this.quickAction_Tool_UnGroup.Click += new System.EventHandler(this.SpeedButton_UnGroup_Click);
-			// 
 			// toolStripSeparator3
 			// 
 			this.toolStripSeparator3.Name = "toolStripSeparator3";
 			this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
-			// 
-			// quickAction_Tool_Delete
-			// 
-			this.quickAction_Tool_Delete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.quickAction_Tool_Delete.Image = global::Draw.Properties.Resources.Icon_Tool_Delete;
-			this.quickAction_Tool_Delete.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.quickAction_Tool_Delete.Name = "quickAction_Tool_Delete";
-			this.quickAction_Tool_Delete.Size = new System.Drawing.Size(23, 22);
-			this.quickAction_Tool_Delete.Text = "Group Selected";
-			this.quickAction_Tool_Delete.ToolTipText = "Delete selected Items";
-			this.quickAction_Tool_Delete.Click += new System.EventHandler(this.SpeedButton_Delete_Clicked);
 			// 
 			// propertiesSideWindow
 			// 
@@ -947,6 +816,143 @@
 			this.dialogExport.DefaultExt = "png";
 			this.dialogExport.Filter = "PNG|*.png";
 			// 
+			// dialogColorFill
+			// 
+			this.dialogColorFill.AnyColor = true;
+			// 
+			// dialogColorBorder
+			// 
+			this.dialogColorBorder.AnyColor = true;
+			// 
+			// quickAction_Draw_Elipse
+			// 
+			this.quickAction_Draw_Elipse.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.quickAction_Draw_Elipse.Image = global::Draw.Properties.Resources.Icon_Prim_Elipse;
+			this.quickAction_Draw_Elipse.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.quickAction_Draw_Elipse.Name = "quickAction_Draw_Elipse";
+			this.quickAction_Draw_Elipse.Size = new System.Drawing.Size(23, 22);
+			this.quickAction_Draw_Elipse.Text = "DrawElipse";
+			this.quickAction_Draw_Elipse.ToolTipText = "Draw new elipse";
+			this.quickAction_Draw_Elipse.Click += new System.EventHandler(this.SpeedButton_Draw_Elipse_Click);
+			// 
+			// quickAction_Draw_Rect
+			// 
+			this.quickAction_Draw_Rect.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.quickAction_Draw_Rect.Image = global::Draw.Properties.Resources.Icon_Prim_Rectangle;
+			this.quickAction_Draw_Rect.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.quickAction_Draw_Rect.Name = "quickAction_Draw_Rect";
+			this.quickAction_Draw_Rect.Size = new System.Drawing.Size(23, 22);
+			this.quickAction_Draw_Rect.Text = "DrawRectangle";
+			this.quickAction_Draw_Rect.ToolTipText = "Draw new rectangle";
+			this.quickAction_Draw_Rect.Click += new System.EventHandler(this.SpeedButton_Draw_Rectangle_Click);
+			// 
+			// quickAction_Draw_Triangle
+			// 
+			this.quickAction_Draw_Triangle.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.quickAction_Draw_Triangle.Image = global::Draw.Properties.Resources.Icon_Prim_Triangle;
+			this.quickAction_Draw_Triangle.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.quickAction_Draw_Triangle.Name = "quickAction_Draw_Triangle";
+			this.quickAction_Draw_Triangle.Size = new System.Drawing.Size(23, 22);
+			this.quickAction_Draw_Triangle.Text = "DrawTriangle";
+			this.quickAction_Draw_Triangle.ToolTipText = "Draw new triangle";
+			this.quickAction_Draw_Triangle.Click += new System.EventHandler(this.SpeedButton_Draw_Triangle_Click);
+			// 
+			// quickAction_Draw_Envelope
+			// 
+			this.quickAction_Draw_Envelope.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.quickAction_Draw_Envelope.Image = global::Draw.Properties.Resources.Icon_Prim_Unknown;
+			this.quickAction_Draw_Envelope.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.quickAction_Draw_Envelope.Name = "quickAction_Draw_Envelope";
+			this.quickAction_Draw_Envelope.Size = new System.Drawing.Size(23, 22);
+			this.quickAction_Draw_Envelope.Text = "DrawTriangle";
+			this.quickAction_Draw_Envelope.ToolTipText = "Draw new envelope";
+			this.quickAction_Draw_Envelope.Click += new System.EventHandler(this.SpeedButton_Draw_Envelope_Click);
+			// 
+			// quickAction_Toggle_Select
+			// 
+			this.quickAction_Toggle_Select.CheckOnClick = true;
+			this.quickAction_Toggle_Select.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.quickAction_Toggle_Select.Image = global::Draw.Properties.Resources.Icon_Tool_Select;
+			this.quickAction_Toggle_Select.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.quickAction_Toggle_Select.Name = "quickAction_Toggle_Select";
+			this.quickAction_Toggle_Select.Size = new System.Drawing.Size(23, 22);
+			this.quickAction_Toggle_Select.Text = "SelectTool";
+			this.quickAction_Toggle_Select.ToolTipText = "Select items";
+			this.quickAction_Toggle_Select.CheckedChanged += new System.EventHandler(this.SpeedButton_Toggleable_Select_CheckChanged);
+			this.quickAction_Toggle_Select.Click += new System.EventHandler(this.SpeedButton_Toggleable_Clicked);
+			// 
+			// quickAction_Toggle_Move
+			// 
+			this.quickAction_Toggle_Move.CheckOnClick = true;
+			this.quickAction_Toggle_Move.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.quickAction_Toggle_Move.Image = global::Draw.Properties.Resources.Icon_Tool_Move;
+			this.quickAction_Toggle_Move.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.quickAction_Toggle_Move.Name = "quickAction_Toggle_Move";
+			this.quickAction_Toggle_Move.Size = new System.Drawing.Size(23, 22);
+			this.quickAction_Toggle_Move.Text = "MoveTool";
+			this.quickAction_Toggle_Move.ToolTipText = "Move selected items";
+			this.quickAction_Toggle_Move.CheckedChanged += new System.EventHandler(this.SpeedButton_Toggleable_Move_CheckChanged);
+			this.quickAction_Toggle_Move.Click += new System.EventHandler(this.SpeedButton_Toggleable_Clicked);
+			// 
+			// quickAction_Toggle_Rotate
+			// 
+			this.quickAction_Toggle_Rotate.CheckOnClick = true;
+			this.quickAction_Toggle_Rotate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.quickAction_Toggle_Rotate.Image = global::Draw.Properties.Resources.Icon_Tool_Rotate;
+			this.quickAction_Toggle_Rotate.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.quickAction_Toggle_Rotate.Name = "quickAction_Toggle_Rotate";
+			this.quickAction_Toggle_Rotate.Size = new System.Drawing.Size(23, 22);
+			this.quickAction_Toggle_Rotate.Text = "SelectTool";
+			this.quickAction_Toggle_Rotate.ToolTipText = "Rotate selected Items";
+			this.quickAction_Toggle_Rotate.CheckedChanged += new System.EventHandler(this.SpeedButton_Toggleable_Rotate_CheckChanged);
+			this.quickAction_Toggle_Rotate.Click += new System.EventHandler(this.SpeedButton_Toggleable_Clicked);
+			// 
+			// quickAction_Toggle_Scale
+			// 
+			this.quickAction_Toggle_Scale.CheckOnClick = true;
+			this.quickAction_Toggle_Scale.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.quickAction_Toggle_Scale.Image = global::Draw.Properties.Resources.Icon_Tool_Scale;
+			this.quickAction_Toggle_Scale.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.quickAction_Toggle_Scale.Name = "quickAction_Toggle_Scale";
+			this.quickAction_Toggle_Scale.Size = new System.Drawing.Size(23, 22);
+			this.quickAction_Toggle_Scale.Text = "SelectTool";
+			this.quickAction_Toggle_Scale.ToolTipText = "Scale selected Items";
+			this.quickAction_Toggle_Scale.CheckedChanged += new System.EventHandler(this.SpeedButton_Toggleable_Scale_CheckChanged);
+			this.quickAction_Toggle_Scale.Click += new System.EventHandler(this.SpeedButton_Toggleable_Clicked);
+			// 
+			// quickAction_Tool_Group
+			// 
+			this.quickAction_Tool_Group.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.quickAction_Tool_Group.Image = global::Draw.Properties.Resources.Icon_Tool_Group;
+			this.quickAction_Tool_Group.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.quickAction_Tool_Group.Name = "quickAction_Tool_Group";
+			this.quickAction_Tool_Group.Size = new System.Drawing.Size(23, 22);
+			this.quickAction_Tool_Group.Text = "Group Selected";
+			this.quickAction_Tool_Group.ToolTipText = "Group selected items";
+			this.quickAction_Tool_Group.Click += new System.EventHandler(this.SpeedButton_Group_Click);
+			// 
+			// quickAction_Tool_UnGroup
+			// 
+			this.quickAction_Tool_UnGroup.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.quickAction_Tool_UnGroup.Image = global::Draw.Properties.Resources.Icon_Tool_Ungroup;
+			this.quickAction_Tool_UnGroup.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.quickAction_Tool_UnGroup.Name = "quickAction_Tool_UnGroup";
+			this.quickAction_Tool_UnGroup.Size = new System.Drawing.Size(23, 22);
+			this.quickAction_Tool_UnGroup.Text = "Ungroup Selected";
+			this.quickAction_Tool_UnGroup.ToolTipText = "Ungroup selected groups";
+			this.quickAction_Tool_UnGroup.Click += new System.EventHandler(this.SpeedButton_UnGroup_Click);
+			// 
+			// quickAction_Tool_Delete
+			// 
+			this.quickAction_Tool_Delete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.quickAction_Tool_Delete.Image = global::Draw.Properties.Resources.Icon_Tool_Delete;
+			this.quickAction_Tool_Delete.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.quickAction_Tool_Delete.Name = "quickAction_Tool_Delete";
+			this.quickAction_Tool_Delete.Size = new System.Drawing.Size(23, 22);
+			this.quickAction_Tool_Delete.Text = "Group Selected";
+			this.quickAction_Tool_Delete.ToolTipText = "Delete selected Items";
+			this.quickAction_Tool_Delete.Click += new System.EventHandler(this.SpeedButton_Delete_Clicked);
+			// 
 			// toolStripButton1
 			// 
 			this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -955,14 +961,6 @@
 			this.toolStripButton1.Name = "toolStripButton1";
 			this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
 			this.toolStripButton1.Text = "toolStripButton1";
-			// 
-			// dialogColorFill
-			// 
-			this.dialogColorFill.AnyColor = true;
-			// 
-			// dialogColorBorder
-			// 
-			this.dialogColorBorder.AnyColor = true;
 			// 
 			// MainForm
 			// 
@@ -1105,5 +1103,6 @@
 		private System.Windows.Forms.FlowLayoutPanel borderAlphaLayout;
 		private System.Windows.Forms.Label borderAlphaLabel;
 		private System.Windows.Forms.TextBox borderAlphaTextbox;
+		private System.Windows.Forms.ToolStripButton quickAction_Draw_Envelope;
 	}
 }

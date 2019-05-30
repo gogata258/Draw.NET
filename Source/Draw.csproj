@@ -83,8 +83,12 @@
     <Compile Include="Shapes\Abstracts\ClosedCurveBase.cs" />
     <Compile Include="Shapes\Abstracts\PrimitiveBase.cs" />
     <Compile Include="Shapes\Abstracts\ShapeBase_Methods.cs" />
+    <Compile Include="Shapes\Envelope.cs" />
     <Compile Include="Shapes\Elipse.cs" />
     <Compile Include="Shapes\Empty.cs" />
+    <Compile Include="Shapes\EnvelopeComponents\LeftBody.cs" />
+    <Compile Include="Shapes\EnvelopeComponents\RightBody.cs" />
+    <Compile Include="Shapes\EnvelopeComponents\UpperTriangle.cs" />
     <Compile Include="Shapes\Group.cs" />
     <Compile Include="Shapes\Rectangle.cs" />
     <Compile Include="Shapes\Abstracts\ShapeBase_Properties.cs" />
@@ -174,5 +178,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Icon_Tool_Scale.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Icon_Prim_Unknown.png" />
   </ItemGroup>
 </Project>

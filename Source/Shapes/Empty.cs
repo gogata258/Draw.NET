@@ -7,10 +7,10 @@ namespace Draw.Shapes
 
 	internal class Empty : ShapeBase
 	{
-		[JsonConstructor] private Empty( ) { }
-		public Empty( string name ) : base( name, typeof( Empty ).Name ) { }
+		[JsonConstructor] private Empty() { }
+		public Empty(string name) : base(name, typeof(Empty).Name) { }
 
-		public override void DrawSelf( Graphics grfx )
+		public override void DrawSelf(Graphics grfx)
 		{
 			return;
 		}

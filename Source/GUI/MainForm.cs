@@ -291,6 +291,11 @@ namespace Draw.GUI
 			DrawShape_Finalize( );
 		}
 
+		private void SpeedButton_Draw_Envelope_Click(object sender, EventArgs e)
+		{
+			dialogProcessor.AddShape<Envelope>(GetViewportWidth( ), GetViewportHeight( ));
+			DrawShape_Finalize( );
+		}
 
 		private void SpeedButton_Draw_Triangle_Click(object sender, EventArgs e)
 		{
@@ -416,6 +421,21 @@ namespace Draw.GUI
 		{
 			if (e.KeyCode == Keys.ShiftKey) dialogProcessor.IsMultiSelecting = false;
 			else if (e.KeyCode == Keys.Delete) DeleteSelection( );
+		}
+		#endregion
+
+		#region Overrides
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing)
+			{
+				timer.Dispose( );
+				if (components != null)
+				{
+					components.Dispose( );
+				}
+			}
+			base.Dispose(disposing);
 		}
 		#endregion
 

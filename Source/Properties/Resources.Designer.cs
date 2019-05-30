@@ -93,6 +93,16 @@ namespace Draw.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Icon_Prim_Unknown {
+            get {
+                object obj = ResourceManager.GetObject("Icon_Prim_Unknown", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Icon_Tool_Delete {
             get {
                 object obj = ResourceManager.GetObject("Icon_Tool_Delete", resourceCulture);

@@ -75,8 +75,8 @@ namespace Draw.Shapes.Abstracts
 		/// <param name="distance"></param>
 		public virtual void Translate(Vector vect)
 		{
-			LocationX -= (float)vect.X;
-			LocationY -= (float)vect.Y;
+			LocationX -= (float) vect.X;
+			LocationY -= (float) vect.Y;
 		}
 
 		/// <summary>
@@ -91,8 +91,8 @@ namespace Draw.Shapes.Abstracts
 		/// <param name="size">the delta dimetions of scaling</param>
 		public virtual void Scale(Vector size)
 		{
-			ScaleX += (float)size.X;
-			ScaleY += (float)size.Y;
+			ScaleX += (float) size.X;
+			ScaleY += (float) size.Y;
 		}
 
 		/// <summary>
@@ -107,6 +107,13 @@ namespace Draw.Shapes.Abstracts
 		/// </summary>
 		/// <param name="grfx">The graphics which to use to draw the shape</param>
 		public virtual void DrawSelf(Graphics grfx) => grfx.ResetTransform( );
+
+		/// <summary>
+		/// Virtual method for the drawiwng. Should always be overwritten
+		/// </summary>
+		/// <param name="grfx">The graphics which to use to draw the shape</param>
+		/// <param name="transformationMatrix">Transformation to be used instead of the internal one</param>
+		public virtual void DrawSelf(Graphics grfx, Matrix transformationMatrix) => grfx.ResetTransform( );
 
 		/// <summary>
 		/// Get the transformation matrix from the current properties of the shape
@@ -125,7 +132,7 @@ namespace Draw.Shapes.Abstracts
 		/// List of points that describe the shape. Should be overriden by any drawable shape
 		/// </summary>
 		/// <returns>List of points that describe the shape</returns>
-		protected virtual List<PointF> GetNormalizedPoints() => new List<PointF>( );
+		public virtual List<PointF> GetNormalizedPoints() => new List<PointF>( );
 
 		/// <summary>
 		/// Get the transformed points as there are before the shape is are draw on the screen

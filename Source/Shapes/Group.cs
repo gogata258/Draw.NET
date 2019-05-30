@@ -52,7 +52,7 @@ namespace Draw.Shapes
 		/// <returns></returns>
 		public static float Length(float point1, float point2) => Math.Abs(point1) + Math.Abs(point2);
 
-		protected override List<PointF> GetNormalizedPoints() => new List<PointF>( )
+		public override List<PointF> GetNormalizedPoints() => new List<PointF>( )
 		{
 			new PointF(-0.5f, 0.5f),
 			new PointF(0.5f, 0.5f),
