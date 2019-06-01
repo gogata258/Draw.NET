@@ -1,4 +1,4 @@
-﻿namespace Draw.GUI
+﻿namespace PaintNET.GUI
 {
 	partial class MainForm
 	{
@@ -75,7 +75,7 @@
 			this.hierarchyListbox = new System.Windows.Forms.ListBox();
 			this.rootContainer = new System.Windows.Forms.SplitContainer();
 			this.ControlsContainer = new System.Windows.Forms.SplitContainer();
-			this.viewPort = new Draw.DoubleBufferedPanel();
+			this.viewPort = new PaintNET.DoubleBufferedPanel();
 			this.dialogSave = new System.Windows.Forms.SaveFileDialog();
 			this.dialogOpen = new System.Windows.Forms.OpenFileDialog();
 			this.dialogExport = new System.Windows.Forms.SaveFileDialog();
@@ -827,7 +827,7 @@
 			// quickAction_Draw_Elipse
 			// 
 			this.quickAction_Draw_Elipse.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.quickAction_Draw_Elipse.Image = global::Draw.Properties.Resources.Icon_Prim_Elipse;
+			this.quickAction_Draw_Elipse.Image = global::PaintNET.Properties.Resources.Icon_Prim_Elipse;
 			this.quickAction_Draw_Elipse.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.quickAction_Draw_Elipse.Name = "quickAction_Draw_Elipse";
 			this.quickAction_Draw_Elipse.Size = new System.Drawing.Size(23, 22);
@@ -838,7 +838,7 @@
 			// quickAction_Draw_Rect
 			// 
 			this.quickAction_Draw_Rect.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.quickAction_Draw_Rect.Image = global::Draw.Properties.Resources.Icon_Prim_Rectangle;
+			this.quickAction_Draw_Rect.Image = global::PaintNET.Properties.Resources.Icon_Prim_Rectangle;
 			this.quickAction_Draw_Rect.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.quickAction_Draw_Rect.Name = "quickAction_Draw_Rect";
 			this.quickAction_Draw_Rect.Size = new System.Drawing.Size(23, 22);
@@ -849,7 +849,7 @@
 			// quickAction_Draw_Triangle
 			// 
 			this.quickAction_Draw_Triangle.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.quickAction_Draw_Triangle.Image = global::Draw.Properties.Resources.Icon_Prim_Triangle;
+			this.quickAction_Draw_Triangle.Image = global::PaintNET.Properties.Resources.Icon_Prim_Triangle;
 			this.quickAction_Draw_Triangle.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.quickAction_Draw_Triangle.Name = "quickAction_Draw_Triangle";
 			this.quickAction_Draw_Triangle.Size = new System.Drawing.Size(23, 22);
@@ -860,7 +860,7 @@
 			// quickAction_Draw_Envelope
 			// 
 			this.quickAction_Draw_Envelope.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.quickAction_Draw_Envelope.Image = global::Draw.Properties.Resources.Icon_Prim_Unknown;
+			this.quickAction_Draw_Envelope.Image = global::PaintNET.Properties.Resources.Icon_Prim_Unknown;
 			this.quickAction_Draw_Envelope.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.quickAction_Draw_Envelope.Name = "quickAction_Draw_Envelope";
 			this.quickAction_Draw_Envelope.Size = new System.Drawing.Size(23, 22);
@@ -872,7 +872,7 @@
 			// 
 			this.quickAction_Toggle_Select.CheckOnClick = true;
 			this.quickAction_Toggle_Select.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.quickAction_Toggle_Select.Image = global::Draw.Properties.Resources.Icon_Tool_Select;
+			this.quickAction_Toggle_Select.Image = global::PaintNET.Properties.Resources.Icon_Tool_Select;
 			this.quickAction_Toggle_Select.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.quickAction_Toggle_Select.Name = "quickAction_Toggle_Select";
 			this.quickAction_Toggle_Select.Size = new System.Drawing.Size(23, 22);
@@ -885,7 +885,7 @@
 			// 
 			this.quickAction_Toggle_Move.CheckOnClick = true;
 			this.quickAction_Toggle_Move.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.quickAction_Toggle_Move.Image = global::Draw.Properties.Resources.Icon_Tool_Move;
+			this.quickAction_Toggle_Move.Image = global::PaintNET.Properties.Resources.Icon_Tool_Move;
 			this.quickAction_Toggle_Move.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.quickAction_Toggle_Move.Name = "quickAction_Toggle_Move";
 			this.quickAction_Toggle_Move.Size = new System.Drawing.Size(23, 22);
@@ -898,7 +898,7 @@
 			// 
 			this.quickAction_Toggle_Rotate.CheckOnClick = true;
 			this.quickAction_Toggle_Rotate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.quickAction_Toggle_Rotate.Image = global::Draw.Properties.Resources.Icon_Tool_Rotate;
+			this.quickAction_Toggle_Rotate.Image = global::PaintNET.Properties.Resources.Icon_Tool_Rotate;
 			this.quickAction_Toggle_Rotate.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.quickAction_Toggle_Rotate.Name = "quickAction_Toggle_Rotate";
 			this.quickAction_Toggle_Rotate.Size = new System.Drawing.Size(23, 22);
@@ -911,7 +911,7 @@
 			// 
 			this.quickAction_Toggle_Scale.CheckOnClick = true;
 			this.quickAction_Toggle_Scale.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.quickAction_Toggle_Scale.Image = global::Draw.Properties.Resources.Icon_Tool_Scale;
+			this.quickAction_Toggle_Scale.Image = global::PaintNET.Properties.Resources.Icon_Tool_Scale;
 			this.quickAction_Toggle_Scale.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.quickAction_Toggle_Scale.Name = "quickAction_Toggle_Scale";
 			this.quickAction_Toggle_Scale.Size = new System.Drawing.Size(23, 22);
@@ -923,7 +923,7 @@
 			// quickAction_Tool_Group
 			// 
 			this.quickAction_Tool_Group.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.quickAction_Tool_Group.Image = global::Draw.Properties.Resources.Icon_Tool_Group;
+			this.quickAction_Tool_Group.Image = global::PaintNET.Properties.Resources.Icon_Tool_Group;
 			this.quickAction_Tool_Group.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.quickAction_Tool_Group.Name = "quickAction_Tool_Group";
 			this.quickAction_Tool_Group.Size = new System.Drawing.Size(23, 22);
@@ -934,7 +934,7 @@
 			// quickAction_Tool_UnGroup
 			// 
 			this.quickAction_Tool_UnGroup.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.quickAction_Tool_UnGroup.Image = global::Draw.Properties.Resources.Icon_Tool_Ungroup;
+			this.quickAction_Tool_UnGroup.Image = global::PaintNET.Properties.Resources.Icon_Tool_Ungroup;
 			this.quickAction_Tool_UnGroup.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.quickAction_Tool_UnGroup.Name = "quickAction_Tool_UnGroup";
 			this.quickAction_Tool_UnGroup.Size = new System.Drawing.Size(23, 22);
@@ -945,7 +945,7 @@
 			// quickAction_Tool_Delete
 			// 
 			this.quickAction_Tool_Delete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.quickAction_Tool_Delete.Image = global::Draw.Properties.Resources.Icon_Tool_Delete;
+			this.quickAction_Tool_Delete.Image = global::PaintNET.Properties.Resources.Icon_Tool_Delete;
 			this.quickAction_Tool_Delete.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.quickAction_Tool_Delete.Name = "quickAction_Tool_Delete";
 			this.quickAction_Tool_Delete.Size = new System.Drawing.Size(23, 22);
@@ -1028,7 +1028,7 @@
 		}
 
 		private System.Windows.Forms.ToolStripStatusLabel currentStatusLabel;
-		private Draw.DoubleBufferedPanel viewPort;
+		private PaintNET.DoubleBufferedPanel viewPort;
 		private System.Windows.Forms.ToolStripButton quickAction_Toggle_Select;
 		private System.Windows.Forms.ToolStripButton quickAction_Draw_Rect;
 		private System.Windows.Forms.ToolStripMenuItem helpSubMenu_ToolStrip_About;

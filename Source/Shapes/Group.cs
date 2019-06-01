@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 
-namespace Draw.Shapes
+namespace PaintNET.Shapes
 {
 	using Abstracts;
 	using System;

@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 [assembly: ComVisible(false)]
 
-namespace Draw.GUI.Components
+namespace PaintNET.GUI.Components
 {
 	public class CustomBinding : Binding
 	{

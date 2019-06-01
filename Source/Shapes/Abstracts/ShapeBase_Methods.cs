@@ -1,10 +1,12 @@
-﻿using System;
+﻿using PaintNET.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Linq;
 using System.Windows;
 
-namespace Draw.Shapes.Abstracts
+namespace PaintNET.Shapes.Abstracts
 {
 	/// <summary>
 	/// All shapes derrive from Base Shape
@@ -100,7 +102,24 @@ namespace Draw.Shapes.Abstracts
 		/// </summary>
 		/// <param name="point">point to check</param>
 		/// <returns></returns>
-		public virtual ShapeBase Contains(PointF point) => BoundingBox.Contains(point.X, point.Y) ? this : null;
+		public virtual ShapeBase Contains(PointF point)
+		{
+			const int offest = 5;
+			PointF[] actualPoints = GetTransformedPoints( );
+			var pointProjection = new PointF(point.X+ scaleX+offest, point.Y);
+
+			if (actualPoints.Any(p => p == point)) return this;
+			else
+			{
+				int intersections = 0;
+				for (int i = 0; i < actualPoints.Length - 1; i++)
+					if (VectorMath.GetIntersectionWithLine(actualPoints[i], actualPoints[i + 1], point, pointProjection))
+						intersections++;
+				if (VectorMath.GetIntersectionWithLine(actualPoints[actualPoints.Length - 1], actualPoints[0], point, pointProjection))
+					intersections++;
+				return intersections % 2 == 0 ? (this) : null;
+			}
+		}
 
 		/// <summary>
 		/// Virtual method for the drawiwng. Should always be overwritten

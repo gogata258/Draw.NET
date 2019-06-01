@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Drawing;
 
-namespace Draw.Shapes
+namespace PaintNET.Shapes
 {
 	using Abstracts;
 	using System.Collections.Generic;

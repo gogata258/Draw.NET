@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 
-namespace Draw.Shapes.EnvelopeComponents
+namespace PaintNET.Shapes.EnvelopeComponents
 {
 	using Shapes.Abstracts;
 

@@ -9,7 +9,7 @@ using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace Draw.GUI
+namespace PaintNET.GUI
 {
 	using Processors;
 	using Shapes;

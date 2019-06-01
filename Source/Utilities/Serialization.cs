@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Draw.Utilities
+namespace PaintNET.Utilities
 {
 	using Shapes;
 	using Shapes.Abstracts;

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Draw.Properties {
+namespace PaintNET.Properties {
     using System;
     
     

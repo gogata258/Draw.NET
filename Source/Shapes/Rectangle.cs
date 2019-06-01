@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 
-namespace Draw.Shapes
+namespace PaintNET.Shapes
 {
 	using Abstracts;
 
@@ -21,4 +21,3 @@ namespace Draw.Shapes
 		};
 	}
 }
-d

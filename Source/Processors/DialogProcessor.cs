@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows;
 
-namespace Draw.Processors
+namespace PaintNET.Processors
 {
 	using Shapes;
 	using Shapes.Abstracts;

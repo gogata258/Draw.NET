@@ -3,7 +3,7 @@ using System;
 using System.Drawing;
 using System.Linq;
 
-namespace Draw.Shapes.Abstracts
+namespace PaintNET.Shapes.Abstracts
 {
 	public abstract partial class ShapeBase
 	{

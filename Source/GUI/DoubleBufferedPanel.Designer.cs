@@ -1,4 +1,4 @@
-﻿namespace Draw
+﻿namespace PaintNET
 {
 	public partial class DoubleBufferedPanel
 	{
